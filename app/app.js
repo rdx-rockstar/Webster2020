@@ -22,7 +22,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
-app.get('/login',function(req,res){
+app.get('/register',function(req,res){
     res.render('signup');
 });
 
