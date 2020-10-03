@@ -1,9 +1,28 @@
 body {
-    background-color: blueviolet;
-    padding: 50px;
-    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    width: 100pc!important;
+    background-color: black!important;
+    overflow-x:auto;
+    overflow-y:auto;
   }
-  
+  .fleft{
+    float: left;
+  }
+  .clrleft{
+    clear: left;
+  }
+  ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: whitesmoke;
+    opacity: 1; /
+  }
+  .fright{
+    float: right;
+  }
+  .atcenter{
+    margin:auto!important;
+  }
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
   a {
     color: #00B7FF;
   }
