@@ -3,6 +3,8 @@ body {
     background-color: black!important;
     overflow-x:auto;
     overflow-y:auto;
+    font-family: 'Abhaya Libre';font-size: 18px!important;
+    position: absolute;
   }
   .fleft{
     float: left;
@@ -24,8 +26,11 @@ body {
     background-color:rgb(169,169,169,0.4)!important;
   }
   .opacbg4{
-    box-shadow: 3px 3px  10px #adeff8;
     background-color:rgba(255, 255, 255, 0.2)!important;
+  }
+  .opacbg4:hover{
+    box-shadow: 3px 3px  10px #adeff8;
+   
   }
   ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
     color: whitesmoke;
@@ -45,8 +50,11 @@ body {
     overflow: scroll;
   }
   .list-heading{
+    font-family: 'Aldrich';font-size: 24px;
     font-weight: bold;
-    font-style: serif;
+  }
+  .theme{
+    background-color: #39a89d!important;
   }
   .hide-scrollbar::-webkit-scrollbar {
     display: none;
