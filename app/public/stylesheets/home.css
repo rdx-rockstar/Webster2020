@@ -34,7 +34,7 @@ body {
   }
   ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
     color: whitesmoke;
-    opacity: 1; /
+    opacity: 1; 
   }
   .fright{
     float: right;
