@@ -5,7 +5,8 @@
   <meta charset="utf-8">
   <title>Sign Up</title>
   <link rel="icon" href="https://image.flaticon.com/icons/svg/2983/2983067.svg">
-  <script src="https://kit.fontawesome.com/5b5eeb4d82.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+  	<link href="https://fonts.googleapis.com/css?family=Montserrat:700,900" rel="stylesheet">
   <link rel="stylesheet" href="/css/form.css">
   <!-- CSS only -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
@@ -38,15 +39,30 @@
 
   <div class="row text-wrap">
     <div class="col-md-7">
-      <div  id="heading" class="jumbotron">
-        <h1 class="display-4 green-text">Welcome to Flick</h1>
-        <p class="lead">Connect with other gamers around the world. Watch gameplays and also get yourself rated. Join gaming communities and stream gameplays.</p>
+      <div  id="heading">
+        <h1 class="brand">Flick</h1>
+        <p class="lead">A SOCIAL GAMING PLATFORM.</p>
       </div>
       <button type="button" class="btn btn-light Download  mx-1"><i class="fab fa-apple"></i> Download</button>
       <button type="button" class="btn btn-outline-light Download mx-1"> <i class="fab fa-google-play"></i> Download</button>
     </div>
 
     <div class="col-lg-4.5">
+      <div class="">
+        <form class="login container" action="/login" method="POST">
+          <h4>Already having an Account?</h4>
+          <h6>(if yes, then click on Login orelse Create an Account.)</h6>
+          <a href="/login" class="btn btn-outline-light">Login</a>
+          <h3>OR</h3>
+          <h4>Login with:</h4>
+          <ul>
+<li><a href="/auth/facebook"><i class="fab fa-facebook-f"aria-hidden="true"></i></a></li>
+<li><a href="/auth/google"><i class="fab fa-google"aria-hidden="true"></i></a></li>
+<li> <a href="/auth/steam"><i class="fab fa-steam"aria-hidden="true"></></i></a></li>
+</ul>
+        </form>
+      </div>
+
       <form class="container" action="/register" method="POST">
         <h2>Create Your Flick Account</h2>
         <div class="form-group">
@@ -64,17 +80,17 @@
         </div>
         <div class="form-group">
           <label for="exampleInputPassword1">
-            <h4>Password</h4>
+            <h4>Create Password</h4>
           </label>
           <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Enter your password" name="password" required>
         </div>
         <div class="form-group form-check">
           <input type="checkbox" class="form-check-input" id="exampleCheck1" required>
-          <label class="form-check-label" for="exampleCheck1">I am not a Robot!</label>
+
+          <label class="form-check-label" for="exampleCheck1">ARE YOU SURE?</label>
         </div>
         <button type="submit" class="btn btn-outline-light">Submit</button>
-        <a href="/login" class="btn btn-outline-light">Login</a>
-        <a href="/auth/google" class="btn btn-outline-light">g+</a>
+
       </form>
 
     </div>
