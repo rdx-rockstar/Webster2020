@@ -6,4 +6,6 @@ router.get('/', function(req, res, next) {
   res.redirect("/register");
 });
 
+
+
 module.exports = router;
