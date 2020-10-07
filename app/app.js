@@ -6,10 +6,13 @@ const createError   = require('http-errors'),
       mongoose      = require('mongoose'),
       passport      = require('passport'),
       logger        = require('morgan'),
-      localStrategy = require('passport-local');
+      LocalStrategy = require('passport-local'),
+      GoogleStrategy= require('./strategies/passport-setup');
 //Requiring Routes
 const indexRouter = require('./routes/index'),
-      usersRouter = require('./routes/users');
+      usersRouter = require('./routes/users'),
+      localAuthRouter = require('./routes/local-auth'),
+      googleAuthRouter = require('./routes/google-auth');
 
 //Requiring models
 const User = require('./models/userSchema');
@@ -41,52 +44,30 @@ app.use(require("express-session")({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
-passport.use(new localStrategy(User.authenticate()));
+
+passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
+// app.use(LocalStrategy);
 
 //Root Route
 app.use('/', indexRouter);
+app.use('/',localAuthRouter);
+app.use('/',googleAuthRouter);
 app.use('/users', usersRouter);
 
 app.get('/home',(req,res) => {
   res.render('home_page');
 });
 
-//Authentication Routes
+// function isLoggedIn(req,res,next){
+//   if(req.isAuthenticated())
+//   {
+//       return next();
+//   }
+//   res.redirect('/register');
+// }
 
-//Registration route
-app.get('/register',function(req,res){
-    res.render('signup');
-});
-
-app.post('/register',(req,res) => {
-  console.log(req.body);
-  // console.log(req.body.password);
-
-  var newUser = new User({username: req.body.username});
-  User.register(newUser,req.body.password,function(err,newlyCreatedUser){
-    console.log(newlyCreatedUser);
-    if(err){
-      console.log(err);
-      return res.render('signup');
-    }
-    passport.authenticate('local')(req,res,()=>{
-      console.log(newlyCreatedUser);
-      res.redirect('/home');
-    })
-  })
-})
-
-//Login Route
-app.get('/login',(req,res) => {
-  res.render('login');
-});
-
-app.post('/login',passport.authenticate('local',{
-    successRedirect: "/home",
-    failureRedirect: "/login"
-}));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -1,0 +1,65 @@
+body {
+    width: 100pc!important;
+    background-color: black!important;
+    overflow-x:auto;
+    overflow-y:auto;
+    font-family: 'Abhaya Libre';font-size: 18px!important;
+    position: absolute;
+  }
+  .fleft{
+    float: left;
+  }
+  
+  .clrleft{
+    clear: left;
+  }
+  .shdw{
+    box-shadow: 5px 10px #ffffff;
+  }
+  .opacbg{
+    background-color:rgb(169,169,169,0.3);
+  }
+  .opacbg2{
+    background-color:rgb(169,169,169,0.2)!important;
+  }
+  .opacbg3{
+    background-color:rgb(169,169,169,0.4)!important;
+  }
+  .opacbg4{
+    background-color:rgba(255, 255, 255, 0.2)!important;
+  }
+  .opacbg4:hover{
+    box-shadow: 3px 3px  10px #adeff8;
+   
+  }
+  ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: whitesmoke;
+    opacity: 1; 
+  }
+  .fright{
+    float: right;
+  }
+  .atcenter{
+    margin:auto!important;
+  }
+  .hvrchg:hover{
+    background-color: rgb(42, 145, 145)!important;
+  }
+  .cards{
+    height: 530px!important;
+    overflow: scroll;
+  }
+  .list-heading{
+    font-family: 'Aldrich';font-size: 24px;
+    font-weight: bold;
+  }
+  .theme{
+    background-color: #39a89d!important;
+  }
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  a {
+    color: #00B7FF;
+  }
+  
