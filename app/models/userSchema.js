@@ -4,7 +4,11 @@ const passportLocalMongoose= require('passport-local-mongoose');
 
 var userSchema = new mongoose.Schema({
     username: String,
-    password: String
+    password: String,
+    googleUsername: String,
+    googleId: String,
+    facebookUsername: String,
+    facebookId: String,
 });
 
 userSchema.plugin(passportLocalMongoose);

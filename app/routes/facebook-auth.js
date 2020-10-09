@@ -1,11 +1,9 @@
 const router = require('express').Router();
 const passport = require('passport');
 
-router.get('/auth/google',passport.authenticate('google',{
-    scope: ['profile']
-}));
+router.get('/auth/facebook',passport.authenticate('facebook'));
 
-router.get('/auth/google/redirect',passport.authenticate('google',{
+router.get('/auth/facebook/redirect',passport.authenticate('facebook',{
     failureRedirect:'/register'
 }),function(req,res){
     // console.log(req);

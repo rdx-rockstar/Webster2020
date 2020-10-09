@@ -30,10 +30,21 @@ router.get('/login',(req,res) => {
   res.render('login');
 });
 
-router.post('/login',passport.authenticate('local',{
-    successRedirect: "/home",
-    failureRedirect: "/login"
-}));
+router.post('/login',(req,res) => {
+  var user = new User({
+    username: req.body.username,
+    password: req.body.password
+  });
+  req.login(user,function(err){
+    if(err){
+      console.log(err);
+    }else{
+      passport.authenticate('local')(req,res,()=>{
+        res.redirect('/home');
+      })
+    }
+  })
+});
 
 router.get('/logout',function(req,res){
     req.logout();
