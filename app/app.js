@@ -1,10 +1,10 @@
-require('dotenv').config()
+require('dotenv').config() //for .env file(package) (starting)(secrets,API) //nmp i dotenv
 
 const createError   = require('http-errors'),
-      express       = require('express'),
+      express       = require('express'),  //frameWork (for node.js)
       path          = require('path'),
-      cookieParser  = require('cookie-parser'),
-      bodyParser    = require('body-parser'),
+      cookieParser  = require('cookie-parser'), //cookie-session
+      bodyParser    = require('body-parser'), //
       mongoose      = require('mongoose'),
       session       = require('express-session'),
       passport      = require('passport'),

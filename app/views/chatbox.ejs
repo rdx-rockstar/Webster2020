@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Chat</title>
+	<link rel="stylesheet" href="css/chatbox.css">
+	<link rel="icon" href="gaming.svg">
+	<!-- CSS only -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+</head>
+
+<body>
+
+	<div class="wrapper">
+		<!--- Sidebar  -->
+		<nav id="sidebar">
+			<!--- Heading(logo)  -->
+			<div class="sidebar-header">
+				<h2 class="brand">FLICK</h2>
+			</div>
+			<div class="linee"></div>
+			<!--- search bar -->
+			<div class="card-header">
+				<div class="input-group">
+					<input type="text" placeholder="Search..." name="" class="form-control search">
+					<div class="input-group-prepend">
+						<span class="input-group-text search_btn"><i class="fas fa-search"></i></span>
+					</div>
+				</div>
+			</div>
+			<br>
+			<div class="linee"></div>
+			<!--- contact list  -->
+			<div class="card contacts_card">
+				<div class="card-body contacts_body">
+					<ui class="contacts">
+						<li class="active">
+							<div class="d-flex bd-highlight">
+								<div class="img_cont">
+									<img src="https://images.unsplash.com/photo-1459245330819-1b6d75fbaa35?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80" class="rounded-circle user_img">
+									<span class="online_icon"></span>
+								</div>
+								<div class="user_info">
+									<span>Kshitij Verma</span>
+									<p>online</p>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="d-flex bd-highlight">
+								<div class="img_cont">
+									<img src="https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" class="rounded-circle user_img">
+									<span class="online_icon offline"></span>
+								</div>
+								<div class="user_info">
+									<span>Kareem Ullah</span>
+									<p>42 mins ago</p>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="d-flex bd-highlight">
+								<div class="img_cont">
+									<img src="https://avante.biz/wp-content/uploads/Cute-wallpapers-for-whatsapp-profile-pic/Cute-wallpapers-for-whatsapp-profile-pic11.jpg" class="rounded-circle user_img">
+									<span class="online_icon"></span>
+								</div>
+								<div class="user_info">
+									<span>Virat Singh</span>
+									<p>online</p>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="d-flex bd-highlight">
+								<div class="img_cont">
+									<img src="https://1-moda.com/wp-content/uploads/2015/05/1.jpg" class="rounded-circle user_img">
+									<span class="online_icon offline"></span>
+								</div>
+								<div class="user_info">
+									<span>Bareera Khan</span>
+									<p>1 hr ago</p>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="d-flex bd-highlight">
+								<div class="img_cont">
+									<img src="https://weneedfun.com/wp-content/uploads/2016/07/Cute-Stylish-Girls-Profile-Pictures-1.jpg" class="rounded-circle user_img">
+									<span class="online_icon offline"></span>
+								</div>
+								<div class="user_info">
+									<span>Kashish Singh</span>
+									<p>50 mins ago</p>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="d-flex bd-highlight">
+								<div class="img_cont">
+									<img src="https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" class="rounded-circle user_img">
+									<span class="online_icon offline"></span>
+								</div>
+								<div class="user_info">
+									<span>Kareem Ullah</span>
+									<p>42 mins ago</p>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="d-flex bd-highlight">
+								<div class="img_cont">
+									<img src="https://avante.biz/wp-content/uploads/Cute-wallpapers-for-whatsapp-profile-pic/Cute-wallpapers-for-whatsapp-profile-pic11.jpg" class="rounded-circle user_img">
+									<span class="online_icon"></span>
+								</div>
+								<div class="user_info">
+									<span>Virat Singh</span>
+									<p>online</p>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="d-flex bd-highlight">
+								<div class="img_cont">
+									<img src="https://1-moda.com/wp-content/uploads/2015/05/1.jpg" class="rounded-circle user_img">
+									<span class="online_icon offline"></span>
+								</div>
+								<div class="user_info">
+									<span>Bareera Khan</span>
+									<p>1 hr ago</p>
+								</div>
+							</div>
+						</li>
+						<li>
+							<div class="d-flex bd-highlight">
+								<div class="img_cont">
+									<img src="https://weneedfun.com/wp-content/uploads/2016/07/Cute-Stylish-Girls-Profile-Pictures-1.jpg" class="rounded-circle user_img">
+									<span class="online_icon offline"></span>
+								</div>
+								<div class="user_info">
+									<span>Kashish Singh</span>
+									<p>50 mins ago</p>
+								</div>
+							</div>
+						</li>
+					</ui>
+				</div>
+				<button type="button" class="btn btn-light Download  "><i class="fab fa-apple"></i> Download</button>
+				<button type="button" class="btn btn-outline-light Download"> <i class="fab fa-google-play"></i> Download</button>
+				<div class="card-footer"></div>
+			</div>
+		</nav>
+
+		<!-- Page Content  -->
+		<div id="content">
+			<!-- top navbar  -->
+			<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #1D1D1D">
+				<div class="container-fluid">
+					<!-- buttons  -->
+					<button type="button" id="sidebarCollapse" class="bttn" aria-expanded="false">
+						<i class="fas fa-align-left"></i>
+					</button>
+					<button class="bttn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="true" aria-label="Toggle navigation">
+						<i class="fas fa-align-justify"></i>
+					</button>
+					<!-- right side things on navbar -->
+					<div class="collapse navbar-collapse" id="navbarSupportedContent">
+						<ul class="nav navbar-nav ml-auto">
+							<form class="form-inline">
+								<input class="form-control" type="search" style="background: #121212; color:#BB86FC; border-color:#FF7597; width: 60%" placeholder="Search" aria-label="Search">
+								<button class="btn btn-outline my-2 my-sm-0" style="background: #121212; color:#BB86FC; border-color:#FF7597;" type="submit">Search</button>
+							</form>
+							<li class="nav-item">
+								<a class="nav-liink" href="#">Home</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-liink" href="games.html">Games</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-liink" href="stream.html">Stream</a>
+							</li>
+							<li class="nav-item active">
+								<a class="nav-liink" href="chatbox.html">Messages</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-liink" href="signup.html">Log Out</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+			<!--chat box-->
+			<section id="card">
+				<div class="card">
+					<div class="card-header msg_head">
+						<div class="d-flex bd-highlight">
+							<div class="img_cont">
+								<img src="https://images.unsplash.com/photo-1459245330819-1b6d75fbaa35?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80" class="rounded-circle user_img">
+								<span class="online_icon"></span>
+								<!--<span> tag is an inline container used to mark up a part of a text, or a part of a document-->
+							</div>
+							<div class="user_info">
+								<span>Kshitij Verma</span>
+								<p>Online</p>
+							</div>
+							<div class="video_cam">
+								<span><i class="fas fa-video"></i></span>
+								<span><i class="fas fa-phone"></i></span>
+							</div>
+						</div>
+						<span id="action_menu_btn"><i class="fas fa-ellipsis-v"></i></span>
+						<div class="action_menu">
+							<ul>
+								<li><i class="fas fa-user-circle"></i> View profile</li>
+								<li><i class="fas fa-users"></i> Add to close friends</li>
+								<li><i class="fas fa-plus"></i> Add to group</li>
+								<li><i class="fas fa-ban"></i> Block</li>
+							</ul>
+						</div>
+					</div>
+					<!--chats-->
+					<div class="card-body msg_card_body">
+						<div class="d-flex justify-content-start mb-3">
+							<!--The justify-content property aligns the flexible container's items when the items do not use all available space on the main-axis (horizontally).-->
+							<div class="img_cont_msg">
+								<img src="https://images.unsplash.com/photo-1459245330819-1b6d75fbaa35?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80" class="rounded-circle user_img_msg">
+							</div>
+							<div class="msg_cotainer">
+								Hi Noora,wanna join us for Amoung Us?
+								<span class="msg_time">15:23 PM, Today</span>
+							</div>
+						</div>
+						<div class="d-flex justify-content-end mb-3">
+							<div class="msg_cotainer_send">
+								Hello Kshitij! sure.. what time?
+								<span class="msg_time_send">15:23 PM, Today</span>
+							</div>
+							<div class="img_cont_msg">
+								<img src="https://www.pinkvilla.com/files/styles/contentpreview/public/nora_fatehi_1_0_0.jpg?itok=osXA4R1I" class="rounded-circle user_img_msg">
+							</div>
+						</div>
+						<div class="d-flex justify-content-start mb-3">
+							<div class="img_cont_msg">
+								<img src="https://images.unsplash.com/photo-1459245330819-1b6d75fbaa35?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80" class="rounded-circle user_img_msg">
+							</div>
+							<div class="msg_cotainer">
+								Umm... i was thinking about now..lemme ask others...
+								<span class="msg_time">15:24 PM, Today</span>
+							</div>
+						</div>
+						<div class="d-flex justify-content-end mb-3">
+							<div class="msg_cotainer_send">
+								okii!
+								<span class="msg_time_send">15:25 PM, Today</span>
+							</div>
+							<div class="img_cont_msg">
+								<img src="https://www.pinkvilla.com/files/styles/contentpreview/public/nora_fatehi_1_0_0.jpg?itok=osXA4R1I" class="rounded-circle user_img_msg">
+							</div>
+						</div>
+						<div class="d-flex justify-content-start mb-3">
+							<div class="img_cont_msg">
+								<img src="https://images.unsplash.com/photo-1459245330819-1b6d75fbaa35?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80" class="rounded-circle user_img_msg">
+							</div>
+							<div class="msg_cotainer">
+								they are here... connect yourself with FLICK!
+								<span class="msg_time">15:28 PM, Today</span>
+							</div>
+						</div>
+						<div class="d-flex justify-content-end mb-3">
+							<div class="msg_cotainer_send">
+								Oh great! ok i am
+								<span class="msg_time_send">15:29 PM, Today</span>
+							</div>
+							<div class="img_cont_msg">
+								<img src="https://www.pinkvilla.com/files/styles/contentpreview/public/nora_fatehi_1_0_0.jpg?itok=osXA4R1I" class="rounded-circle user_img_msg">
+							</div>
+						</div>
+						<div class="d-flex justify-content-start mb-3">
+							<div class="img_cont_msg">
+								<img src="https://images.unsplash.com/photo-1459245330819-1b6d75fbaa35?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80" class="rounded-circle user_img_msg">
+							</div>
+							<div class="msg_cotainer">
+								yes!
+								<span class="msg_time">15:29 PM, Today</span>
+							</div>
+						</div>
+						<div class="d-flex justify-content-start mb-3">
+							<!--The justify-content property aligns the flexible container's items when the items do not use all available space on the main-axis (horizontally).-->
+							<div class="img_cont_msg">
+								<img src="https://images.unsplash.com/photo-1459245330819-1b6d75fbaa35?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80" class="rounded-circle user_img_msg">
+							</div>
+							<div class="msg_cotainer">
+								Hi Noora,wanna join us for Amoung Us?
+								<span class="msg_time">15:23 PM, Today</span>
+							</div>
+						</div>
+						<div class="d-flex justify-content-end mb-3">
+							<div class="msg_cotainer_send">
+								Hello Kshitij! sure.. what time?
+								<span class="msg_time_send">15:23 PM, Today</span>
+							</div>
+							<div class="img_cont_msg">
+								<img src="https://www.pinkvilla.com/files/styles/contentpreview/public/nora_fatehi_1_0_0.jpg?itok=osXA4R1I" class="rounded-circle user_img_msg">
+							</div>
+						</div>
+						<div class="d-flex justify-content-start mb-3">
+							<div class="img_cont_msg">
+								<img src="https://images.unsplash.com/photo-1459245330819-1b6d75fbaa35?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80" class="rounded-circle user_img_msg">
+							</div>
+							<div class="msg_cotainer">
+								Umm... i was thinking about now..lemme ask others...
+								<span class="msg_time">15:24 PM, Today</span>
+							</div>
+						</div>
+						<div class="d-flex justify-content-end mb-3">
+							<div class="msg_cotainer_send">
+								okii!
+								<span class="msg_time_send">15:25 PM, Today</span>
+							</div>
+							<div class="img_cont_msg">
+								<img src="https://www.pinkvilla.com/files/styles/contentpreview/public/nora_fatehi_1_0_0.jpg?itok=osXA4R1I" class="rounded-circle user_img_msg">
+							</div>
+						</div>
+						<div class="d-flex justify-content-start mb-3">
+							<div class="img_cont_msg">
+								<img src="https://images.unsplash.com/photo-1459245330819-1b6d75fbaa35?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80" class="rounded-circle user_img_msg">
+							</div>
+							<div class="msg_cotainer">
+								they are here... connect yourself with FLICK!
+								<span class="msg_time">15:28 PM, Today</span>
+							</div>
+						</div>
+						<div class="d-flex justify-content-end mb-3">
+							<div class="msg_cotainer_send">
+								Oh great! ok i am
+								<span class="msg_time_send">15:29 PM, Today</span>
+							</div>
+							<div class="img_cont_msg">
+								<img src="https://www.pinkvilla.com/files/styles/contentpreview/public/nora_fatehi_1_0_0.jpg?itok=osXA4R1I" class="rounded-circle user_img_msg">
+							</div>
+						</div>
+						<div class="d-flex justify-content-start mb-3">
+							<div class="img_cont_msg">
+								<img src="https://images.unsplash.com/photo-1459245330819-1b6d75fbaa35?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80" class="rounded-circle user_img_msg">
+							</div>
+							<div class="msg_cotainer">
+								yes!
+								<span class="msg_time">15:29 PM, Today</span>
+							</div>
+						</div>
+					</div>
+					<div class="card-footer">
+						<div class="input-group">
+							<div class="input-group-append">
+								<span class="input-group-text attach_btn"><i class="fas fa-paperclip"></i></span>
+							</div>
+							<textarea name="" class="form-control type_msg" placeholder="Type your message..."></textarea>
+							<div class="input-group-append">
+								<span class="input-group-text send_btn"><i class="fas fa-location-arrow"></i></span>
+							</div>
+						</div>
+					</div>
+
+
+				</div>
+				<div class="footer">
+					<p>© 2020 Flick, LLC. All rights reserved | </p>
+					<p>Follow us on</p>
+					<ul>
+						<li><a href="/auth/facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a></li>
+						<li><a href="/auth/google"><i class="fab fa-google" aria-hidden="true"></i></a></li>
+						<li> <a href="/auth/steam"><i class="fab fa-instagram" aria-hidden="true"></></i></a></li>
+					</ul>
+
+				</div>
+			</section>
+
+
+
+
+			<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+			<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+			<script type="text/javascript">
+				$(document).ready(function() {
+					$('#sidebarCollapse').on('click', function() {
+						$('#sidebar').toggleClass('active');
+					});
+				});
+			</script>
+			<script type="text/javascript">
+				$(document).ready(function() {
+					$('#action_menu_btn').click(function() {
+						$('.action_menu').toggle();
+					});
+				});
+			</script>
+			<script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+			<script>
+				function addDarkmodeWidget() {
+					new Darkmode().showWidget();
+				}
+				window.addEventListener('load', addDarkmodeWidget);
+			</script>
+			<script type="text/javascript">
+				var options = {
+					bottom: '64px', // default: '32px'
+					right: 'unset', // default: '32px'
+					left: '32px', // default: 'unset'
+					time: '0.5s', // default: '0.3s'
+					mixColor: '#121212', // default: '#fff'
+					backgroundColor: '#121212', // default: '#fff'
+					buttonColorDark: '#fff', // default: '#100f2c'
+					buttonColorLight: '#121212', // default: '#fff'
+					saveInCookies: false, // default: true,
+					label: '🌓' // default: ''
+				}
+
+				const darkmode = new Darkmode(options);
+				darkmode.showWidget();
+			</script>
+			</body>
+</body>
+
+</html>
