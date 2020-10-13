@@ -1,0 +1,205 @@
+h1{
+ text-align: center;
+ }
+h2{
+ color: #fff;
+}
+
+#content{
+ background-image: url("https://images.unsplash.com/photo-1487088678257-3a541e6e3922?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1567&q=80");
+}
+.container{
+ margin-top: 70px;
+}
+.box p{
+ color: #fff;
+ padding-left: 10px;
+}
+.box a{
+   padding: 7%;
+   color: #fff;
+}
+.box{
+ align-self: center;
+ border-radius: 10px;
+ background: rgba(0, 0, 0, 0.6);
+ width: 340px;
+ box-shadow: 6px 8px 5px #b83b5e;
+}
+img{
+ border-radius: 100%;
+ width: 130px;
+ height: 130px;
+
+}
+.brand{
+ color: black;
+ font-family: 'Montserrat';
+ text-transform: uppercase;
+ text-shadow: -1px -1px 0px #8400ff, 1px 1px 0px #d54062;
+ letter-spacing: 2px;
+}
+@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+body {
+   font-family: 'Poppins', sans-serif;
+   background-color: #222;
+}
+
+p {
+   font-family: 'Poppins', sans-serif;
+   font-size: 1.1em;
+   font-weight: 300;
+   line-height: 1.7em;
+   color: #222;
+}
+.card {
+ align-items: center;
+ box-shadow: 6px 8px 5px #b83b5e;
+}
+.card .btn:hover{
+color: #edcfa9;
+}
+a,
+a:hover,
+a:focus {
+   color: #222;
+
+}
+
+.navbar {
+   padding: 15px 10px;
+   background: #fff;
+   border: none;
+   border-radius: 0;
+   margin-bottom: 40px;
+   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-btn {
+   box-shadow: none;
+   outline: none !important;
+   border: none;
+}
+
+.line {
+   width: 100%;
+   height: 1px;
+   border-bottom: 1px dashed #ddd;
+   margin: 40px 0;
+}
+
+/* ---------------------------------------------------
+   SIDEBAR STYLE
+----------------------------------------------------- */
+
+.wrapper {
+   display: flex;
+   width: 100%;
+   align-items: stretch;
+}
+
+#sidebar {
+   min-width: 250px;
+   max-width: 250px;
+   background: #d9ecf2;
+   color: #222;
+   transition: all 0.3s;
+}
+
+#sidebar.active {
+   margin-left: -250px;
+}
+
+#sidebar .sidebar-header {
+   padding: 20px;
+   background: #51adcf;
+}
+
+#sidebar ul.components {
+   padding: 20px 0;
+   border-bottom: 1px solid #47748b;
+}
+
+#sidebar ul p {
+   color: #222;
+   padding: 10px;
+   font-size: 20px;
+   font-weight: bolder;
+}
+
+#sidebar ul li a {
+   padding: 10px;
+   font-size: 1.1em;
+   display: block;
+   color: #222;
+}
+
+#sidebar ul li a:hover {
+   color: #47748b;
+   background: #fff;
+}
+
+#sidebar ul li.active>a,
+a[aria-expanded="true"] {
+   color: #fff;
+   background: #51adcf;
+}
+
+a[data-toggle="collapse"] {
+   position: relative;
+}
+
+.dropdown-toggle::after {
+   display: block;
+   position: absolute;
+   top: 50%;
+   right: 20px;
+   transform: translateY(-50%);
+}
+
+ul ul a {
+   font-size: 0.9em !important;
+   padding-left: 30px !important;
+   background: #51adcf;
+}
+
+ul.CTAs {
+   padding: 20px;
+}
+
+ul.CTAs a {
+   text-align: center;
+   font-size: 0.9em !important;
+   display: block;
+   border-radius: 5px;
+   margin-bottom: 5px;
+}
+
+
+
+/* ---------------------------------------------------
+   CONTENT STYLE
+----------------------------------------------------- */
+
+#content {
+   width: 100%;
+   padding: 20px;
+   min-height: 100vh;
+   transition: all 0.3s;
+}
+
+/* ---------------------------------------------------
+   MEDIAQUERIES
+----------------------------------------------------- */
+
+@media (max-width: 768px) {
+   #sidebar {
+       margin-left: -250px;
+   }
+   #sidebar.active {
+       margin-left: 0;
+   }
+   #sidebarCollapse span {
+       display: none;
+   }
+}

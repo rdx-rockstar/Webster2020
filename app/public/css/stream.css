@@ -1,0 +1,426 @@
+/*------------------------------------------------
+      BASICS(overall thing)
+------------------------------------------------*/
+html{
+padding-left: 10px;
+padding-top: 20px;
+padding-right: 10px;
+}
+
+
+h2{
+ color: #fff;
+}
+.row{
+  margin-right: 10px;
+}
+/* .linee {
+    width: 100%;
+    height: 1px;
+    border-bottom: 1px dashed #ddd;
+    margin: 0px 0;
+} */
+/*------------------------------------------------
+      logo design of our project (FLICK)
+------------------------------------------------*/
+ .brand{
+ color: #1D1D1D;
+ font-family: 'Montserrat';
+ text-transform: uppercase;
+ text-shadow: -1px -1px 0px #BB86FC, 1px 1px 0px #FF7597;
+ letter-spacing: 12px;
+ font-weight: bolder;
+}
+/*------------------------------------------------
+      BODY
+------------------------------------------------*/
+@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+body {
+   font-family: 'Poppins', sans-serif;
+   background-color: #121212;
+}
+
+/* p {
+   font-family: 'Poppins', sans-serif;
+   font-size: 1.1em;
+   font-weight: 300;
+   line-height: 1.7em;
+   color: #222;
+} */
+
+
+/*------------------------------------------------
+      cards container
+------------------------------------------------*/
+.col-sm-9{
+height: 570px;
+  overflow-y: scroll;
+}
+#container {
+  height: 570px;
+    overflow-y: scroll;
+    margin-right: 3px;
+    margin-left: 2px;
+}
+.card{
+  margin-bottom: 5px;
+  background-color: #1D1D1D !important;
+  color: #fff;
+  display: block;
+}
+.row .active{
+
+    background-color: rgba(255, 110, 255, 0.5) !important;
+}
+.likes{
+  margin-left: 5px;
+  margin-top: 5px;
+}
+.likes span{
+  color: red;
+  font-size: 50px;
+  cursor: pointer;
+  margin-left: 20px;
+}
+.msg_cotainer{
+  margin-top: 10px;
+  margin-bottom: 30px;
+  margin-left: 10px;
+  border-radius: 25px;
+  background-color: #FF7597;
+  padding: 10px;
+  position: relative;
+}
+.msg_time{
+  position: absolute;
+  left: 5px;
+  bottom: -25px;
+  color: rgba(255,255,255,0.5);
+  font-size: 10px;
+}
+
+/*---------------------
+            text box
+            ---------------------*/
+.type_msg{
+  background-color: rgba(0,0,0,0.3) !important;
+  border:0 !important;
+  color:white !important;
+  height: 40px !important;
+  overflow-y: auto;
+}
+  .type_msg:focus{
+     box-shadow:none !important;
+       outline:0px !important;
+}
+
+
+
+/*also have search bar buttons' hover features*/
+.form-inline input:hover,.form-inline button:hover,.card a:hover{
+  color: #FF7597;
+  border-color: #BB86FC;
+  text-shadow: -1px -1px 0px #FF7597;
+}
+/*------------------------------------------------
+      right side items on top navbar
+------------------------------------------------*/
+#navbarSupportedContent{
+  text-align: center;
+  align-items: center;
+}
+#navbarSupportedContent ul li a {
+   padding: 10px;
+   font-size: 1.1em;
+   display: block;
+   color: #BB86FC;
+}
+#navbarSupportedContent ul li a:hover {
+   padding: 10px;
+   font-size: 1.1em;
+   display: block;
+   color: #FF7597;
+   text-decoration: none;
+}
+#navbarSupportedContent ul li.active>a,
+a[aria-expanded="true"]{
+  color: #FF7597;
+  text-decoration: overline #FF7597;
+
+  font-weight: bolder;
+}
+.navbar {
+   padding: 15px 10px;
+   background: #1D1D1D;
+   border: none;
+   border-radius: 0;
+   margin-bottom: 40px;
+   box-shadow: 1px 1px 3px rgba(9, 9, 9, 0.1);
+}
+a .nav-link{
+  color: #FF7597;
+}
+/* .form-control{
+  width: 300px;
+} */
+
+.bttn {
+
+   background-color: #FF7597;
+   border-color: #FF7597;
+   border-radius: 10%;
+}
+.active{
+    background-color: rgba(0,0,0,0.6);
+}
+/* .form-inline{
+  margin-right: 10px;
+} */
+
+
+
+
+
+
+
+/* ---------------------------------------------------
+   CONTENT STYLE
+----------------------------------------------------- */
+
+/* #content {
+   width: 100%;
+   padding: 20px;
+   min-height: 10vh;
+   transition: all 0.3s;
+   height: 100%;
+   background-color: #121212;
+} */
+
+/* ---------------------------------------------------
+   MEDIAQUERIES
+-----------------------------------------------------
+
+@media (max-width: 768px) {
+   #sidebar {
+       margin-left: -250px;
+   }
+   #sidebar.active {
+       margin-left: 0;
+   }
+   #sidebarCollapse span {
+       display: none;
+   }
+}
+/*---------------------
+     pop-up chat box
+---------------------------*/
+
+
+/*---------------------
+     Footer
+---------------------------*/
+.footer ul{
+  display: flex;
+  padding-left: 0px;
+}
+.footer ul li{
+  position: relative;
+  display: block;
+  font-size: 30px;
+  height: 60px;
+  width: 60px;
+  color: #fff;
+  background: #1D1D1D;
+  line-height: 60px;
+  border-radius: 50%;
+  margin: 0 15px;
+  cursor: pointer;
+  transition: .3s;
+  text-align: center;
+}
+
+.footer ul li a{
+  color: #fff!important;
+}
+
+.footer ul li:nth-child(1):hover{
+  color: #8400ff;
+  box-shadow: 0 0 15px #8400ff;
+  text-shadow: 0 0 15px #8400ff;
+}
+.footer ul li:nth-child(2):hover{
+  color: #ff1a1a;
+  box-shadow: 0 0 15px #ff1a1a;
+  text-shadow: 0 0 15px #ff1a1a;
+}
+.footer ul li:nth-child(3):hover{
+  color: #FF0266;
+  box-shadow: 0 0 15px #FF0266;
+  text-shadow: 0 0 15px #FF0266;
+}
+.footer{
+  background-color: black;
+  align-self: center;
+  display: flex;
+  margin-top: 36px;
+  margin-bottom: 0;
+  border-top-right-radius: 40%;
+  border-bottom-right-radius: 40%;
+}
+.footer p{
+  color: #fff;
+  margin-left: 30px;
+  padding-top: 20px;
+}
+
+
+/*1b262c */
+
+
+/*.box p{
+ color: #fff;
+ padding-left: 10px;
+}
+.box a{
+   padding: 7%;
+   color: #fff;
+}
+.box{
+ align-self: center;
+ border-radius: 10px;
+ background: rgba(0, 0, 0, 0.6);
+ width: 340px;
+ box-shadow: 6px 8px 5px #b83b5e;
+} */
+
+
+
+/*---------------------
+            text box
+            ---------------------*/
+.type_msg{
+  background-color: rgba(0,0,0,0.3) !important;
+  border:0 !important;
+  color:white !important;
+  height: 40px !important;
+  overflow-y: auto;
+}
+  .type_msg:focus{
+     box-shadow:none !important;
+       outline:0px !important;
+}
+/*---------------------
+            attach_btn
+            ---------------------*/
+.attach_btn{
+border-radius: 15px 0 0 15px !important;
+background-color: rgba(0,0,0,0.3) !important;
+  border:0 !important;
+  color: white !important;
+  cursor: pointer;
+}
+/*---------------------
+            send_btn
+            ---------------------*/
+.send_btn{
+border-radius: 0 15px 15px 0 !important;
+background-color: rgba(0,0,0,0.3) !important;
+  border:0 !important;
+  color: white !important;
+  cursor: pointer;
+}
+/*---------------------
+        images(all)
+            ---------------------*/
+  .user_img{
+    height: 70px;
+    width: 70px;
+    border:1.5px solid #FF7597;
+
+  }
+  .user_img_msg{
+    height: 40px;
+    width: 40px;
+    border:1.5px solid #FF7597;
+
+  }
+  /*---------------------
+        chat box
+              ---------------------*/
+#card .card{
+      height: 620px;
+      border-radius: 15px !important;
+      background-color: rgba(0,0,0,0.3) !important;
+      box-shadow: 6px 8px 5px #FF7597;
+    }
+    .msg_card_body{
+      overflow-y: auto;
+    }
+    .user_info{
+  		margin-top: auto;
+  		margin-bottom: auto;
+  		margin-left: 15px;
+  	}
+  	.user_info span{
+  		font-size: 20px;
+  		color: white;
+  	}
+  	.user_info p{
+  	font-size: 10px;
+  	color: rgba(255,255,255,0.6);
+  	}
+    .video_cam{
+      margin-left: 50px;
+      margin-top: 5px;
+    }
+    .video_cam span{
+      color: white;
+      font-size: 20px;
+      cursor: pointer;
+      margin-right: 20px;
+    }
+    /*---------------------
+            msg box (another person)
+                ---------------------*/
+    .msg_cotainer{
+      margin-top: auto;
+      margin-bottom: auto;
+      margin-left: 10px;
+      border-radius: 25px;
+      background-color: #FF7597;
+      padding: 10px;
+      position: relative;
+    }
+    /*---------------------
+            msg box (me)
+                ---------------------*/
+    .msg_cotainer_send{
+      margin-top: auto;
+      margin-bottom: auto;
+      margin-right: 10px;
+      border-radius: 25px;
+      background-color: #222;
+      padding: 10px;
+      position: relative;
+    }
+    .msg_time{
+      position: absolute;
+      left: 0;
+      bottom: -25px;
+      color: rgba(255,255,255,0.5);
+      font-size: 10px;
+    }
+    .msg_time_send{
+      position: absolute;
+      right:0;
+      bottom: -25px;
+      color: rgba(255,255,255,0.5);
+      font-size: 10px;
+    }
+    .chatbox {
+    position: fixed;
+	position:expression("absolute");
+	width: 240px;
+	display:none;
+	z-index:99;
+}

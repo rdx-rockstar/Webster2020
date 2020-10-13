@@ -1,0 +1,430 @@
+/*------------------------------------------------
+      basics
+------------------------------------------------*/
+body,html{
+			height: 100%;
+			margin: 0;
+	    background: linear-gradient(to right, #121212, #121212, #121212);
+		}
+img{
+ border-radius: 100%;
+ width: 130px;
+ height: 130px;
+}
+.linee {
+    width: 100%;
+    height: 1px;
+    border-bottom: 1px dashed #ddd;
+    margin: 0px 0;
+}
+/*------------------------------------------------
+      logo design of our project (FLICK)
+------------------------------------------------*/
+.brand{
+ color: #1D1D1D;
+ font-family: 'Montserrat';
+ text-transform: uppercase;
+ text-shadow: -1px -1px 0px #BB86FC, 1px 1px 0px #FF7597;
+ letter-spacing: 12px;
+ font-weight: bolder;
+}
+/*------------------------------------------------
+      BODY
+------------------------------------------------*/
+@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+body {
+   font-family: 'Poppins', sans-serif;
+   background-color: #121212;
+
+}
+/*------------------------------------------------
+      right side items on top navbar
+------------------------------------------------*/
+#navbarSupportedContent{
+  text-align: center;
+  align-items: center;
+}
+#navbarSupportedContent ul li a {
+   padding: 10px;
+   font-size: 1.1em;
+   display: block;
+   color: #BB86FC;
+}
+#navbarSupportedContent ul li a:hover {
+   padding: 10px;
+   font-size: 1.1em;
+   display: block;
+   color: #FF7597;
+   text-decoration: none;
+}
+#navbarSupportedContent ul li.active>a,
+a[aria-expanded="true"]{
+  color: #FF7597;
+  text-decoration: overline #FF7597;
+
+  font-weight: bolder;
+}
+.navbar {
+   padding: 15px 10px;
+   background: #1D1D1D;
+   border: none;
+   border-radius: 0;
+   margin-bottom: 0px;
+   box-shadow: 1px 1px 3px rgba(9, 9, 9, 0.1);
+}
+a .nav-link{
+  color: #FF7597;
+}
+.form-control{
+  width: 300px;
+}
+
+.bttn {
+
+   background-color: #FF7597;
+   border-color: #FF7597;
+   border-radius: 10%;
+   display: flex;
+}
+.form-inline{
+  margin-right: 20px;
+
+}
+
+/* ---------------------------------------------------
+   SIDEBAR STYLE
+----------------------------------------------------- */
+
+.wrapper {
+   display: flex;
+   width: 100%;
+   align-items: stretch;
+}
+
+#sidebar {
+   min-width: 380px;
+   max-width: 380px;
+   background: #1D1D1D;
+   color: #222;
+   transition: all 0.2s;
+}
+
+#sidebar.active {
+   margin-left: -380px;
+}
+
+#sidebar .sidebar-header {
+   padding-top: 20px;
+   background: #1D1D1D;
+   text-align: center;
+
+}
+
+#sidebarCollapse .fas {
+   color: #fff;
+}
+/*------------------------------------------
+          sidebar(contact list)
+           ----------------------------------*/
+.form-control{
+	background-color: #1D1D1D;
+	box-shadow: 0px 4px 2px #FF7597;
+}
+.fa-search{
+	box-shadow: 3px 4px 6px #FF7597;
+}
+
+		.card{
+			height: 630px;
+			border-radius: 15px !important;
+			background-color: rgba(0,0,0,0.4) !important;
+			box-shadow: 6px 8px 5px #FF7597;
+		}
+		.contacts_body{
+			padding:  0.75rem 0 !important;
+			overflow-y: auto;
+			white-space: nowrap;
+		}
+    /*---------------------
+                search bar
+                ---------------------*/
+    .search{
+			border-radius: 15px 0 0 15px !important;
+			background-color: rgba(0,0,0,0.3) !important;
+			border:0 !important;
+			color:white !important;
+		}
+		.search:focus{
+		     box-shadow:none !important;
+           outline:0px !important;
+		}
+    /*---------------------
+                text box
+                ---------------------*/
+		.type_msg{
+			background-color: rgba(0,0,0,0.3) !important;
+			border:0 !important;
+			color:white !important;
+			height: 40px !important;
+			overflow-y: auto;
+		}
+			.type_msg:focus{
+		     box-shadow:none !important;
+           outline:0px !important;
+		}
+    /*---------------------
+                attach_btn
+                ---------------------*/
+		.attach_btn{
+	border-radius: 15px 0 0 15px !important;
+	background-color: rgba(0,0,0,0.3) !important;
+			border:0 !important;
+			color: white !important;
+			cursor: pointer;
+		}
+    /*---------------------
+                send_btn
+                ---------------------*/
+		.send_btn{
+	border-radius: 0 15px 15px 0 !important;
+	background-color: rgba(0,0,0,0.3) !important;
+			border:0 !important;
+			color: white !important;
+			cursor: pointer;
+		}
+    /*---------------------
+                search_btn
+                ---------------------*/
+		.search_btn{
+			border-radius: 0 15px 15px 0 !important;
+			background-color: rgba(0,0,0,0.3) !important;
+			border:0 !important;
+			color: white !important;
+			cursor: pointer;
+		}
+    /*---------------------
+                contact list (inside)
+                ---------------------*/
+		.contacts{
+			list-style: none;
+			padding: 0;
+		}
+		.contacts li{
+			width: 100% !important;
+			padding: 5px 10px;
+			margin-bottom: 15px !important;
+		}
+	.active{
+			background-color: rgba(0,0,0,0.6);
+	}
+  /*---------------------
+          images(all)
+              ---------------------*/
+		.user_img{
+			height: 70px;
+			width: 70px;
+			border:1.5px solid #FF7597;
+
+		}
+		.user_img_msg{
+			height: 40px;
+			width: 40px;
+			border:1.5px solid #FF7597;
+
+		}
+    /*---------------------
+          chat box
+                ---------------------*/
+  #card .card{
+  			height: 620px;
+  			border-radius: 15px !important;
+  			background-color: rgba(0,0,0,0.3) !important;
+  			box-shadow: 6px 8px 5px #FF7597;
+  		}
+      .msg_card_body{
+  			overflow-y: auto;
+  		}
+	/* .online_icon{
+		position: relative;
+		height: 15px;
+		width:15px;
+		background-color: #4cd137;
+		border-radius: 50%;
+		bottom: 0.2em;
+		right: 0.4em;
+		border:1.5px solid white;
+	}
+	.offline{
+		background-color: #c23616 !important;
+	} */
+	.user_info{
+		margin-top: auto;
+		margin-bottom: auto;
+		margin-left: 15px;
+	}
+	.user_info span{
+		font-size: 20px;
+		color: white;
+	}
+	.user_info p{
+	font-size: 10px;
+	color: rgba(255,255,255,0.6);
+	}
+	.video_cam{
+		margin-left: 50px;
+		margin-top: 5px;
+	}
+	.video_cam span{
+		color: white;
+		font-size: 20px;
+		cursor: pointer;
+		margin-right: 20px;
+	}
+  /*---------------------
+          msg box (another person)
+              ---------------------*/
+	.msg_cotainer{
+		margin-top: auto;
+		margin-bottom: auto;
+		margin-left: 10px;
+		border-radius: 25px;
+		background-color: #FF7597;
+		padding: 10px;
+		position: relative;
+	}
+  /*---------------------
+          msg box (me)
+              ---------------------*/
+	.msg_cotainer_send{
+		margin-top: auto;
+		margin-bottom: auto;
+		margin-right: 10px;
+		border-radius: 25px;
+		background-color: #fff;
+		padding: 10px;
+		position: relative;
+	}
+	.msg_time{
+		position: absolute;
+		left: 0;
+		bottom: -25px;
+		color: rgba(255,255,255,0.5);
+		font-size: 10px;
+	}
+	.msg_time_send{
+		position: absolute;
+		right:0;
+		bottom: -25px;
+		color: rgba(255,255,255,0.5);
+		font-size: 10px;
+	}
+	/* .msg_head{
+		position: relative;
+	} */
+	#action_menu_btn{
+		position: absolute;
+		right: 10px;
+		top: 10px;
+		color: white;
+		cursor: pointer;
+		font-size: 20px;
+	}
+	.action_menu{
+		z-index: 1;
+		position: absolute;
+		padding: 15px 0;
+		background-color: rgba(0,0,0,0.5);
+		color: white;
+		border-radius: 15px;
+		top: 30px;
+		right: 15px;
+		display: none;
+	}
+	.action_menu ul{
+		list-style: none;
+		padding: 0;
+	margin: 0;
+	}
+	.action_menu ul li{
+		width: 100%;
+		padding: 10px 15px;
+		margin-bottom: 5px;
+	}
+	.action_menu ul li i{
+		padding-right: 10px;
+
+	}
+	.action_menu ul li:hover{
+		cursor: pointer;
+		background-color: rgba(0,0,0,0.2);
+	}
+
+
+/* ---------------------------------------------------
+   CONTENT STYLE
+----------------------------------------------------- */
+
+#content {
+   width: 100%;
+   padding: 20px;
+   min-height: 10vh;
+   transition: all 0.3s;
+   height: 100%;
+   background-color: #1D11D;
+}
+/*---------------------
+     Footer
+---------------------------*/
+.footer ul{
+  display: flex;
+  padding-left: 0px;
+}
+.footer ul li{
+  position: relative;
+  display: block;
+  font-size: 30px;
+  height: 60px;
+  width: 60px;
+  color: #fff;
+  background: #171515;
+  line-height: 60px;
+  border-radius: 50%;
+  margin: 0 15px;
+  cursor: pointer;
+  transition: .3s;
+  text-align: center;
+}
+
+.footer ul li a{
+  color: #fff!important;
+}
+
+.footer ul li:nth-child(1):hover{
+  color: #8400ff;
+  box-shadow: 0 0 15px #8400ff;
+  text-shadow: 0 0 15px #8400ff;
+}
+.footer ul li:nth-child(2):hover{
+  color: #ff1a1a;
+  box-shadow: 0 0 15px #ff1a1a;
+  text-shadow: 0 0 15px #ff1a1a;
+}
+.footer ul li:nth-child(3):hover{
+  color: #e23670;
+  box-shadow: 0 0 15px #E1306C;
+  text-shadow: 0 0 15px #E1306C;
+}
+.footer{
+  background-color: #1D1D1D;
+  align-self: center;
+  display: flex;
+  margin-top: 6px;
+  margin-bottom: 0;
+  border-top-right-radius: 40%;
+  border-bottom-right-radius: 40%;
+}
+.footer p{
+  color: #fff;
+  margin-left: 30px;
+  padding-top: 20px;
+}

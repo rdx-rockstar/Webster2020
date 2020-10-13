@@ -1,18 +1,29 @@
 .col-md-7 {
-  /* margin-top: 250px; */
+  margin-top: 100px;
+  text-align: center;
+}
+.col-lg{
   text-align: center;
 }
 
+html{
+  margin:0;
+  padding: 0;
+    background-color: #030005;
+}
 #heading{
   background: transparent;
 }
+
 .row{
-  margin-top: 20px;
+  margin-top: 50px;
+    background-color: #030005;
 }
 .brand{
   font-size: 8rem;
   font-weight: 200;
   line-height: 1;
+
 }
 h3{
   text-align: center;
@@ -24,15 +35,15 @@ h1{
     text-shadow: -1px -1px 0px #8400ff, 1px 1px 0px #d54062;
     letter-spacing: 10px;
 }
-
+#boxxx{
+  margin-left: 8%;
+}
 p{
 color: #fff;
 letter-spacing: 10px;
 font-weight: 50;
 }
-.btn{
-    box-shadow: 25px 25px 25px -15px -15px rgb(54, 30, 38);
-}
+
 .container {
   background: rgba(0, 0, 0, 0.6);
   color: #fff;
@@ -42,20 +53,38 @@ font-weight: 50;
   padding-bottom: 1rem;
   border-radius: 5px;
   box-shadow: 25px 25px 25px -15px -15px rgb(54, 30, 38);
+  width: 100%;
+  margin-left: 25%;
+  box-shadow: 6px 8px 5px #b83b5e;
+}
+.form-group input{
+  border: 4px solid #b83b5e;
+}
+.form-group input:focus{
+  border: 2px solid  #8400ff;
+  box-shadow: inset 0 0 15px #b83b5e;
 }
 
 .form-group {
   width: 350px;
 }
-
-.text-wrap {
-  position: absolute;
-  top: 48vh;
-  /*left: 0; */
-  width: 100%;
-  transform: translateY(-50%);
-  z-index: 2;
+.not_found a{
+  font-family: 'Montserrat', sans-serif;
+  display: inline-block;
+  text-transform: uppercase;
+  color: #ff005a;
+  text-decoration: none;
+  border: 2px solid;
+  background: transparent;
+  padding: 10px 40px;
+  font-size: 14px;
+  font-weight: 700;
 }
+
+.not_found a:hover {
+  color: #8400ff;
+}
+
 ul{
   display: flex;
 }
@@ -88,7 +117,7 @@ ul li:before{
   transition: .5s;
 }
 ul li:nth-child(1):before{
-  background: #4267B2;
+  background: #8400ff;
 }
 ul li:nth-child(2):before{
   background: #ff1a1a;
@@ -103,7 +132,7 @@ ul li:hover:before{
   /* box-shadow: 0 0 15px #d35400; */
 }
 ul li:nth-child(1):hover:before{
-  box-shadow: 0 0 15px #4267B2;
+  box-shadow: 0 0 15px #8400ff;
 }
 ul li:nth-child(2):hover:before{
   box-shadow: 0 0 15px #ff1a1a;
@@ -112,9 +141,9 @@ ul li:nth-child(3):hover:before{
   box-shadow: 0 0 15px #E1306C;
 }
 ul li:nth-child(1):hover{
-  color: #456cba;
-  box-shadow: 0 0 15px #4267B2;
-  text-shadow: 0 0 15px #4267B2;
+  color: #8400ff;
+  box-shadow: 0 0 15px #8400ff;
+  text-shadow: 0 0 15px #8400ff;
 }
 ul li:nth-child(2):hover{
   color: #ff1a1a;

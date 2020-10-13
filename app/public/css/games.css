@@ -1,0 +1,342 @@
+/*------------------------------------------------
+      BASICS(overall thing)
+------------------------------------------------*/
+html{
+/* height: 100%; */
+}
+h1{
+ text-align: center;
+}
+h2{
+ color: #fff;
+}
+img{
+ border-radius: 100%;
+ width: 130px;
+ height: 130px;
+ border-color:5px solid #FF7597;
+}
+.linee {
+    width: 100%;
+    height: 1px;
+    border-bottom: 1px dashed #ddd;
+    margin: 0px 0;
+}
+/*------------------------------------------------
+      logo design of our project (FLICK)
+------------------------------------------------*/
+.brand{
+ color: #1D1D1D;
+ font-family: 'Montserrat';
+ text-transform: uppercase;
+ text-shadow: -1px -1px 0px #BB86FC, 1px 1px 0px #FF7597;
+ letter-spacing: 12px;
+ font-weight: bolder;
+}
+/*------------------------------------------------
+      BODY
+------------------------------------------------*/
+@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+body {
+   font-family: 'Poppins', sans-serif;
+   background-color: #121212;
+}
+
+/* p {
+   font-family: 'Poppins', sans-serif;
+   font-size: 1.1em;
+   font-weight: 300;
+   line-height: 1.7em;
+   color: #222;
+} */
+
+
+/*------------------------------------------------
+      cards container
+------------------------------------------------*/
+.container{
+  align-items: center;
+   margin-top: 10px;
+   width: 810px;
+  height: 560px;
+  overflow: scroll;
+}
+.row{
+    overflow-y: auto;
+}
+.col-sm .card {
+ align-items: center;
+ /* box-shadow: 3px 4px 3px #FF7597; */
+ border-radius: 10%;
+ background-color: #1D1D1D;
+}
+.card a{
+  background-color: #1D1D1D;
+  color:#BB86FC;
+  border-color: #FF7597;
+}
+/*also have search bar buttons' hover features*/
+.form-inline input:hover,.form-inline button:hover,.card a:hover{
+  color: #FF7597;
+  border-color: #BB86FC;
+  text-shadow: -1px -1px 0px #FF7597;
+}
+/*------------------------------------------------
+      right side items on top navbar
+------------------------------------------------*/
+#navbarSupportedContent{
+  text-align: center;
+  align-items: center;
+}
+#navbarSupportedContent ul li a {
+   padding: 10px;
+   font-size: 1.1em;
+   display: block;
+   color: #BB86FC;
+}
+#navbarSupportedContent ul li a:hover {
+   padding: 10px;
+   font-size: 1.1em;
+   display: block;
+   color: #FF7597;
+   text-decoration: none;
+}
+#navbarSupportedContent ul li.active>a,
+a[aria-expanded="true"]{
+  color: #FF7597;
+  text-decoration: overline #FF7597;
+
+  font-weight: bolder;
+}
+.navbar {
+   padding: 15px 10px;
+   background: #1D1D1D;
+   border: none;
+   border-radius: 0;
+   margin-bottom: 40px;
+   box-shadow: 1px 1px 3px rgba(9, 9, 9, 0.1);
+}
+a .nav-link{
+  color: #FF7597;
+}
+.form-control{
+  width: 300px;
+}
+
+.bttn {
+
+   background-color: #FF7597;
+   border-color: #FF7597;
+   border-radius: 10%;
+}
+.active{
+    background-color: rgba(0,0,0,0.6);
+}
+/* .form-inline{
+  margin-right: 10px;
+} */
+
+
+
+
+/* ---------------------------------------------------
+   SIDEBAR STYLE
+----------------------------------------------------- */
+
+.wrapper {
+   display: flex;
+   align-items: stretch;
+}
+
+#sidebar {
+   min-width: 250px;
+   max-width: 250px;
+   background: #1D1D1D;
+   color: #222;
+   transition: all 0.3s;
+}
+
+#sidebar.active {
+   margin-left: -250px;
+}
+
+#sidebar .sidebar-header {
+   padding: 10px;
+   background: #1D1D1D;
+   text-align: center;
+
+}
+
+#sidebar ul.components {
+   padding: 20px 0;
+   border-bottom: 1px solid #1D1D1D;
+}
+#sidebar .menu{
+  margin-left: 20%;
+  margin-bottom: 0;
+}
+
+#sidebar ul p {
+   color: #fff;
+   padding: 10px;
+   font-size: 20px;
+   font-weight: bolder;
+}
+
+#sidebar ul li a {
+   padding: 10px;
+   font-size: 1.1em;
+   display: block;
+   color: #BB86FC;
+}
+
+#sidebar ul li a:hover {
+   color: #fff;
+   background: #FF7597;
+   text-decoration: none;}
+
+#sidebar ul li.active>a,
+a[aria-expanded="true"] {
+   color: #fff;
+   background: #FF7597;
+}
+#sidebarCollapse .fas {
+   color: #fff;
+}
+
+a[data-toggle="collapse"] {
+   position: relative;
+}
+
+.dropdown-toggle::after {
+   display: block;
+   position: absolute;
+   top: 50%;
+   right: 20px;
+   transform: translateY(-50%);
+}
+
+ul ul a {
+   font-size: 0.9em !important;
+   padding-left: 30px !important;
+   background: #FF7597;
+}
+
+/* ul.CTAs {
+   padding: 20px;
+}
+
+ul.CTAs a {
+   text-align: center;
+   font-size: 0.9em !important;
+   display: block;
+   border-radius: 5px;
+   margin-bottom: 5px;
+} */
+
+
+
+/* ---------------------------------------------------
+   CONTENT STYLE
+----------------------------------------------------- */
+
+#content {
+   width: 100%;
+   padding: 20px;
+   min-height: 10vh;
+   transition: all 0.3s;
+   height: 100%;
+   background-color: #121212;
+}
+
+/* ---------------------------------------------------
+   MEDIAQUERIES
+-----------------------------------------------------
+
+@media (max-width: 768px) {
+   #sidebar {
+       margin-left: -250px;
+   }
+   #sidebar.active {
+       margin-left: 0;
+   }
+   #sidebarCollapse span {
+       display: none;
+   }
+}
+/*---------------------
+     Footer
+---------------------------*/
+.footer ul{
+  display: flex;
+  padding-left: 0px;
+}
+.footer ul li{
+  position: relative;
+  display: block;
+  font-size: 30px;
+  height: 60px;
+  width: 60px;
+  color: #fff;
+  background: #1D1D1D;
+  line-height: 60px;
+  border-radius: 50%;
+  margin: 0 15px;
+  cursor: pointer;
+  transition: .3s;
+  text-align: center;
+}
+
+.footer ul li a{
+  color: #fff!important;
+}
+
+.footer ul li:nth-child(1):hover{
+  color: #8400ff;
+  box-shadow: 0 0 15px #8400ff;
+  text-shadow: 0 0 15px #8400ff;
+}
+.footer ul li:nth-child(2):hover{
+  color: #ff1a1a;
+  box-shadow: 0 0 15px #ff1a1a;
+  text-shadow: 0 0 15px #ff1a1a;
+}
+.footer ul li:nth-child(3):hover{
+  color: #FF0266;
+  box-shadow: 0 0 15px #FF0266;
+  text-shadow: 0 0 15px #FF0266;
+}
+.footer{
+  background-color: #1a1c20;
+  align-self: center;
+  display: flex;
+  margin-top: 36px;
+  margin-bottom: 0;
+  border-top-right-radius: 40%;
+  border-bottom-right-radius: 40%;
+}
+.footer p{
+  color: #fff;
+  margin-left: 30px;
+  padding-top: 20px;
+}
+
+
+/*1b262c */
+
+
+/*.box p{
+ color: #fff;
+ padding-left: 10px;
+}
+.box a{
+   padding: 7%;
+   color: #fff;
+}
+.box{
+ align-self: center;
+ border-radius: 10px;
+ background: rgba(0, 0, 0, 0.6);
+ width: 340px;
+ box-shadow: 6px 8px 5px #b83b5e;
+} */
