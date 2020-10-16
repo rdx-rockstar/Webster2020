@@ -10,8 +10,12 @@ router.get('/register',function(req,res){
 });
 
 router.post('/register',(req,res) => {
-
-  var newUser = new User({username: req.body.username});
+  
+  var newUser = new User({
+    username: req.body.username,
+    email: req.body.email,
+    provider: 'local',
+  });
   User.register(newUser,req.body.password,function(err,newlyCreatedUser){
     console.log(newlyCreatedUser);
     if(err){
@@ -20,7 +24,7 @@ router.post('/register',(req,res) => {
     }
     passport.authenticate('local')(req,res,()=>{
       console.log(newlyCreatedUser);
-      res.redirect('/home');
+      res.redirect('/posts');
     })
   })
 })
@@ -40,7 +44,7 @@ router.post('/login',(req,res) => {
       console.log(err);
     }else{
       passport.authenticate('local')(req,res,()=>{
-        res.redirect('/home');
+        res.redirect('/posts');
       })
     }
   })
@@ -48,7 +52,7 @@ router.post('/login',(req,res) => {
 
 router.get('/logout',function(req,res){
     req.logout();
-    res.redirect('/register');
+    res.redirect('/posts');
 })
 
 

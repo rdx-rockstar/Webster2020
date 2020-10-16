@@ -1,17 +1,19 @@
-require('dotenv').config() //for .env file(package) (starting)(secrets,API) //nmp i dotenv
+// dotenv for securing important keys.
+require('dotenv').config()
 
+// Requiring dependencies and Strategies. 
 const createError   = require('http-errors'),
-      express       = require('express'),  //frameWork (for node.js)
+      express       = require('express'),
       path          = require('path'),
-      cookieParser  = require('cookie-parser'), //cookie-session
-      bodyParser    = require('body-parser'), //
+      cookieParser  = require('cookie-parser'),
+      bodyParser    = require('body-parser'), 
       mongoose      = require('mongoose'),
       session       = require('express-session'),
       passport      = require('passport'),
       logger        = require('morgan'),
       LocalStrategy = require('passport-local').Strategy;
 
-//Requiring Routes
+//Requiring Routes.
 const indexRouter = require('./routes/index'),
       usersRouter = require('./routes/users'),
       localAuthRouter = require('./routes/local-auth'),
@@ -21,9 +23,10 @@ const indexRouter = require('./routes/index'),
 
 const app = express();
 
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
+// Setting up our view engine
 app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
+
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -39,7 +42,7 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-//Connecting to MongoDB
+//Connecting to MongoDB.
 mongoose.connect('mongodb://localhost:27017/flick', {useNewUrlParser: true, useUnifiedTopology: true});
 
 const connect = mongoose.connection;
@@ -47,7 +50,7 @@ connect.on('open',() => {
   console.log('Connected..');
 });
 
-//Requiring models
+//Requiring models.
 const User = require('./models/userSchema');
 
 passport.use(new LocalStrategy(User.authenticate()));
@@ -71,13 +74,65 @@ app.use('/',googleAuthRouter);
 app.use('/',facebookAuthRouter);
 app.use('/users', usersRouter);
 
-app.get('/home',(req,res) => {
-  if(req.isAuthenticated())
-  {
-    return res.render('home',{ username: 'xxx' });
+app.get('/posts',(req,res) => {
+  console.log(req.user);
+  if(req.user){
+    var name = req.user.username.split(" ");
   }
-  return res.redirect('/register');
+  else{
+    var name = [""];
+  }
+  console.log(name);
+  res.render('posts.ejs',{name:name,user:req.user});
 });
+
+app.get('/users/:id',(req,res) => {
+  // if(req.isAuthenticated())
+  // {
+    User.findById(req.params.id,function(err,foundUser){
+      if(err){
+        console.log(err);
+        return res.render('error');
+      }
+      else{
+        var name = foundUser.username.split(" ");
+        return res.render('games',{name:name,user:foundUser});
+      }
+    })
+  // }else{
+  //   return res.redirect('/register');
+  // }
+});
+
+app.get('/users/:id/stream',function(req,res){
+  User.findById(req.params.id,function(err,foundUser){
+    if(err){
+      console.log(err);
+      return res.render('error');
+    } else {
+      return res.render('stream',{user:foundUser});
+    }
+  })
+});
+
+app.get('/users/:id/chat',function(req,res){
+  User.findById(req.params.id,function(err,foundUser){
+    if(err){
+      console.log(err);
+      return res.render('error');
+    } else {
+      return res.render('chatbox',{user:foundUser});
+    }
+  })
+});
+
+// Middleware
+function isLoggedIn(req,res,next){
+  if(req.isAuthenticated()){
+    return next();
+  }
+  return res.redirect('/posts');
+}
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
