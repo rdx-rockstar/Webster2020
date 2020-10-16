@@ -4,7 +4,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title><%= username %></title>
+    <title>Posts</title>
     <link rel='stylesheet' href='/css/home.css' />
     <link href='https://fonts.googleapis.com/css?family=Abhaya Libre' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/css?family=Aldrich' rel='stylesheet'>
@@ -18,6 +18,32 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
   </head>
   <body class="container-fluid m-3" background=#030005>   <!--1b262c-->
+    <nav class="container-fluid navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">Flick</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <% if(!user){ %>
+            <li class="nav-item active">
+              <a class="nav-link" href="/login">Login<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="/register">Register<span class="sr-only">(current)</span></a>
+            </li>
+          <% } else { %>
+            <li class="nav-item active">
+              <a class="nav-link" href="/users/<%= user._id %>">Signed in as <%= name[0]%><span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/logout">Logout</a>
+            </li>
+          <% } %>
+        </ul>
+      </div>
+    </nav>
     <div class="main-w3">
 
 

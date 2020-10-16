@@ -42,19 +42,19 @@
 									<button class="btn btn-outline my-2 my-sm-0" style="background: #121212; color:#BB86FC; " type="submit">Search</button>
 								</form>
 								<li class="nav-item">
-									<a class="nav-liink" href="#">Home</a>
+									<a class="nav-liink" href="/posts">Home</a>
 								</li>
 								<li class="nav-item">
-									<a class="nav-liink" href="games.html">Games</a>
+									<a class="nav-liink" href="/users/<%= user._id %>">Games</a>
 								</li>
 								<li class="nav-item active">
-									<a class="nav-liink" href="stream.html">Stream</a>
+									<a class="nav-liink" href="/users/<%= user._id %>/stream">Stream</a>
 								</li>
 								<li class="nav-item">
-									<a class="nav-liink" href="chatbox.html">Message</a>
+									<a class="nav-liink" href="/users/<%= user._id %>/chat">Message</a>
 								</li>
 								<li class="nav-item">
-									<a class="nav-liink" href="signup.html">Log Out</a>
+									<a class="nav-liink" href="/logout">Log Out</a>
 								</li>
 							</ul>
 						</div>

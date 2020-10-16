@@ -3,7 +3,7 @@
 
 <head>
 	<title>Chat</title>
-	<link rel="stylesheet" href="css/chatbox.css">
+	<link rel="stylesheet" href="/css/chatbox.css">
 	<link rel="icon" href="gaming.svg">
 	<!-- CSS only -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
@@ -174,19 +174,19 @@
 								<button class="btn btn-outline my-2 my-sm-0" style="background: #121212; color:#BB86FC; border-color:#FF7597;" type="submit">Search</button>
 							</form>
 							<li class="nav-item">
-								<a class="nav-liink" href="#">Home</a>
+								<a class="nav-liink" href="/posts">Home</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-liink" href="games.html">Games</a>
+								<a class="nav-liink" href="/users/<%= user._id %>">Games</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-liink" href="stream.html">Stream</a>
+								<a class="nav-liink" href="/users/<%= user._id %>/stream">Stream</a>
 							</li>
 							<li class="nav-item active">
-								<a class="nav-liink" href="chatbox.html">Messages</a>
+								<a class="nav-liink" href="/users/<%= user._id %>/chat">Messages</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-liink" href="signup.html">Log Out</a>
+								<a class="nav-liink" href="/logout">Log Out</a>
 							</li>
 						</ul>
 					</div>

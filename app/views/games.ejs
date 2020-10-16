@@ -25,8 +25,16 @@
 				<div class="linee"></div>
 				<ul class="list-unstyled components">
 					<div class="menu">
-						<img src="https://www.pinkvilla.com/files/styles/contentpreview/public/nora_fatehi_1_0_0.jpg?itok=osXA4R1I" alt="profile">
-						<p>Noora Fatehi</p>
+						<% if(user.provider == "google"){ %>
+							<img src="<%= user.googleProfilePicture %>" alt="profile">
+							<p><%= name[0] %></p>
+						<% } else if(user.provider == "facebook"){ %>
+							<img src="/images/default.png" alt="profile">
+							<p><%= name[0] %></p>
+						<% } else{ %>
+							<img src="/images/default.png" alt="profile">
+							<p><%= name[0] %></p>
+						<% } %>
 					</div>
 					<div class="linee"></div>
 					<li class="nav-item active">
@@ -71,19 +79,19 @@
 									<button class="btn btn-outline my-2 my-sm-0" style="background: #121212; color:#BB86FC; " type="submit">Search</button>
 								</form>
 								<li class="nav-item">
-									<a class="nav-liink" href="#">Home</a>
+									<a class="nav-liink" href="/posts">Home</a>
 								</li>
 								<li class="nav-item active">
-									<a class="nav-liink" href="games.html">Games</a>
+									<a class="nav-liink" href="/users/<%= user._id %>">Games</a>
 								</li>
 								<li class="nav-item">
-									<a class="nav-liink" href="stream.html">Stream</a>
+									<a class="nav-liink" href="/users/<%= user._id %>/stream">Stream</a>
 								</li>
 								<li class="nav-item">
-									<a class="nav-liink" href="chatbox.html">Message</a>
+									<a class="nav-liink" href="/users/<%= user._id %>/chat">Message</a>
 								</li>
 								<li class="nav-item">
-									<a class="nav-liink" href="signup.html">Log Out</a>
+									<a class="nav-liink" href="/logout">Log Out</a>
 								</li>
 							</ul>
 						</div>
