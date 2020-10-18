@@ -1,256 +1,547 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Posts</title>
-    <link rel='stylesheet' href='/css/home.css' />
-    <link href='https://fonts.googleapis.com/css?family=Abhaya Libre' rel='stylesheet'>
-    <link href='https://fonts.googleapis.com/css?family=Aldrich' rel='stylesheet'>
-    <link href='https://fonts.googleapis.com/css?family=Butcherman' rel='stylesheet'>
-    <link href='https://fonts.googleapis.com/css?family=Bungee Inline' rel='stylesheet'>
-    <link href='https://fonts.googleapis.com/css?family=Do Hyeon' rel='stylesheet'>
-    <link href='https://fonts.googleapis.com/css?family=Advent Pro' rel='stylesheet'>
-    <link href='https://fonts.googleapis.com/css?family=Amatic SC' rel='stylesheet'>
-    <link href='https://fonts.googleapis.com/css?family=Arvo' rel='stylesheet'>
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-  </head>
-  <body class="container-fluid m-3" background=#030005>   <!--1b262c-->
-    <nav class="container-fluid navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="#">Flick</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-    
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <% if(!user){ %>
-            <li class="nav-item active">
-              <a class="nav-link" href="/login">Login<span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item active">
-              <a class="nav-link" href="/register">Register<span class="sr-only">(current)</span></a>
-            </li>
-          <% } else { %>
-            <li class="nav-item active">
-              <a class="nav-link" href="/users/<%= user._id %>">Signed in as <%= name[0]%><span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/logout">Logout</a>
-            </li>
-          <% } %>
-        </ul>
-      </div>
-    </nav>
-    <div class="main-w3">
+<!DOCTYPE html>
+<html>
 
+<head>
+	<title>Games-Flick</title>
+	<link rel="stylesheet" href="/css/games.css">
+	<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+	<link rel="icon" href="gaming.svg">
+	<!-- CSS only -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+</head>
 
-      <div class="col-md-2 fleft m-2  rounded shadow-lg opacbg shdw">
-        <div class="w-100" style="height: 170px;">
-          <div class="container-fluid">
-            <img  src="/images/profilepic.jpg" class="img-fluid rounded m-2" alt="profile pic">
-          </div>
-        </div>
-        <div class="w-100 mt-4" style="height: 40px;">
-          <div class="container">
-            <div class="row">
-              <div class="col-sm-4">
-                <img id="aa" src="/images/profilepic.jpg" class="img-fluid rounded-circle" alt="profile pic">
+  <body>
+    <div class="container-big">
+
+  		<div class="wrapper">
+  			<!-- Page Content  -->
+  			<div id="content">
+  				<!-- top navbar  -->
+  				<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #1D1D1D">
+  					<div class="container-fluid">
+              <h2 class="brand">FLICK</h2>
+  						<button class="bttn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+  							<i class="fas fa-align-justify"></i>
+  						</button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                  <% if(!user){ %>
+                    <li class="nav-item ">
+                      <a class="nav-link" href="/login">Login<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item ">
+                      <a class="nav-link" href="/register">Register<span class="sr-only">(current)</span></a>
+                    </li>
+                  <% } else { %>
+                    <li class="nav-item ">
+                      <a class="nav-link" href="/users/<%= user._id %>"><div class="d-flex menu">
+            						<% if(user.provider == "google"){ %>
+            							<img  style="width: 40px; height:40px;" src="<%= user.googleProfilePicture %>" alt="profile">
+
+            						<% } else if(user.provider == "facebook"){ %>
+            							<img  style="width: 40px; height:40px;" src="/images/default.png" alt="profile">
+
+            						<% } else{ %>
+            							<img  style="width: 40px; height:40px;" src="/images/default.png" alt="profile">
+
+            						<% } %>
+            					</div>
+											<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="/logout">Logout</a>
+                    </li>
+                  <% } %>
+                </ul>
               </div>
-              <div class="col-sm-6">
-                <div class="h-50" style="color: white; text-align:left;text-size-adjust:inherit;">username</div>
-                <div class="h-50" style="color: white; text-align:left;font-size: small;">userid</div>
-              </div>
-              <div class="col-sm-1">
-                <div class="dropdown show">
-                  <a class="btn btn-secondary dropdown-toggle pl-2" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
-                  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="clearfix"></div>
-        <div class="w-100 ">
-          <div class="btn-group-vertical w-100 clrlft"  role="group" aria-label="Button group with nested dropdown">
-            <button type="button" style="font-family: 'arvo'; font-size: larger;text-align: left; color:aliceblue;" class="btn opacbg px-3 mt-4 hvrchg">HOME</button>
-            <button type="button" style="font-family: 'arvo'; font-size: larger;text-align: left; color:aliceblue;"class="btn opacbg hvrchg">EXPLORE</button>
-            <button type="button" style="font-family: 'arvo'; font-size: larger;text-align: left; color:aliceblue;"class="btn opacbg hvrchg">LIST</button>
-            <button type="button" style="font-family: 'arvo'; font-size: larger;text-align: left; color:aliceblue;"class="btn opacbg hvrchg">NOTIFICATIONS</button>
-            <button type="button" style="font-family: 'arvo'; font-size: larger;text-align: left; color:aliceblue;"class="btn opacbg hvrchg">BOOKMARKS</button>
-            <button type="button" style="font-family: 'arvo'; font-size: larger;text-align: left; color:aliceblue;"class="btn opacbg hvrchg h-50px">MORE</button>
-          </div>
-        </div>
-        <div class="w-100 my-4"><button type="button" class="w-100 mx-2 btn-sm btn-primary opac theme" style="font-family: 'Bungee Inline';font-size: 22px;">TWEET</button> </div>
-      </div>
+  					</div>
+  				</nav>
+  				<!--body-->
 
 
-      <div class="col-md-6 fleft ">
-        <div class="w-100 m-2 opacbg rounded p-2">
-          <div class="w-100" style="height: 110px;">
-            <div class="w-100">
+
               <div class="container">
-                <div class="row ">
-                  <div class="col-sm-3">
-                    <img id="aa" src="/images/profilepic.jpg" class="img-fluid rounded-circle" alt="profile pic">
-                  </div>
-                  <div class="col-sm-9 w-90">
-                    <div class="h-60 p-2">
-                      <input type="text" class=" w-100 pl-2" aria-label="Large" style="background-color: rgba(48, 75, 114, 0.3); color: aliceblue;font-family: 'Amatic SC';" placeholder="write your thought here">
-                    </div>
-                    <div class="h-40 p-2">
-                        <div class="w-10 d-inline-block m-1">
-                          <button type="button" >
-                            <svg width="1.0625em" height="1em" viewBox="0 0 17 16" class="bi bi-image-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                              <path fill-rule="evenodd" d="M.002 3a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-12a2 2 0 0 1-2-2V3zm1 9l2.646-2.354a.5.5 0 0 1 .63-.062l2.66 1.773 3.71-3.71a.5.5 0 0 1 .577-.094L15.002 9.5V13a1 1 0 0 1-1 1h-12a1 1 0 0 1-1-1v-1zm5-6.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
-                            </svg>
-                          </button>
+                <div class="row">
+                  <div class="col-md-8">
+                          <div class="row ">
+                            <div class="col-sm-3">
+                              <div class="menu">
+                    						<% if(user){ %>
+																	<% if(user.provider == "google"){ %>
+	                    							<img src="<%= user.googleProfilePicture %>" alt="profile">
+
+	                    						<% } else if(user.provider == "facebook"){ %>
+	                    							<img src="/images/default.png" alt="profile">
+
+	                    						<% } else{ %>
+	                    							<img src="/images/default.png" alt="profile">
+	                    						<% } %>
+																<%} else{%>
+																	<img src="/images/default.png" alt="profile">
+															<%}%>
+
+                    					</div>
+                            </div>
+                            <div class="col-sm-9">
+                                <input type="text" class="w-100 pl-2" style="background: #121212; color:#BB86FC; border-color:#FF7597;font-family: 'Amatic SC';" placeholder="Caption"> <br> <br>
+
+                              <div class="btn d-flex pl-2" style="height: 50px;">
+                                    <button style="background: #121212; color:#BB86FC;" type="submit" ><i class="far fa-images"></i>  upload</button>
+                                    <button class="btn" style="margin-left: 15px;background: #222; color:#BB86FC;" type="submit">Post</button>
+                              </div>
+                            </div>
+                         </div>
+
+                    <div style=""class="m-3">
+
+                          <div class="card" style="width: 700px; height: 700px;background: #121212;">
+                            <div class="card-header msg_head">
+                  						<div class="d-flex bd-highlight">
+                  							<div class="img_cont">
+                  								<img src="https://images.unsplash.com/photo-1459245330819-1b6d75fbaa35?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80" class="rounded-circle user_img">
+                  								<!-- <span class="online_icon"></span> -->
+                  								<!--<span> tag is an inline container used to mark up a part of a text, or a part of a document-->
+                  							</div>
+                  							<div class="user_info">
+                  								<span>Kshitij Verma</span>
+                  							</div>
+                  						</div>
+                  					</div>
+                            <img style="width: 700px; height: 550px;" src="https://s3.amazonaws.com/prod-media.gameinformer.com/2020/09/29/5ed3b9d0/among_us_review.jpg" class="card-img" alt="...">
+                            <div class="card-body">
+                              <div class="likes">
+                  							<span><i class="fas fa-heart"></i></span>
+                  							<span><i class="fas fa-heart-broken"></i></span>
+                  						</div>
+                  						<h3 style="color:#BB86FC">Comments</h3>
+                              <div class="d-flex justify-content-start mb-4">
+                                <div class="msg_cotainer">
+                                  Hi Noora,wanna join us for Amoung Us?
+                                  <span class="msg_time">15:23 PM, Today</span>
+                                </div>
+                              </div>
+                              <div class="d-flex justify-content-start mb-4">
+                                <div class="msg_cotainer">
+                                  Hi Noora,wanna join us for Amoung Us?
+                                  <span class="msg_time">15:23 PM, Today</span>
+                                </div>
+                              </div>
+                              <div class="card-footer">
+                  							<div class="input-group">
+                  								<textarea name="" class="form-control type_msg" placeholder="Type your message..."></textarea>
+                  								<div class="input-group-append">
+                  									<span class="input-group-text send_btn"><i class="fas fa-location-arrow"></i></span>
+                  								</div>
+                  							</div>
+                  						</div>
+                            </div>
+                          </div>
+                          </div>
+
+
+
+                          <div style=""class="m-3">
+                              <div class="card" style="width: 700px; height: 700px;background: #121212;">
+                                                      <div class="card-header msg_head">
+                                            						<div class="d-flex bd-highlight">
+                                            							<div class="img_cont">
+                                            								<img src="https://images.unsplash.com/photo-1459245330819-1b6d75fbaa35?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80" class="rounded-circle user_img">
+                                            								<!-- <span class="online_icon"></span> -->
+                                            								<!--<span> tag is an inline container used to mark up a part of a text, or a part of a document-->
+                                            							</div>
+                                            							<div class="user_info">
+                                            								<span>Kshitij Verma</span>
+                                            							</div>
+                                            						</div>
+                                            					</div>
+                                                      <img style="width: 700px; height: 550px;" src="https://s3.amazonaws.com/prod-media.gameinformer.com/2020/09/29/5ed3b9d0/among_us_review.jpg" class="card-img" alt="...">
+                                                      <div class="card-body">
+                                                        <div class="likes">
+                                            							<span><i class="fas fa-heart"></i></span>
+                                            							<span><i class="fas fa-heart-broken"></i></span>
+                                            						</div>
+                                            						<h3 style="color:#BB86FC">Comments</h3>
+                                                        <div class="d-flex justify-content-start mb-4">
+                                                          <div class="msg_cotainer">
+                                                            Hi Noora,wanna join us for Amoung Us?
+                                                            <span class="msg_time">15:23 PM, Today</span>
+                                                          </div>
+                                                        </div>
+                                                        <div class="d-flex justify-content-start mb-4">
+                                                          <div class="msg_cotainer">
+                                                            Hi Noora,wanna join us for Amoung Us?
+                                                            <span class="msg_time">15:23 PM, Today</span>
+                                                          </div>
+                                                        </div>
+                                                        <div class="card-footer">
+                                            							<div class="input-group">
+                                            								<textarea name="" class="form-control type_msg" placeholder="Type your message..."></textarea>
+                                            								<div class="input-group-append">
+                                            									<span class="input-group-text send_btn"><i class="fas fa-location-arrow"></i></span>
+                                            								</div>
+                                            							</div>
+                                            						</div>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                </div>
+
+
+
+
+
+
+
+
+
+
+                  <div class="col-sm">
+                    <div class="card">
+                      <h4 class="m-3" style="color:#BB86FC">Suggesions for you</h4>
+                      <div class="d-flex m-2">
+                        <div class="img_cont">
+                          <img src="https://images.unsplash.com/photo-1459245330819-1b6d75fbaa35?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80" class="rounded-circle user_img">
+                          <!-- <span class="online_icon"></span> -->
+                          <!--<span> tag is an inline container used to mark up a part of a text, or a part of a document-->
                         </div>
-                        <div class="w-10 d-inline-block m-1"><button type="button">
+                        <div class="user_info">
+                          <span>Kshitij Verma</span>
+                        </div>
+                        <div class="">
+                        <button class="btn" style="margin-left: 15px;margin-top: 4px; background: #222; color:#BB86FC;" type="submit">Follow</button>
+                        </div>
 
-                        </button></div>
-                        <div class="w-10 d-inline-block m-1"><button type="button" class="btn btn-primary">.</button></div>
-                        <div class="w-10 d-inline-block m-1"><button type="button" class="btn btn-primary">.</button></div>
-                        <div class="w-10 d-inline-block m-1"><button type="button" class="btn btn-primary">.</button></div>
-                        <div class="w-10 d-inline-block fright"><button type="button" style="font-family: 'Bungee Inline';font-size: 22px;" class="btn-sm btn-primary theme">post</button></div>
+                      </div>
+                      <div class="d-flex m-2">
+                        <div class="img_cont">
+                          <img src="https://images.unsplash.com/photo-1459245330819-1b6d75fbaa35?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80" class="rounded-circle user_img">
+                          <!-- <span class="online_icon"></span> -->
+                          <!--<span> tag is an inline container used to mark up a part of a text, or a part of a document-->
+                        </div>
+                        <div class="user_info">
+                          <span>Kshitij Verma</span>
+                        </div>
+                        <div class="">
+                           <button class="btn" style="margin-left: 15px;margin-top: 4px; background: #222; color:#BB86FC;" type="submit">Follow</button>
+                        </div>
+                      </div>
+                      <div class="d-flex m-2">
+                        <div class="img_cont">
+                          <img src="https://images.unsplash.com/photo-1459245330819-1b6d75fbaa35?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80" class="rounded-circle user_img">
+                          <!-- <span class="online_icon"></span> -->
+                          <!--<span> tag is an inline container used to mark up a part of a text, or a part of a document-->
+                        </div>
+                        <div class="user_info">
+                          <span>Kshitij Verma</span>
+                        </div>
+                        <div class="">
+                        <button class="btn" style="margin-left: 15px;margin-top: 4px; background: #222; color:#BB86FC;" type="submit">Follow</button>
+                        </div>
+
+                      </div>
+                      <div class="d-flex m-2">
+                        <div class="img_cont">
+                          <img src="https://images.unsplash.com/photo-1459245330819-1b6d75fbaa35?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80" class="rounded-circle user_img">
+                          <!-- <span class="online_icon"></span> -->
+                          <!--<span> tag is an inline container used to mark up a part of a text, or a part of a document-->
+                        </div>
+                        <div class="user_info">
+                          <span>Kshitij Verma</span>
+                        </div>
+                        <div class="">
+                           <button class="btn" style="margin-left: 15px;margin-top: 4px; background: #222; color:#BB86FC;" type="submit">Follow</button>
+                        </div>
+                      </div>
+                      <div class="d-flex m-2">
+                        <div class="img_cont">
+                          <img src="https://images.unsplash.com/photo-1459245330819-1b6d75fbaa35?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80" class="rounded-circle user_img">
+                          <!-- <span class="online_icon"></span> -->
+                          <!--<span> tag is an inline container used to mark up a part of a text, or a part of a document-->
+                        </div>
+                        <div class="user_info">
+                          <span>Kshitij Verma</span>
+                        </div>
+                        <div class="">
+                        <button class="btn" style="margin-left: 15px;margin-top: 4px; background: #222; color:#BB86FC;" type="submit">Follow</button>
+                        </div>
+
+                      </div>
+                      <div class="d-flex m-2">
+                        <div class="img_cont">
+                          <img src="https://images.unsplash.com/photo-1459245330819-1b6d75fbaa35?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80" class="rounded-circle user_img">
+                          <!-- <span class="online_icon"></span> -->
+                          <!--<span> tag is an inline container used to mark up a part of a text, or a part of a document-->
+                        </div>
+                        <div class="user_info">
+                          <span>Kshitij Verma</span>
+                        </div>
+                        <div class="">
+                           <button class="btn" style="margin-left: 15px;margin-top: 4px; background: #222; color:#BB86FC;" type="submit">Follow</button>
+                        </div>
+                      </div>
+                      <div class="d-flex m-2">
+                        <div class="img_cont">
+                          <img src="https://images.unsplash.com/photo-1459245330819-1b6d75fbaa35?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80" class="rounded-circle user_img">
+                          <!-- <span class="online_icon"></span> -->
+                          <!--<span> tag is an inline container used to mark up a part of a text, or a part of a document-->
+                        </div>
+                        <div class="user_info">
+                          <span>Kshitij Verma</span>
+                        </div>
+                        <div class="">
+                        <button class="btn" style="margin-left: 15px;margin-top: 4px; background: #222; color:#BB86FC;" type="submit">Follow</button>
+                        </div>
+
+                      </div>
+                      <div class="d-flex m-2">
+                        <div class="img_cont">
+                          <img src="https://images.unsplash.com/photo-1459245330819-1b6d75fbaa35?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80" class="rounded-circle user_img">
+                          <!-- <span class="online_icon"></span> -->
+                          <!--<span> tag is an inline container used to mark up a part of a text, or a part of a document-->
+                        </div>
+                        <div class="user_info">
+                          <span>Kshitij Verma</span>
+                        </div>
+                        <div class="">
+                           <button class="btn" style="margin-left: 15px;margin-top: 4px; background: #222; color:#BB86FC;" type="submit">Follow</button>
+                        </div>
+                      </div>
+                      <div class="d-flex m-2">
+                        <div class="img_cont">
+                          <img src="https://images.unsplash.com/photo-1459245330819-1b6d75fbaa35?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80" class="rounded-circle user_img">
+                          <!-- <span class="online_icon"></span> -->
+                          <!--<span> tag is an inline container used to mark up a part of a text, or a part of a document-->
+                        </div>
+                        <div class="user_info">
+                          <span>Kshitij Verma</span>
+                        </div>
+                        <div class="">
+                        <button class="btn" style="margin-left: 15px;margin-top: 4px; background: #222; color:#BB86FC;" type="submit">Follow</button>
+                        </div>
+
+                      </div>
+                      <div class="d-flex m-2">
+                        <div class="img_cont">
+                          <img src="https://images.unsplash.com/photo-1459245330819-1b6d75fbaa35?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80" class="rounded-circle user_img">
+                          <!-- <span class="online_icon"></span> -->
+                          <!--<span> tag is an inline container used to mark up a part of a text, or a part of a document-->
+                        </div>
+                        <div class="user_info">
+                          <span>Kshitij Verma</span>
+                        </div>
+                        <div class="">
+                           <button class="btn" style="margin-left: 15px;margin-top: 4px; background: #222; color:#BB86FC;" type="submit">Follow</button>
+                        </div>
+                      </div>
+                      <div class="d-flex m-2">
+                        <div class="img_cont">
+                          <img src="https://images.unsplash.com/photo-1459245330819-1b6d75fbaa35?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80" class="rounded-circle user_img">
+                          <!-- <span class="online_icon"></span> -->
+                          <!--<span> tag is an inline container used to mark up a part of a text, or a part of a document-->
+                        </div>
+                        <div class="user_info">
+                          <span>Kshitij Verma</span>
+                        </div>
+                        <div class="">
+                        <button class="btn" style="margin-left: 15px;margin-top: 4px; background: #222; color:#BB86FC;" type="submit">Follow</button>
+                        </div>
+
+                      </div>
+                      <div class="d-flex m-2">
+                        <div class="img_cont">
+                          <img src="https://images.unsplash.com/photo-1459245330819-1b6d75fbaa35?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80" class="rounded-circle user_img">
+                          <!-- <span class="online_icon"></span> -->
+                          <!--<span> tag is an inline container used to mark up a part of a text, or a part of a document-->
+                        </div>
+                        <div class="user_info">
+                          <span>Kshitij Verma</span>
+                        </div>
+                        <div class="">
+                           <button class="btn" style="margin-left: 15px;margin-top: 4px; background: #222; color:#BB86FC;" type="submit">Follow</button>
+                        </div>
+                      </div>
+                      <div class="d-flex m-2">
+                        <div class="img_cont">
+                          <img src="https://images.unsplash.com/photo-1459245330819-1b6d75fbaa35?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80" class="rounded-circle user_img">
+                          <!-- <span class="online_icon"></span> -->
+                          <!--<span> tag is an inline container used to mark up a part of a text, or a part of a document-->
+                        </div>
+                        <div class="user_info">
+                          <span>Kshitij Verma</span>
+                        </div>
+                        <div class="">
+                        <button class="btn" style="margin-left: 15px;margin-top: 4px; background: #222; color:#BB86FC;" type="submit">Follow</button>
+                        </div>
+
+                      </div>
+                      <div class="d-flex m-2">
+                        <div class="img_cont">
+                          <img src="https://images.unsplash.com/photo-1459245330819-1b6d75fbaa35?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80" class="rounded-circle user_img">
+                          <!-- <span class="online_icon"></span> -->
+                          <!--<span> tag is an inline container used to mark up a part of a text, or a part of a document-->
+                        </div>
+                        <div class="user_info">
+                          <span>Kshitij Verma</span>
+                        </div>
+                        <div class="">
+                           <button class="btn" style="margin-left: 15px;margin-top: 4px; background: #222; color:#BB86FC;" type="submit">Follow</button>
+                        </div>
+                      </div>
+                      <div class="d-flex m-2">
+                        <div class="img_cont">
+                          <img src="https://images.unsplash.com/photo-1459245330819-1b6d75fbaa35?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80" class="rounded-circle user_img">
+                          <!-- <span class="online_icon"></span> -->
+                          <!--<span> tag is an inline container used to mark up a part of a text, or a part of a document-->
+                        </div>
+                        <div class="user_info">
+                          <span>Kshitij Verma</span>
+                        </div>
+                        <div class="">
+                        <button class="btn" style="margin-left: 15px;margin-top: 4px; background: #222; color:#BB86FC;" type="submit">Follow</button>
+                        </div>
+
+                      </div>
+                      <div class="d-flex m-2">
+                        <div class="img_cont">
+                          <img src="https://images.unsplash.com/photo-1459245330819-1b6d75fbaa35?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80" class="rounded-circle user_img">
+                          <!-- <span class="online_icon"></span> -->
+                          <!--<span> tag is an inline container used to mark up a part of a text, or a part of a document-->
+                        </div>
+                        <div class="user_info">
+                          <span>Kshitij Verma</span>
+                        </div>
+                        <div class="">
+                           <button class="btn" style="margin-left: 15px;margin-top: 4px; background: #222; color:#BB86FC;" type="submit">Follow</button>
+                        </div>
+                      </div>
+                      <div class="d-flex m-2">
+                        <div class="img_cont">
+                          <img src="https://images.unsplash.com/photo-1459245330819-1b6d75fbaa35?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80" class="rounded-circle user_img">
+                          <!-- <span class="online_icon"></span> -->
+                          <!--<span> tag is an inline container used to mark up a part of a text, or a part of a document-->
+                        </div>
+                        <div class="user_info">
+                          <span>Kshitij Verma</span>
+                        </div>
+                        <div class="">
+                        <button class="btn" style="margin-left: 15px;margin-top: 4px; background: #222; color:#BB86FC;" type="submit">Follow</button>
+                        </div>
+
+                      </div>
+                      <div class="d-flex m-2">
+                        <div class="img_cont">
+                          <img src="https://images.unsplash.com/photo-1459245330819-1b6d75fbaa35?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80" class="rounded-circle user_img">
+                          <!-- <span class="online_icon"></span> -->
+                          <!--<span> tag is an inline container used to mark up a part of a text, or a part of a document-->
+                        </div>
+                        <div class="user_info">
+                          <span>Kshitij Verma</span>
+                        </div>
+                        <div class="">
+                           <button class="btn" style="margin-left: 15px;margin-top: 4px; background: #222; color:#BB86FC;" type="submit">Follow</button>
+                        </div>
+                      </div>
+                      <div class="d-flex m-2">
+                        <div class="img_cont">
+                          <img src="https://images.unsplash.com/photo-1459245330819-1b6d75fbaa35?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80" class="rounded-circle user_img">
+                          <!-- <span class="online_icon"></span> -->
+                          <!--<span> tag is an inline container used to mark up a part of a text, or a part of a document-->
+                        </div>
+                        <div class="user_info">
+                          <span>Kshitij Verma</span>
+                        </div>
+                        <div class="">
+                        <button class="btn" style="margin-left: 15px;margin-top: 4px; background: #222; color:#BB86FC;" type="submit">Follow</button>
+                        </div>
+
+                      </div>
+                      <div class="d-flex m-2">
+                        <div class="img_cont">
+                          <img src="https://images.unsplash.com/photo-1459245330819-1b6d75fbaa35?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80" class="rounded-circle user_img">
+                          <!-- <span class="online_icon"></span> -->
+                          <!--<span> tag is an inline container used to mark up a part of a text, or a part of a document-->
+                        </div>
+                        <div class="user_info">
+                          <span>Kshitij Verma</span>
+                        </div>
+                        <div class="">
+                           <button class="btn" style="margin-left: 15px;margin-top: 4px; background: #222; color:#BB86FC;" type="submit">Follow</button>
+                        </div>
+                      </div>
+
                     </div>
                   </div>
+
                 </div>
               </div>
-            </div>
-          </div>
-        </div>
-        <div class="w-100 m-2 opacbg p-3 cards hide-scrollbar">
-          <div class="row ">
-            <div class="col ">
-              <div class="card m-2 fleft opacbg4" style="width: 100%;">
-                <img src="/images/profilepic.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <p class="card-text" style="font-size:15px ;font-family: 'Advent Pro' ;color: aliceblue;">Some quick example.</p>
-                </div>
-              </div><div class="card m-2 fleft opacbg4" style="width: 100%;">
-                <img src="/images/profilepic.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <p class="card-text" style="font-size:15px ;font-family: 'Advent Pro' ;color: aliceblue;">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card m-2 fleft opacbg4" style="width:100%;">
-                <img src="/images/profilepic.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <p class="card-text" style="font-size:15px ;font-family: 'Advent Pro' ;color: aliceblue;">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                </div>
-              </div><div class="card m-2 fleft opacbg4" style="width: 100%;">
-                <img src="/images/profilepic.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <p class="card-text"style="font-size:15px ;font-family: 'Advent Pro' ;color: aliceblue;">Some quick example text .</p>
-                </div>
-              </div>
-            </div>
-            <div class="clearfix"></div>
-          </div>
-        </div>
-      </div>
-
-
-      <div class="col-md-3 fleft p-2 rounded">
-        <div class="search  w-100 ">
-          <form action="#" method="post">
-            <input  class=" d-inline  w-75 m-3 rounded opacbg" type="text" name="search" placeholder="  Search here" style="color: aliceblue;" required="">
-          </form>
-        </div>
-        <div class="clearfix"></div>
-        <div class="card w-100 m-3 opacbg2">
-          <div class="card-header opacbg3 shadow-lg list-heading" style="color: #1dd2c0;font-size: x-large;">
-            Featured
-          </div>
-          <div class="btn-group-vertical opacbg2 w-1er00 clrlft"  role="group" aria-label="Button group with nested dropdown">
-            <button type="button" style="font-family: 'Advent Pro'; color:aliceblue;text-align: left;" class="btn  hvrchg">#lol</button>
-            <button type="button" style="font-family: 'Advent Pro'; color:aliceblue;text-align: left;"class="btn hvrchg">#avishkar</button>
-            <button type="button" style="font-family: 'Advent Pro'; color:aliceblue; text-align: left;"class="btn hvrchg">#swebster</button>
-          </div>
-        </div>
-        <div class="card w-100 m-3 opacbg2">
-          <div class="card-header opacbg3 shadow-lg list-heading" style="color: #1dd2c0;font:bold;  font-size:x-large;">
-            Celebs
-          </div>
-          <ul class="list-group list-group-flush opacbg">
-            <li class="list-group-item opacbg2">
-              <div class="w-100">
-                <div class="container ">
-                  <div class="row">
-                    <div class="col-sm-3">
-                      <img id="aa" src="/images/profilepic.jpg" class="img-fluid rounded-circle opacbg" alt="profile pic">
-                    </div>
-                    <div class="col-sm-5">
-                      <div class="h-50" style="color: white;font-size: small; text-align:left;text-size-adjust:inherit;">username</div>
-                      <div class="h-50" style="color: white;font-size: smaller; text-align:left;text-size-adjust:inherit;">userid</div>
-                    </div>
-                    <div class="col-sm-1">
-                      <button type="button"  style="font-family: 'Do Hyeon';" class="btn-sm btn-primary theme">Follow</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </li>
-            <li class="list-group-item opacbg2">
-              <div class="w-100 " >
-                <div class="container">
-                  <div class="row ">
-                    <div class="col-sm-3">
-                      <img id="aa" src="/images/profilepic.jpg" class="img-fluid rounded-circle" alt="profile pic">
-                    </div>
-                    <div class="col-sm-5">
-                      <div class="h-50" style="color: white;font-size: small; text-align:left;text-size-adjust:inherit;">username</div>
-                      <div class="h-50" style="color: white; text-align:left;font-size: smaller; text-size-adjust:inherit;">userid</div>
-                    </div>
-                    <div class="col-sm-2">
-                      <button type="button"  style="font-family: 'Do Hyeon';" class="btn-sm btn-primary theme">Follow</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </li>
-            <li class="list-group-item opacbg2">
-              <div class="w-100">
-                <div class="container">
-                  <div class="row ">
-                    <div class="col-sm-3">
-                      <img id="aa" src="/images/profilepic.jpg" class="img-fluid rounded-circle" alt="profile pic">
-                    </div>
-                    <div class="col-sm-5">
-                      <div class="h-50" style="color: white;font-size: small; text-align:left;text-size-adjust:inherit;">username</div>
-                      <div class="h-50" style="color: white;font-size: smaller; text-align:left;text-size-adjust:inherit;">userid</div>
-                    </div>
-                    <div class="col-sm-1">
-                      <button type="button"  style="font-family: 'Do Hyeon';" class="btn-sm btn-primary theme">Follow</button>
-                      <a href="/logout" class="btn btn-lg btn-danger">Logout</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
 
 
 
 
+              <!-- </div> -->
 
 
+  				<!-- Footer  -->
+  				<div class="footer">
+  					<p>© 2020 Flick, LLC. All rights reserved | </p>
+  					<p>Follow us on</p>
+  					<ul>
+  						<li><a href="/auth/facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a></li>
+  						<li><a href="/auth/google"><i class="fab fa-google" aria-hidden="true"></i></a></li>
+  						<li> <a href="/auth/steam"><i class="fab fa-instagram" aria-hidden="true"></></i></a></li>
+  					</ul>
+
+  				</div>
+  			</div>
+  		</div>
+  	</div>
+
+  	<!-- jQuery CDN - Slim version (=without AJAX) -->
+  	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  	<!-- Popper.JS -->
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+  	<!-- Bootstrap JS -->
+  	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+  	<script type="text/javascript">
+  		$(document).ready(function() {
+  			$('#sidebarCollapse').on('click', function() {
+  				$('#sidebar').toggleClass('active');
+  			});
+  		});
+  	</script>
+
+    <script type="text/javascript">
+      $(document).ready(function() {
+        $('#action_menu_btn').click(function() {
+          $('.action_menu').toggle();
+        });
+      });
+    </script>
+  	<script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+  	<script>
+  		function addDarkmodeWidget() {
+  			new Darkmode().showWidget();
+  		}
+  		window.addEventListener('load', addDarkmodeWidget);
+  	</script>
+  	<script type="text/javascript">
+  		var options = {
+  			bottom: '64px', // default: '32px'
+  			right: 'unset', // default: '32px'
+  			left: '32px', // default: 'unset'
+  			time: '0.5s', // default: '0.3s'
+  			mixColor: '#121212', // default: '#fff'
+  			backgroundColor: '#121212', // default: '#fff'
+  			buttonColorDark: '#121212', // default: '#100f2c'
+  			buttonColorLight: '#fff', // default: '#fff'
+  			saveInCookies: false, // default: true,
+  			label: '🌓' // default: ''
+  		}
+
+  		const darkmode = new Darkmode(options);
+  		darkmode.showWidget();
+  	</script>
 
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-  </body>
 </html>
