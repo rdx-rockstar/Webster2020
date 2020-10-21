@@ -9,9 +9,9 @@ router.get('/auth/google',passport.authenticate('google',{
 }));
 
 router.get('/auth/google/redirect',passport.authenticate('google',{
-    failureRedirect:'/posts'
+    failureRedirect:'/home'
 }),function(req,res){
-    res.redirect('/posts');
+    res.redirect('/home');
 })
 
 module.exports = router;
