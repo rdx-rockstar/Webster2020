@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Games-Flick</title>
+    <script>console.log("at live stream3");</script>
+	<link rel="stylesheet" href="/css/games.css">
+	<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <link rel="icon" href="gaming.svg">
+    <style>
+        .hide-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+      </style>
+	<!-- CSS only -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+</head>
+
+<body>
+
+	<div class="container-big">
+		<div class="wrapper">
+			<!-- Sidebar  -->
+			<nav id="sidebar">
+				<div class="sidebar-header">
+					<h2 class="brand">FLICK</h2>
+				</div>
+				<div class="linee"></div>
+				<ul class="list-unstyled components">
+					<div class="menu">
+						<% if(user.provider == "google"){ %>
+							<img src="<%= user.googleProfilePicture %>" alt="profile">
+							<p><%= name[0] %></p>
+						<% } else if(user.provider == "facebook"){ %>
+							<img src="/images/default.png" alt="profile">
+							<p><%= name[0] %></p>
+						<% } else{ %>
+							<img src="/images/default.png" alt="profile">
+							<p><%= name[0] %></p>
+						<% } %>
+					</div>
+					<div class="linee"></div>
+					<li class="nav-item active">
+						<a href="homepage.html">Followers</a>
+					</li>
+					<li><a href="homepage.html">Following</a></li>
+					<div class="linee"></div>
+					<div class="menu">
+						<p>FLick things</p>
+					</div>
+					<li><a href="about.html">About Us</a>
+					</li>
+					<li>
+						<a href="contact.html">Contact</a>
+					</li>
+
+					<li>
+						<a href="#">Feedback</a>
+					</li>
+				</ul>
+				<button type="button" class="btn btn-light Download  "><i class="fab fa-apple"></i> Download</button>
+				<button type="button" class="btn btn-outline-light Download"> <i class="fab fa-google-play"></i> Download</button>
+			</nav>
+
+			<!-- Page Content  -->
+			<div id="content">
+				<!-- top navbar  -->
+				<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #1D1D1D">
+					<div class="container-fluid">
+						<!-- button  -->
+						<button type="button" id="sidebarCollapse" class="bttn" aria-expanded="false">
+							<i class="fas fa-align-left"></i>
+						</button>
+						<button class="bttn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+							<i class="fas fa-align-justify"></i>
+						</button>
+						<!-- right side things on navbar  -->
+						<div class="collapse navbar-collapse" id="navbarSupportedContent">
+							<ul class="nav navbar-nav ml-auto">
+								<form class="form-inline">
+									<input class="form-control" type="search" style="background: #121212; color:#BB86FC; border-color:#FF7597; width: 60%" placeholder="Search" aria-label="Search">
+									<button class="btn btn-outline my-2 my-sm-0" style="background: #121212; color:#BB86FC; " type="submit">Search</button>
+								</form>
+								<li class="nav-item">
+									<a class="nav-liink" href="/home">Home</a>
+								</li>
+								<li class="nav-item active">
+									<a class="nav-liink" href="/users/<%= user._id %>">Games</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-liink" href="/users/<%= user._id %>/stream">Stream</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-liink" href="/users/<%= user._id %>/chat">Message</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-liink" href="/logout">Log Out</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</nav>
+				<!--body-->
+                <style>
+                    .xoverflow{
+                        overflow-x:scroll!important;
+                        white-space: nowrap!important; 
+                    }
+                    .dinline{
+                        display: inline-block !important;
+                        float: none!important;
+                    }
+                </style>
+				<div class="container hide-scrollbar">
+                    <p style="font-weight: bolder;color: #BB86FC;font-size:x-large;">POPULAR STREAMS</p>
+					<div class="xoverflow hide-scrollbar">
+                        
+						<div class="dinline m-2">
+							<div class="card" style="width: 18rem;height: 18rem;">
+								<img src="https://sportsshow.net/media/2019/04/_3/760x450/Most-Popular-Online-Games-1.jpg" class="card-img-top" alt="...">
+								<div class="card-body">
+									<a href="/users/stream/:id" class="btn">Game</a>
+								</div>
+							</div>
+							<br>
+						</div>
+						<div class="dinline m-2">
+							<div class="card" style="width: 18rem;height: 18rem;">
+								<img src="https://filmdaily.co/wp-content/uploads/2020/05/games-01.jpg" class="card-img-top" alt="...">
+								<div class="card-body">
+									<a href="#" class="btn">games</a>
+								</div>
+							</div>
+							<br>
+						</div>
+						<div class="dinline m-2">
+							<div class="card" style="width: 18rem;height: 18rem;">
+								<img src="https://filmdaily.co/wp-content/uploads/2020/05/games-01.jpg" class="card-img-top" alt="...">
+								<div class="card-body">
+									<a href="#" class="btn">Games</a>
+								</div>
+							</div>
+							<br>
+						</div>
+						<div class="dinline m-2">
+							<div class="card" style="width: 18rem;height: 18rem;">
+								<img src="https://filmdaily.co/wp-content/uploads/2020/05/games-01.jpg" class="card-img-top" alt="...">
+								<div class="card-body">
+									<a href="#" class="btn">Games</a>
+								</div>
+							</div>
+							<br>
+						</div>
+						<div class="dinline m-2">
+							<div class="card" style="width: 18rem;height: 18rem;">
+								<img src="https://filmdaily.co/wp-content/uploads/2020/05/games-01.jpg" class="card-img-top" alt="...">
+								<div class="card-body">
+									<a href="#" class="btn">Games</a>
+								</div>
+							</div>
+							<br>
+                        </div>
+                    </div>
+                    <p style="font-weight: bolder;color: #BB86FC;font-size:x-large;">FOLLOWERS STREAMS</p>
+				    <div class="xoverflow hide-scrollbar">
+						<div class="dinline m-2">
+							<div class="card" style="width: 18rem;height: 18rem;">
+								<img src="https://filmdaily.co/wp-content/uploads/2020/05/games-01.jpg" class="card-img-top" alt="...">
+								<div class="card-body">
+									<a href="#" class="btn">Games</a>
+								</div>
+							</div>
+							<br>
+						</div>
+						<div class="dinline m-2">
+							<div class="card" style="width: 18rem;height: 18rem;">
+								<img src="https://filmdaily.co/wp-content/uploads/2020/05/games-01.jpg" class="card-img-top" alt="...">
+								<div class="card-body">
+									<a href="#" class="btn">Games</a>
+								</div>
+							</div>
+							<br>
+						</div>
+						<div class="dinline m-2">
+							<div class="card" style="width: 18rem;height: 18rem;">
+								<img src="https://filmdaily.co/wp-content/uploads/2020/05/games-01.jpg" class="card-img-top" alt="...">
+								<div class="card-body">
+									<a href="#" class="btn">Games</a>
+								</div>
+							</div>
+							<br>
+						</div>
+						<div class="dinline m-2">
+							<div class="card" style="width: 18rem;height: 18rem;">
+								<img src="https://images.unsplash.com/photo-1489850846882-35ef10a4b480?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1053&q=80" class="card-img-top" alt="...">
+								<div class="card-body">
+									<a href="#" class="btn">Games & Puzzles</a>
+								</div>
+							</div>
+							<br>
+						</div>
+						<div class="dinline m-2">
+							<div class="card" style="width: 18rem;height: 18rem;">
+								<img src="https://sportsshow.net/media/2019/04/_3/760x450/Most-Popular-Online-Games-1.jpg" class="card-img-top" alt="...">
+								<div class="card-body">
+									<a href="#" class="btn">Games</a>
+								</div>
+							</div>
+							<br>
+                        </div>
+                    </div>
+                    <p style="font-weight: bolder;color: #BB86FC;font-size:x-large;">POPULAR GAMES</p>
+                    <div class="xoverflow hide-scrollbar">
+						<div class="dinline m-2">
+							<div class="card" style="width: 18rem;height: 18rem;">
+								<img src="https://filmdaily.co/wp-content/uploads/2020/05/games-01.jpg" class="card-img-top" alt="...">
+								<div class="card-body">
+									<a href="" class="btn">Games</a>
+								</div>
+							</div>
+							<br>
+						</div>
+						<div class="dinline m-2">
+							<div class="card" style="width: 18rem;height: 18rem;">
+								<img src="https://filmdaily.co/wp-content/uploads/2020/05/games-01.jpg" class="card-img-top" alt="...">
+								<div class="card-body">
+									<a href="" class="btn">Games</a>
+								</div>
+							</div>
+							<br>
+                        </div>
+                        <div class="dinline m-2">
+							<div class="card" style="width: 18rem;height: 18rem;">
+								<img src="https://filmdaily.co/wp-content/uploads/2020/05/games-01.jpg" class="card-img-top" alt="...">
+								<div class="card-body">
+									<a href="" class="btn">Games</a>
+								</div>
+							</div>
+							<br>
+                        </div>
+                        <div class="dinline m-2">
+							<div class="card" style="width: 18rem;height: 18rem;">
+								<img src="https://filmdaily.co/wp-content/uploads/2020/05/games-01.jpg" class="card-img-top" alt="...">
+								<div class="card-body">
+									<a href="" class="btn">Games</a>
+								</div>
+							</div>
+							<br>
+						</div>
+					</div>
+				</div>
+				<!-- Footer  -->
+				<div class="footer">
+					<p>© 2020 Flick, LLC. All rights reserved | </p>
+					<p>Follow us on</p>
+					<ul>
+						<li><a href="/auth/facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a></li>
+						<li><a href="/auth/google"><i class="fab fa-google" aria-hidden="true"></i></a></li>
+						<li> <a href="/auth/steam"><i class="fab fa-instagram" aria-hidden="true"></></i></a></li>
+					</ul>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- jQuery CDN - Slim version (=without AJAX) -->
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<!-- Popper.JS -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+	<!-- Bootstrap JS -->
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('#sidebarCollapse').on('click', function() {
+				$('#sidebar').toggleClass('active');
+			});
+		});
+	</script>
+	<script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+	<script>
+		function addDarkmodeWidget() {
+			new Darkmode().showWidget();
+		}
+		window.addEventListener('load', addDarkmodeWidget);
+	</script>
+	<script type="text/javascript">
+		var options = {
+			bottom: '64px', // default: '32px'
+			right: 'unset', // default: '32px'
+			left: '32px', // default: 'unset'
+			time: '0.5s', // default: '0.3s'
+			mixColor: '#121212', // default: '#fff'
+			backgroundColor: '#121212', // default: '#fff'
+			buttonColorDark: '#121212', // default: '#100f2c'
+			buttonColorLight: '#fff', // default: '#fff'
+			saveInCookies: false, // default: true,
+			label: '🌓' // default: ''
+		}
+
+		const darkmode = new Darkmode(options);
+		darkmode.showWidget();
+	</script>
+</body>
+
+</html>
