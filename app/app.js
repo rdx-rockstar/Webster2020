@@ -72,9 +72,9 @@ app.use('/', indexRouter);
 app.use('/',localAuthRouter);
 app.use('/',googleAuthRouter);
 app.use('/',facebookAuthRouter);
-app.use('/users', usersRouter);
 
-app.get('/posts',(req,res) => {
+
+app.get('/home',(req,res) => {
   console.log(req.user);
   if(req.user){
     var name = req.user.username.split(" ");
@@ -83,48 +83,10 @@ app.get('/posts',(req,res) => {
     var name = [""];
   }
   console.log(name);
-  res.render('posts.ejs',{name:name,user:req.user});
+  res.render('home.ejs',{name:name,user:req.user});
 });
 
-app.get('/users/:id',(req,res) => {
-  // if(req.isAuthenticated())
-  // {
-    User.findById(req.params.id,function(err,foundUser){
-      if(err){
-        console.log(err);
-        return res.render('error');
-      }
-      else{
-        var name = foundUser.username.split(" ");
-        return res.render('games',{name:name,user:foundUser});
-      }
-    })
-  // }else{
-  //   return res.redirect('/register');
-  // }
-});
-
-app.get('/users/:id/stream',function(req,res){
-  User.findById(req.params.id,function(err,foundUser){
-    if(err){
-      console.log(err);
-      return res.render('error');
-    } else {
-      return res.render('stream',{user:foundUser});
-    }
-  })
-});
-
-app.get('/users/:id/chat',function(req,res){
-  User.findById(req.params.id,function(err,foundUser){
-    if(err){
-      console.log(err);
-      return res.render('error');
-    } else {
-      return res.render('chatbox',{user:foundUser});
-    }
-  })
-});
+app.use('/', usersRouter);
 
 // Middleware
 function isLoggedIn(req,res,next){

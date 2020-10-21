@@ -24,7 +24,7 @@ router.post('/register',(req,res) => {
     }
     passport.authenticate('local')(req,res,()=>{
       console.log(newlyCreatedUser);
-      res.redirect('/posts');
+      res.redirect('/home');
     })
   })
 })
@@ -44,7 +44,7 @@ router.post('/login',(req,res) => {
       console.log(err);
     }else{
       passport.authenticate('local')(req,res,()=>{
-        res.redirect('/posts');
+        res.redirect('/home');
       })
     }
   })
@@ -52,7 +52,7 @@ router.post('/login',(req,res) => {
 
 router.get('/logout',function(req,res){
     req.logout();
-    res.redirect('/posts');
+    res.redirect('/home');
 })
 
 
