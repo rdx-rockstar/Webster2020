@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const User = require('../models/userSchema');
+const liveUser = require('../models/liveUserSchema');
 
 
 router.get('/users/:id',(req,res) => {
@@ -15,8 +16,35 @@ router.get('/users/:id',(req,res) => {
     }
   })
 });
+router.get('/users/stream/:streamer/:id',(req,res) => {
+  User.findById(req.params.id,function(err,foundUser){
+    if(err){
+      console.log(err);
+      return res.render('error');
+    }
+    else{
+      var name = foundUser.username.split(" ");
+      return res.render('stream',{name:name,streamer:streamer,user:foundUser});
+    }
+  })
+});
+router.get('/users/stream/:streamer/:id',(req,res) => {
+  User.findById(req.params.id,function(err,foundUser){
+    var name = req.params.streamer;
+    liveUser.findOne({username: new RegExp('^'+name+'$', "i")}, function(err, foundstreamer) {
+      if(err){
+        console.log(err);
+        return res.render('error');
+      }
+      else{
+        var name = foundUser.username.split(" ");
+        return res.render('stream',{name:name,streamer:foundstreamer,user:foundUser});
+      }
+    });
+  })
+});
 
-router.get('/users/:id/stream',function(req,res){
+router.get('/users/livestreams/:id',function(req,res){
 User.findById(req.params.id,function(err,foundUser){
   if(err){
     console.log(err);
