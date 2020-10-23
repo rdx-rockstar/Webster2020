@@ -421,7 +421,7 @@ background-color: rgba(0,0,0,0.3) !important;
     .chatbox {
     position: fixed;
 	position:expression("absolute");
-	width: 240px;
+	width: 380px!important;
 	display:none;
 	z-index:99;
 }

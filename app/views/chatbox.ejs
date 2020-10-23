@@ -176,14 +176,14 @@
 							<li class="nav-item">
 								<a class="nav-liink" href="/home">Home</a>
 							</li>
-							<li class="nav-item">
+							<li class="nav-item active">
 								<a class="nav-liink" href="/users/<%= user._id %>">Games</a>
 							</li>
 							<li class="nav-item">
-								<a class="nav-liink" href="/users/<%= user._id %>/stream">Stream</a>
+								<a class="nav-liink" href="/users/livestreams/<%= user._id %>">Stream</a>
 							</li>
-							<li class="nav-item active">
-								<a class="nav-liink" href="/users/<%= user._id %>/chat">Messages</a>
+							<li class="nav-item">
+								<a class="nav-liink" href="/users/<%= user._id %>/chat">Message</a>
 							</li>
 							<li class="nav-item">
 								<a class="nav-liink" href="/logout">Log Out</a>

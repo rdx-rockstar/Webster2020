@@ -176,6 +176,7 @@ function isLoggedIn(req,res,next){
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
+  console.log("eroor 404");
   next(createError(404));
 });
 

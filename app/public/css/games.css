@@ -75,6 +75,17 @@ body {
   color:#BB86FC;
   border-color: #FF7597;
 }
+.butn{
+  background-color: #1D1D1D;
+  color:#BB86FC;
+  border-color: #FF7597!important;
+}
+.butn:hover{
+  color: #FF7597;
+  border: thick!important;
+  border-color: #BB86FC;
+  text-shadow: -0.5px -0.5px 0px #FF7597;
+}
 /*also have search bar buttons' hover features*/
 .form-inline input:hover,.form-inline button:hover,.card a:hover{
   color: #FF7597;
@@ -124,7 +135,7 @@ a .nav-link{
 }
 
 .bttn {
-
+  height: 40px!important;
    background-color: #FF7597;
    border-color: #FF7597;
    border-radius: 10%;
