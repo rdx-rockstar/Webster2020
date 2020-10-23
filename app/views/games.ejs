@@ -7,9 +7,9 @@
 	<script src="https://kit.fontawesome.com/a076d05399.js"></script>
 	<link rel="icon" href="/icons/gaming.svg">
 	<style>
-		.hide-scrollbar::-webkit-scrollbar {
-		display: none;
-	  }
+        .hide-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
 	</style>
 	<!-- CSS only -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
@@ -30,11 +30,9 @@
 				<div class="linee"></div>
 				<ul class="list-unstyled components">
 					<div class="menu">
-						<a href="/users/<%= user._id %>">
-							<% if(user.provider == "google"){ %>
+						<% if(user.provider == "google"){ %>
 							<img src="<%= user.googleProfilePicture %>" alt="profile">
 							<p><%= name[0] %></p>
-						</a>
 						<% } else if(user.provider == "facebook"){ %>
 							<img src="/images/default.png" alt="profile">
 							<p><%= name[0] %></p>
@@ -47,12 +45,7 @@
 					<li class="nav-item active">
 						<a href="homepage.html">Followers</a>
 					</li>
-					<li>
-						<a href="homepage.html">Following</a>
-					</li>
-					<li>
-						<a href="/posts/new">Add Post</a>
-					</li>
+					<li><a href="homepage.html">Following</a></li>
 					<div class="linee"></div>
 					<div class="menu">
 						<p>FLick things</p>
@@ -74,8 +67,8 @@
 			<!-- Page Content  -->
 			<div id="content">
 				<!-- top navbar  -->
-				<nav class="navbar navbar-expand-lg navbar-light hide-scrollbar" style="background-color: #1D1D1D">
-					<div class="container-fluid hide-scrollbar">
+				<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #1D1D1D">
+					<div class="container-fluid">
 						<!-- button  -->
 						<button type="button" id="sidebarCollapse" class="bttn" aria-expanded="false">
 							<i class="fas fa-align-left"></i>
@@ -113,23 +106,17 @@
 
 				<div class="container hide-scrollbar">
 					<div class="row">
-						<% if(user) { %>
-							<% user.posts.forEach(function(post){ %>
-								<div class="col-sm">
-									<div class="card" style="width: 18rem;">
-										<img src="<%= post.image %>" class="card-img-top" alt="...">
-										<div class="card-body">
-											<a href="#" class="btn">Show More</a>
-										</div>
-									</div>
-									<br>
+						<div class="col-sm">
+							<div class="card" style="width: 18rem;height: 18rem;">
+								<img src="https://sportsshow.net/media/2019/04/_3/760x450/Most-Popular-Online-Games-1.jpg" class="card-img-top" alt="...">
+								<div class="card-body">
+									<a href="#" class="btn">Game</a>
 								</div>
-							<% }) %>
-							
-						<% } %> 
-						
-						<!-- <div class="col-sm">
-							<div class="card" style="width: 18rem;">
+							</div>
+							<br>
+						</div>
+						<div class="col-sm">
+							<div class="card" style="width: 18rem;height: 18rem;">
 								<img src="https://filmdaily.co/wp-content/uploads/2020/05/games-01.jpg" class="card-img-top" alt="...">
 								<div class="card-body">
 									<a href="#" class="btn">games</a>
@@ -138,7 +125,7 @@
 							<br>
 						</div>
 						<div class="col-sm">
-							<div class="card" style="width: 18rem;">
+							<div class="card" style="width: 18rem;height: 18rem;">
 								<img src="https://filmdaily.co/wp-content/uploads/2020/05/games-01.jpg" class="card-img-top" alt="...">
 								<div class="card-body">
 									<a href="#" class="btn">Games</a>
@@ -147,7 +134,7 @@
 							<br>
 						</div>
 						<div class="col-sm">
-							<div class="card" style="width: 18rem;">
+							<div class="card" style="width: 18rem;height: 18rem;">
 								<img src="https://filmdaily.co/wp-content/uploads/2020/05/games-01.jpg" class="card-img-top" alt="...">
 								<div class="card-body">
 									<a href="#" class="btn">Games</a>
@@ -156,7 +143,7 @@
 							<br>
 						</div>
 						<div class="col-sm">
-							<div class="card" style="width: 18rem;">
+							<div class="card" style="width: 18rem;height: 18rem;">
 								<img src="https://filmdaily.co/wp-content/uploads/2020/05/games-01.jpg" class="card-img-top" alt="...">
 								<div class="card-body">
 									<a href="#" class="btn">Games</a>
@@ -165,7 +152,7 @@
 							<br>
 						</div>
 						<div class="col-sm">
-							<div class="card" style="width: 18rem;">
+							<div class="card" style="width: 18rem;height: 18rem;">
 								<img src="https://filmdaily.co/wp-content/uploads/2020/05/games-01.jpg" class="card-img-top" alt="...">
 								<div class="card-body">
 									<a href="#" class="btn">Games</a>
@@ -174,7 +161,7 @@
 							<br>
 						</div>
 						<div class="col-sm">
-							<div class="card" style="width: 18rem;">
+							<div class="card" style="width: 18rem;height: 18rem;">
 								<img src="https://filmdaily.co/wp-content/uploads/2020/05/games-01.jpg" class="card-img-top" alt="...">
 								<div class="card-body">
 									<a href="#" class="btn">Games</a>
@@ -183,7 +170,7 @@
 							<br>
 						</div>
 						<div class="col-sm">
-							<div class="card" style="width: 18rem;">
+							<div class="card" style="width: 18rem;height: 18rem;">
 								<img src="https://filmdaily.co/wp-content/uploads/2020/05/games-01.jpg" class="card-img-top" alt="...">
 								<div class="card-body">
 									<a href="#" class="btn">Games</a>
@@ -192,7 +179,7 @@
 							<br>
 						</div>
 						<div class="col-sm">
-							<div class="card" style="width: 18rem;">
+							<div class="card" style="width: 18rem;height: 18rem;">
 								<img src="https://images.unsplash.com/photo-1489850846882-35ef10a4b480?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1053&q=80" class="card-img-top" alt="...">
 								<div class="card-body">
 									<a href="#" class="btn">Games & Puzzles</a>
@@ -201,7 +188,7 @@
 							<br>
 						</div>
 						<div class="col-sm">
-							<div class="card" style="width: 18rem;">
+							<div class="card" style="width: 18rem;height: 18rem;">
 								<img src="https://sportsshow.net/media/2019/04/_3/760x450/Most-Popular-Online-Games-1.jpg" class="card-img-top" alt="...">
 								<div class="card-body">
 									<a href="#" class="btn">Games</a>
@@ -210,7 +197,7 @@
 							<br>
 						</div>
 						<div class="col-sm">
-							<div class="card" style="width: 18rem;">
+							<div class="card" style="width: 18rem;height: 18rem;">
 								<img src="https://filmdaily.co/wp-content/uploads/2020/05/games-01.jpg" class="card-img-top" alt="...">
 								<div class="card-body">
 									<a href="" class="btn">Games</a>
@@ -219,14 +206,14 @@
 							<br>
 						</div>
 						<div class="col-sm">
-							<div class="card" style="width: 18rem;">
+							<div class="card" style="width: 18rem;height: 18rem;">
 								<img src="https://filmdaily.co/wp-content/uploads/2020/05/games-01.jpg" class="card-img-top" alt="...">
 								<div class="card-body">
 									<a href="" class="btn">Games</a>
 								</div>
 							</div>
 							<br>
-						</div> -->
+						</div>
 					</div>
 				</div>
 				<!-- Footer  -->
@@ -257,6 +244,31 @@
 				$('#sidebar').toggleClass('active');
 			});
 		});
+	</script>
+	<!--
+	<script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
+	<script>
+		function addDarkmodeWidget() {
+			new Darkmode().showWidget();
+		}
+		window.addEventListener('load', addDarkmodeWidget);
+	</script>-->
+	<script type="text/javascript">
+		var options = {
+			bottom: '64px', // default: '32px'
+			right: 'unset', // default: '32px'
+			left: '32px', // default: 'unset'
+			time: '0.5s', // default: '0.3s'
+			mixColor: '#121212', // default: '#fff'
+			backgroundColor: '#121212', // default: '#fff'
+			buttonColorDark: '#121212', // default: '#100f2c'
+			buttonColorLight: '#fff', // default: '#fff'
+			saveInCookies: false, // default: true,
+			label: '🌓' // default: ''
+		}
+
+		const darkmode = new Darkmode(options);
+		darkmode.showWidget();
 	</script>
 </body>
 
