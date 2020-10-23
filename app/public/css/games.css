@@ -253,11 +253,20 @@ ul.CTAs a {
    Posts
 -----------------------------------------------------*/
 .card{
-  height: 630px;
   border-radius: 15px !important;
   background-color: rgba(0,0,0,0.4) !important;
   /* box-shadow: 6px 8px 5px #FF7597; */
+}
+.col-md-8{
+  height: 560px;
   overflow-y: auto;
+}
+#col-sm .card{
+  height: 200px;
+  border-radius: 15px !important;
+  background-color: rgba(0,0,0,0.4) !important;
+  /* box-shadow: 6px 8px 5px #FF7597; */
+  overflow-y: auto !important;
 }
 .user_img{
   height: 50px;
@@ -392,7 +401,7 @@ z-index:99;
   margin-top: 5px;
 }
 .likes span{
-  color: red;
+  color: #ff005a;
   font-size: 30px;
   cursor: pointer;
   margin-left: 0px;
@@ -464,6 +473,53 @@ background-color: rgba(0,0,0,0.3) !important;
   margin-left: 30px;
   padding-top: 20px;
 }
+
+
+
+
+
+
+/*---------------------
+     Buttons
+---------------------------*/
+
+
+
+.notfound button{
+  font-family: 'Montserrat', sans-serif;
+  /* display: inline-block; */
+  text-transform: uppercase;
+  color: #ff005a;
+  text-decoration: none;
+  border: 2px solid;
+  background: transparent;
+  padding: 10px 10px;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 5px;
+}
+
+.notfound button:hover {
+  color: #8400ff;
+}
+.notfound a{
+  font-family: 'Montserrat', sans-serif;
+  /* display: inline-block; */
+  text-transform: uppercase;
+  color: #ff005a;
+  text-decoration: none;
+  border: 2px solid;
+  background: transparent;
+  padding: 10px 10px;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 5px;
+}
+
+.notfound a:hover {
+  color: #8400ff;
+}
+
 
 
 /*1b262c */

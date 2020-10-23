@@ -68,7 +68,7 @@ font-weight: 50;
 .form-group {
   width: 350px;
 }
-.not_found a{
+.not_found button{
   font-family: 'Montserrat', sans-serif;
   display: inline-block;
   text-transform: uppercase;
@@ -81,10 +81,12 @@ font-weight: 50;
   font-weight: 700;
 }
 
-.not_found a:hover {
+.not_found button:hover {
   color: #8400ff;
 }
-
+ul li a{
+  color: #fff!important;
+}
 ul{
   display: flex;
 }
@@ -161,4 +163,20 @@ ul li:nth-child(3):hover{
   height: 300px;
   background-color: #FFE4E1;
   font-size: 36px;
+}
+.not_found a{
+  font-family: 'Montserrat', sans-serif;
+  display: inline-block;
+  text-transform: uppercase;
+  color: #ff005a;
+  text-decoration: none;
+  border: 2px solid;
+  background: transparent;
+  padding: 10px 40px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.not_found a:hover {
+  color: #8400ff;
 }
