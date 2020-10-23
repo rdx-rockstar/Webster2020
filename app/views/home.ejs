@@ -52,10 +52,10 @@
 					<div class="menu">
 						<p>FLick things</p>
 					</div>
-					<li><a href="about.html">About Us</a>
+					<li><a href="/about_us">About Us</a>
 					</li>
 					<li>
-						<a href="contact.html">Contact</a>
+						<a href="/contacts">Contact</a>
 					</li>
 
 					<li>
@@ -87,30 +87,30 @@
 										<button style="margin-left:6px; border-color:#FF7597; color:#FF7597;" type="submit" name="button">Search</button>
 									</div>
 								</form>
-								<% if(user) { %>
-								<li class="nav-item">
-									<a class="nav-liink" href="/home">Home</a>
-								</li>
-								<li class="nav-item active">
-									<a class="nav-liink" href="/users/<%= user._id %>">Games</a>
-								</li>
-								<li class="nav-item">
-									<a class="nav-liink" href="/users/<%= user._id %>/stream">Stream</a>
-								</li>
-								<li class="nav-item">
-									<a class="nav-liink" href="/users/<%= user._id %>/chat">Message</a>
-								</li>
-								<li class="nav-item">
-									<a class="nav-liink" href="/logout">Log Out</a>
-								</li>
-								<% } else { %>
-								<li class="nav-item">
-									<a class="nav-liink" href="/login">Login</a>
-								</li>
-								<li class="nav-item">
-									<a class="nav-liink" href="/register">Register</a>
-								</li>
-								<% } %>
+                                <% if(user) { %>
+                                    <li class="nav-item active">
+                                        <a class="nav-liink" href="/home">Home</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-liink" href="/users/<%= user._id %>">Games</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-liink" href="/users/<%= user._id %>/stream">Stream</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-liink" href="/users/<%= user._id %>/chat">Message</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-liink" href="/logout">LogOut</a>
+                                    </li>
+                                <% } else { %>
+                                    <li class="nav-item">
+                                        <a class="nav-liink" href="/login">Login</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-liink" href="/register">Register</a>
+                                    </li>
+                                <% } %>
 							</ul>
 						</div>
 					</div>

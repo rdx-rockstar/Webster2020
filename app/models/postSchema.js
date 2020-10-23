@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 
 const postSchema = new mongoose.Schema({
+    // videoURL: String,
+    // thumbnail: String,
     image: String,
     caption: String,
     createdBy:{
@@ -8,7 +10,7 @@ const postSchema = new mongoose.Schema({
             type: mongoose.Schema.Types.ObjectId,
             ref: "User"
         },
-        username: String
+        email: String
     },
     creationDate: {
         type: Date,
