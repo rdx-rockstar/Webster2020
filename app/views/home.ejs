@@ -52,10 +52,10 @@
 					<div class="menu">
 						<p>FLick things</p>
 					</div>
-					<li><a href="about.html">About Us</a>
+					<li><a href="/about_us">About Us</a>
 					</li>
 					<li>
-						<a href="contact.html">Contact</a>
+						<a href="/contacts">Contact</a>
 					</li>
 
 					<li>
@@ -86,10 +86,10 @@
 									<button class="btn btn-outline my-2 my-sm-0" style="background: #121212; color:#BB86FC; " type="submit">Search</button>
 								</form>
                                 <% if(user) { %>
-                                    <li class="nav-item">
+                                    <li class="nav-item active">
                                         <a class="nav-liink" href="/home">Home</a>
                                     </li>
-                                    <li class="nav-item active">
+                                    <li class="nav-item">
                                         <a class="nav-liink" href="/users/<%= user._id %>">Games</a>
                                     </li>
                                     <li class="nav-item">
@@ -557,30 +557,6 @@
 				$('#sidebar').toggleClass('active');
 			});
 		});
-	</script>
-	<script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
-	<script>
-		function addDarkmodeWidget() {
-			new Darkmode().showWidget();
-		}
-		window.addEventListener('load', addDarkmodeWidget);
-	</script>
-	<script type="text/javascript">
-		var options = {
-			bottom: '64px', // default: '32px'
-			right: 'unset', // default: '32px'
-			left: '32px', // default: 'unset'
-			time: '0.5s', // default: '0.3s'
-			mixColor: '#121212', // default: '#fff'
-			backgroundColor: '#121212', // default: '#fff'
-			buttonColorDark: '#121212', // default: '#100f2c'
-			buttonColorLight: '#fff', // default: '#fff'
-			saveInCookies: false, // default: true,
-			label: '🌓' // default: ''
-		}
-
-		const darkmode = new Darkmode(options);
-		darkmode.showWidget();
 	</script>
 </body>
 

@@ -40,7 +40,12 @@
 					<li class="nav-item active">
 						<a href="homepage.html">Followers</a>
 					</li>
-					<li><a href="homepage.html">Following</a></li>
+					<li>
+						<a href="homepage.html">Following</a>
+					</li>
+					<li>
+						<a href="/posts/new">Add Post</a>
+					</li>
 					<div class="linee"></div>
 					<div class="menu">
 						<p>FLick things</p>
@@ -101,16 +106,22 @@
 
 				<div class="container">
 					<div class="row">
-						<div class="col-sm">
-							<div class="card" style="width: 18rem;">
-								<img src="https://sportsshow.net/media/2019/04/_3/760x450/Most-Popular-Online-Games-1.jpg" class="card-img-top" alt="...">
-								<div class="card-body">
-									<a href="#" class="btn">Game</a>
+						<% if(user) { %>
+							<% user.posts.forEach(function(post){ %>
+								<div class="col-sm">
+									<div class="card" style="width: 18rem;">
+										<img src="<%= post.image %>" class="card-img-top" alt="...">
+										<div class="card-body">
+											<a href="#" class="btn">Show More</a>
+										</div>
+									</div>
+									<br>
 								</div>
-							</div>
-							<br>
-						</div>
-						<div class="col-sm">
+							<% }) %>
+							
+						<% } %> 
+						
+						<!-- <div class="col-sm">
 							<div class="card" style="width: 18rem;">
 								<img src="https://filmdaily.co/wp-content/uploads/2020/05/games-01.jpg" class="card-img-top" alt="...">
 								<div class="card-body">
@@ -208,7 +219,7 @@
 								</div>
 							</div>
 							<br>
-						</div>
+						</div> -->
 					</div>
 				</div>
 				<!-- Footer  -->
@@ -239,30 +250,6 @@
 				$('#sidebar').toggleClass('active');
 			});
 		});
-	</script>
-	<script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
-	<script>
-		function addDarkmodeWidget() {
-			new Darkmode().showWidget();
-		}
-		window.addEventListener('load', addDarkmodeWidget);
-	</script>
-	<script type="text/javascript">
-		var options = {
-			bottom: '64px', // default: '32px'
-			right: 'unset', // default: '32px'
-			left: '32px', // default: 'unset'
-			time: '0.5s', // default: '0.3s'
-			mixColor: '#121212', // default: '#fff'
-			backgroundColor: '#121212', // default: '#fff'
-			buttonColorDark: '#121212', // default: '#100f2c'
-			buttonColorLight: '#fff', // default: '#fff'
-			saveInCookies: false, // default: true,
-			label: '🌓' // default: ''
-		}
-
-		const darkmode = new Darkmode(options);
-		darkmode.showWidget();
 	</script>
 </body>
 

@@ -1,10 +1,10 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 const User = require('../models/userSchema');
 
 
-router.get('/users/:id',(req,res) => {
-  User.findById(req.params.id,function(err,foundUser){
+router.get('/users/:id',isLoggedIn,(req,res) => {
+  User.findById(req.params.id).populate("posts").exec(function(err,foundUser){
     if(err){
       console.log(err);
       return res.render('error');
@@ -16,26 +16,32 @@ router.get('/users/:id',(req,res) => {
   })
 });
 
-router.get('/users/:id/stream',function(req,res){
-User.findById(req.params.id,function(err,foundUser){
-  if(err){
-    console.log(err);
-    return res.render('error');
-  } else {
-    return res.render('stream',{user:foundUser});
-  }
-})
+router.get('/users/:id/stream',isLoggedIn,function(req,res){
+  User.findById(req.params.id,function(err,foundUser){
+    if(err){
+      console.log(err);
+      return res.render('error');
+    } else {
+      return res.render('stream',{user:foundUser});
+    }
+  })
 });
 
-router.get('/users/:id/chat',function(req,res){
-User.findById(req.params.id,function(err,foundUser){
-  if(err){
-    console.log(err);
-    return res.render('error');
-  } else {
-    return res.render('chatbox',{user:foundUser});
-  }
-})
+router.get('/users/:id/chat',isLoggedIn,function(req,res){
+  User.findById(req.params.id,function(err,foundUser){
+    if(err){
+      console.log(err);
+      return res.render('error');
+    } else {
+      return res.render('chatbox',{user:foundUser});
+    }
+  })
 });
+function isLoggedIn(req,res,next){
+  if(req.isAuthenticated()){
+    return next();
+  }
+  return res.redirect('/home');
+}
 
 module.exports = router;
