@@ -5,7 +5,9 @@ var liveUserSchema = new mongoose.Schema({
         type: String,
         unique: true,
     },
+    name:String,
     lable:String,
     thumbnail: String,
+    uid:String,
 });
 module.exports = mongoose.model('liveUser',liveUserSchema);

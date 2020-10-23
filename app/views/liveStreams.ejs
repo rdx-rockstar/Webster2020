@@ -3,15 +3,14 @@
 
 <head>
     <title>Games-Flick</title>
-    <script>console.log("at live stream3");</script>
 	<link rel="stylesheet" href="/css/games.css">
 	<script src="https://kit.fontawesome.com/a076d05399.js"></script>
-    <link rel="icon" href="gaming.svg">
+    <link rel="icon" href="/icons/gaming.svg">
     <style>
         .hide-scrollbar::-webkit-scrollbar {
         display: none;
       }
-	  </style>
+	</style>
 	<!-- CSS only -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 </head>
@@ -87,7 +86,7 @@
 									<a class="nav-liink" href="/users/<%= user._id %>">Games</a>
 								</li>
 								<li class="nav-item">
-									<a class="nav-liink" href="/users/<%= user._id %>/stream">Stream</a>
+									<a class="nav-liink" href="/users/livestreams/<%= user._id %>">Stream</a>
 								</li>
 								<li class="nav-item">
 									<a class="nav-liink" href="/users/<%= user._id %>/chat">Message</a>
@@ -109,59 +108,32 @@
                         display: inline-block !important;
                         float: none!important;
                     }
-                </style>
+				</style>
+				<a href="/users/hoststream/<%= user._id %>" style="text-decoration:none;border-color:#BB86FC ;"><div class="butn float-right" style="font-size:x-large;font-weight: 800;border-color: #BB86FC;">Host Stream</div></a>
 				<div class="container hide-scrollbar">
-                    <p style="font-weight: bolder;color: #BB86FC;font-size:x-large;">POPULAR STREAMS</p>
-					<div class="xoverflow hide-scrollbar">
-                        
-						<div class="dinline m-2">
-							<div class="card" style="width: 18rem;height: 18rem;">
-								<img src="https://sportsshow.net/media/2019/04/_3/760x450/Most-Popular-Online-Games-1.jpg" class="card-img-top" alt="...">
-								<div class="card-body">
-									<a href="/users/stream/:id" class="btn">Game</a>
+					<p style="font-weight: bolder;color: #BB86FC;font-size:x-large;" class="clear-right">POPULAR STREAMS</p>
+					<div class="xoverflow hide-scrollbar" id="popular">
+						<% if (live.length==0) { %>
+							<div class="dinline m-2">
+								<div class="card" style="width: 0rem;height: 18rem;">
 								</div>
 							</div>
-							<br>
-						</div>
-						<div class="dinline m-2">
-							<div class="card" style="width: 18rem;height: 18rem;">
-								<img src="https://filmdaily.co/wp-content/uploads/2020/05/games-01.jpg" class="card-img-top" alt="...">
-								<div class="card-body">
-									<a href="#" class="btn">games</a>
+							<% } %>
+						<% for (var i = 0; i < live.length; i++) { %>
+							<div class="dinline m-2">
+								<div class="card" style="width: 18rem;height: 18rem;">
+									<img src="https://filmdaily.co/wp-content/uploads/2020/05/games-01.jpg" class="card-img-top" alt="...">
+									<div class="card-body">
+										<a href="/users/stream/<%=live[i][0]%>/<%= user._id %>" class="btn"><%=live[i][1]%></a>
+										<p style="color: #BB86FC;font-size: smaller;"><%=live[i][2]%></p>
+									</div>
 								</div>
+								<br>
 							</div>
-							<br>
-						</div>
-						<div class="dinline m-2">
-							<div class="card" style="width: 18rem;height: 18rem;">
-								<img src="https://filmdaily.co/wp-content/uploads/2020/05/games-01.jpg" class="card-img-top" alt="...">
-								<div class="card-body">
-									<a href="#" class="btn">Games</a>
-								</div>
-							</div>
-							<br>
-						</div>
-						<div class="dinline m-2">
-							<div class="card" style="width: 18rem;height: 18rem;">
-								<img src="https://filmdaily.co/wp-content/uploads/2020/05/games-01.jpg" class="card-img-top" alt="...">
-								<div class="card-body">
-									<a href="#" class="btn">Games</a>
-								</div>
-							</div>
-							<br>
-						</div>
-						<div class="dinline m-2">
-							<div class="card" style="width: 18rem;height: 18rem;">
-								<img src="https://filmdaily.co/wp-content/uploads/2020/05/games-01.jpg" class="card-img-top" alt="...">
-								<div class="card-body">
-									<a href="#" class="btn">Games</a>
-								</div>
-							</div>
-							<br>
-                        </div>
+						<% } %>
                     </div>
                     <p style="font-weight: bolder;color: #BB86FC;font-size:x-large;">FOLLOWERS STREAMS</p>
-				    <div class="xoverflow hide-scrollbar">
+				    <div class="xoverflow hide-scrollbar " id=followers2>
 						<div class="dinline m-2">
 							<div class="card" style="width: 18rem;height: 18rem;">
 								<img src="https://filmdaily.co/wp-content/uploads/2020/05/games-01.jpg" class="card-img-top" alt="...">
@@ -209,7 +181,7 @@
                         </div>
                     </div>
                     <p style="font-weight: bolder;color: #BB86FC;font-size:x-large;">POPULAR GAMES</p>
-                    <div class="xoverflow hide-scrollbar">
+                    <div class="xoverflow hide-scrollbar" id="games">
 						<div class="dinline m-2">
 							<div class="card" style="width: 18rem;height: 18rem;">
 								<img src="https://filmdaily.co/wp-content/uploads/2020/05/games-01.jpg" class="card-img-top" alt="...">
