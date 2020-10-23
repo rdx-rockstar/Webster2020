@@ -4,8 +4,13 @@
 <head>
 	<title>Chat</title>
 	<link rel="stylesheet" href="/css/chatbox.css">
-	<link rel="icon" href="gaming.svg">
+	<link rel="icon" href="/icons/gaming.svg">
 	<!-- CSS only -->
+	<style>
+		.hide-scrollbar::-webkit-scrollbar {
+		display: none;
+	  }
+	</style>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
@@ -36,7 +41,7 @@
 			<div class="linee"></div>
 			<!--- contact list  -->
 			<div class="card contacts_card">
-				<div class="card-body contacts_body">
+				<div class="card-body contacts_body hide-scrollbar">
 					<ui class="contacts">
 						<li class="active">
 							<div class="d-flex bd-highlight">
@@ -176,13 +181,13 @@
 							<li class="nav-item">
 								<a class="nav-liink" href="/home">Home</a>
 							</li>
-							<li class="nav-item active">
+							<li class="nav-item ">
 								<a class="nav-liink" href="/users/<%= user._id %>">Games</a>
 							</li>
 							<li class="nav-item">
 								<a class="nav-liink" href="/users/livestreams/<%= user._id %>">Stream</a>
 							</li>
-							<li class="nav-item">
+							<li class="nav-item active">
 								<a class="nav-liink" href="/users/<%= user._id %>/chat">Message</a>
 							</li>
 							<li class="nav-item">
@@ -222,7 +227,7 @@
 						</div>
 					</div>
 					<!--chats-->
-					<div class="card-body msg_card_body">
+					<div class="card-body msg_card_body hide-scrollbar">
 						<div class="d-flex justify-content-start mb-3">
 							<!--The justify-content property aligns the flexible container's items when the items do not use all available space on the main-axis (horizontally).-->
 							<div class="img_cont_msg">

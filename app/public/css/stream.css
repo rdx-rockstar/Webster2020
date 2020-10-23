@@ -8,7 +8,9 @@ padding-top: 20px;
 padding-right: 10px;
 }
 
-
+body{
+  background-color: #121212!important;
+}
 h2{
  color: #fff;
 }
@@ -187,8 +189,7 @@ a .nav-link{
 /* ---------------------------------------------------
    CONTENT STYLE
 ----------------------------------------------------- */
-
-/* #content {
+ #content {
    width: 100%;
    padding: 20px;
    min-height: 10vh;

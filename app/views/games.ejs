@@ -6,6 +6,11 @@
 	<link rel="stylesheet" href="/css/games.css">
 	<script src="https://kit.fontawesome.com/a076d05399.js"></script>
 	<link rel="icon" href="/icons/gaming.svg">
+	<style>
+		.hide-scrollbar::-webkit-scrollbar {
+		display: none;
+	  }
+	</style>
 	<!-- CSS only -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 </head>
@@ -25,9 +30,11 @@
 				<div class="linee"></div>
 				<ul class="list-unstyled components">
 					<div class="menu">
-						<% if(user.provider == "google"){ %>
+						<a href="/users/<%= user._id %>">
+							<% if(user.provider == "google"){ %>
 							<img src="<%= user.googleProfilePicture %>" alt="profile">
 							<p><%= name[0] %></p>
+						</a>
 						<% } else if(user.provider == "facebook"){ %>
 							<img src="/images/default.png" alt="profile">
 							<p><%= name[0] %></p>
@@ -67,8 +74,8 @@
 			<!-- Page Content  -->
 			<div id="content">
 				<!-- top navbar  -->
-				<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #1D1D1D">
-					<div class="container-fluid">
+				<nav class="navbar navbar-expand-lg navbar-light hide-scrollbar" style="background-color: #1D1D1D">
+					<div class="container-fluid hide-scrollbar">
 						<!-- button  -->
 						<button type="button" id="sidebarCollapse" class="bttn" aria-expanded="false">
 							<i class="fas fa-align-left"></i>
@@ -104,7 +111,7 @@
 				</nav>
 				<!--body-->
 
-				<div class="container">
+				<div class="container hide-scrollbar">
 					<div class="row">
 						<% if(user) { %>
 							<% user.posts.forEach(function(post){ %>

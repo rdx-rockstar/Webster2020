@@ -6,6 +6,11 @@
 	<link rel="stylesheet" href="/css/games.css">
 	<script src="https://kit.fontawesome.com/a076d05399.js"></script>
 	<link rel="icon" href="./gaming.svg">
+	<style>
+		.hide-scrollbar::-webkit-scrollbar {
+		display: none;
+	  }
+	</style>
 	<!-- CSS only -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 </head>
@@ -20,7 +25,7 @@
 <!-- Page Content  -->
 			<div id="content">
   	<!-- top navbar  -->
-				<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #1D1D1D">
+				<nav class="navbar navbar-expand-lg navbar-light hide-scrollbar" style="background-color: #1D1D1D">
 					<div class="container-fluid">
 						<!-- button  -->
 						<button class="bttn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -57,9 +62,9 @@
 				</nav>
 				<!--body-->
 
-				<div class="container">
+				<div class="container hide-scrollbar">
 							<div style="" class="m-3">
-								<div class="card" style="width: 700px; height: 700px;background: #121212;">
+								<div class="card hide-scrollbar" style="width: 700px; height: 700px;background: #121212;">
 									<div class="card-header msg_head">
 										<div class="d-flex bd-highlight">
 											<div class="img_cont">

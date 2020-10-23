@@ -12,6 +12,18 @@ router.get('/users/:id',isLoggedIn,(req,res) => {
     }
     else{
       var name = foundUser.username.split(" ");
+      return res.render('selfPosts',{name:name,user:foundUser});
+    }
+  })
+});
+router.get('/games/:id',isLoggedIn,(req,res) => {
+  User.findById(req.params.id).populate("posts").exec(function(err,foundUser){
+    if(err){
+      console.log(err);
+      return res.render('error');
+    }
+    else{
+      var name = foundUser.username.split(" ");
       return res.render('games',{name:name,user:foundUser});
     }
   })

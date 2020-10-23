@@ -6,13 +6,18 @@
 	<link rel="stylesheet" href="/css/games.css">
 	<script src="https://kit.fontawesome.com/a076d05399.js"></script>
   <link rel="icon" href="/icons/gaming.svg">
+  <style>
+    .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+</style>
 	<!-- CSS only -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 </head>
 
 
 <body>
-	<div class="container-big">
+	<div class="container-big hide-scrollbar">
 
 		<div class="wrapper">
 			<!-- Sidebar  -->
@@ -24,9 +29,11 @@
 				<ul class="list-unstyled components">
 					<div class="menu">
 						<% if(user) { %>
+					<a href="/users/<%= user._id %>">
 						<% if(user.provider == "google"){ %>
 						<img src="<%= user.googleProfilePicture %>" alt="profile">
 						<p><%= name[0] %></p>
+					</a>
 						<% } else if(user.provider == "facebook"){ %>
 						<img src="/images/default.png" alt="profile">
 						<p><%= name[0] %></p>
@@ -90,7 +97,7 @@
                                         <a class="nav-liink" href="/home">Home</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-liink" href="/users/<%= user._id %>">Games</a>
+                                        <a class="nav-liink" href="/games/<%= user._id %>">Games</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-liink" href="/users/livestreams/<%= user._id %>">Stream</a>
@@ -115,9 +122,9 @@
 				</nav>
 				<!--body-->
 
-				<div class="container">
+				<div class="container hide-scrollbar">
 					<div class="row">
-						<div class="col-md-8" style="margin-right:10px;">
+						<div class="col-md-8 hide-scrollbar" style="margin-right:10px;">
 							<div style="" class="m-3">
 								<div class="card" style="width: 720px; height: 670px;background: #121212;">
 									<div class="card-header msg_head">
@@ -174,8 +181,8 @@
 						</div>
 
 <!-- Suggesions for you -->
-						<div id="col-sm" class="col-sm">
-							<div class="card" style="width: 300px; height: 226px;">
+						<div id="col-sm" class="col-sm hide-scrollbar">
+							<div class="card hide-scrollbar" style="width: 300px; height: 226px;">
 								<h4 class="m-3" style="color:#FF7597">Suggesions for you</h4>
 								<div class="d-flex m-2">
 									<div class="img_cont">
@@ -223,7 +230,7 @@
 
 
 	<!-- Explore! -->
-							<div class="card" style="width: 300px; height: 226px;">
+							<div class="card hide-scrollbar" style="width: 300px; height: 226px;">
 								<h4 class="m-3" style="color:#FF7597">Explore!</h4>
 								<div class="d-flex m-2">
 									<div class="img_cont">
