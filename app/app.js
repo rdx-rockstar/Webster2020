@@ -1,12 +1,12 @@
 // dotenv for securing important keys.
 require('dotenv').config()
 
-// Requiring dependencies and Strategies. 
+// Requiring dependencies and Strategies.
 const createError   = require('http-errors'),
       express       = require('express'),
       path          = require('path'),
       cookieParser  = require('cookie-parser'),
-      bodyParser    = require('body-parser'), 
+      bodyParser    = require('body-parser'),
       mongoose      = require('mongoose'),
       session       = require('express-session'),
       passport      = require('passport'),
@@ -86,7 +86,12 @@ app.get('/home',(req,res) => {
   res.render('home.ejs',{name:name,user:req.user});
 });
 
+app.get('/showpost',(req,res) =>{
+  res.render('onepostShow.ejs');
+});
+
 app.use('/', usersRouter);
+
 
 // Middleware
 function isLoggedIn(req,res,next){
