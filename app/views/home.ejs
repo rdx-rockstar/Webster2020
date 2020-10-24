@@ -125,59 +125,36 @@
 				<div class="container hide-scrollbar">
 					<div class="row">
 						<div class="col-md-8 hide-scrollbar" style="margin-right:10px;">
-							<div style="" class="m-3">
-								<div class="card" style="width: 720px; height: 670px;background: #121212;">
-									<div class="card-header msg_head">
-										<div class="d-flex bd-highlight">
-											<div class="img_cont">
-												<img src="https://images.unsplash.com/photo-1459245330819-1b6d75fbaa35?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80" class="rounded-circle user_img">
-												<!-- <span class="online_icon"></span> -->
-												<!--<span> tag is an inline container used to mark up a part of a text, or a part of a document-->
+							<% if(posts){ %>
+								<% posts.forEach(post => { %>
+									<div class="m-3">
+										<div class="card" style="width: 720px; height: 670px;background: #121212;">
+											<div class="card-header msg_head">
+												<div class="d-flex bd-highlight">
+													<div class="img_cont">
+														<img src="https://images.unsplash.com/photo-1459245330819-1b6d75fbaa35?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80" class="rounded-circle user_img">
+														<!-- <span class="online_icon"></span> -->
+														<!--<span> tag is an inline container used to mark up a part of a text, or a part of a document-->
+													</div>
+													<div class="user_info">
+														<span><%= post.createdBy.email %></span>
+													</div>
+												</div>
 											</div>
-											<div class="user_info">
-												<span>Kshitij Verma</span>
-											</div>
-										</div>
-									</div>
-									<img style="width: 720px; height: 500px;" src="https://s3.amazonaws.com/prod-media.gameinformer.com/2020/09/29/5ed3b9d0/among_us_review.jpg" class="card-img" alt="...">
-									<div class="card-body d-flex m-2">
-										<div class="likes">
-											<span><i class="fas fa-heart"></i></span>
-											<span><i class="fas fa-heart-broken"></i></span>
-										</div>
-										<div class="notfound">
-											 <a style="margin-left:200px;" href="/showpost">Show More!</a>
-										</div>
-									</div>
-								</div>
-							</div>
-
-							<div style="" class="m-3">
-								<div class="card" style="width: 720px; height: 670px;background: #121212;">
-									<div class="card-header msg_head">
-										<div class="d-flex bd-highlight">
-											<div class="img_cont">
-												<img src="https://images.unsplash.com/photo-1459245330819-1b6d75fbaa35?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80" class="rounded-circle user_img">
-												<!-- <span class="online_icon"></span> -->
-												<!--<span> tag is an inline container used to mark up a part of a text, or a part of a document-->
-											</div>
-											<div class="user_info">
-												<span>Kshitij Verma</span>
+											<img style="width: 720px; height: 500px;" src="<%= post.thumbnail %>" class="card-img" alt="...">
+											<div class="card-body d-flex m-2">
+												<div class="likes">
+													<span><i class="fas fa-heart"></i></span>
+													<span><i class="fas fa-heart-broken"></i></span>
+												</div>
+												<div class="notfound">
+													 <a style="margin-left:200px;" href="/posts/<%= post._id %>">Show More!</a>
+												</div>
 											</div>
 										</div>
 									</div>
-									<img style="width: 720px; height: 500px;" src="https://s3.amazonaws.com/prod-media.gameinformer.com/2020/09/29/5ed3b9d0/among_us_review.jpg" class="card-img" alt="...">
-									<div class="card-body d-flex m-2">
-										<div class="likes">
-											<span><i class="fas fa-heart"></i></span>
-											<span><i class="fas fa-heart-broken"></i></span>
-										</div>
-										<div class="notfound">
-											 <a style="margin-left:200px;" href="/showpost">Show More!</a>
-										</div>
-									</div>
-								</div>
-							</div>
+								<% }); %>
+							<% } %>
 						</div>
 
 <!-- Suggesions for you -->
