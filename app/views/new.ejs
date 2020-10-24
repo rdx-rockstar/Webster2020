@@ -16,7 +16,9 @@
     <form action="/posts" method="POST" enctype="multipart/form-data">
         <div class="form-group">
             
-            <label for="image">Select Video</label>
+            <label for="video">Select Video</label>
+            <input type="file" name="file" class="form-control-file" id="video" accept="video/*">
+            <label for="image">Select Thumbnail</label>
             <input type="file" name="file" class="form-control-file" id="image" accept="image/*">
             <div class="form-group">
                 <label for="exampleInputEmail1">Caption</label>

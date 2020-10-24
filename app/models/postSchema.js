@@ -1,9 +1,8 @@
 const mongoose = require('mongoose');
 
 const postSchema = new mongoose.Schema({
-    // videoURL: String,
-    // thumbnail: String,
-    image: String,
+    videoURL: String,
+    thumbnail: String,
     caption: String,
     createdBy:{
         id:{
