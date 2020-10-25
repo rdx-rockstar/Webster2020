@@ -12,6 +12,8 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="/js/client.js"></script>
 	<style>
         .hide-scrollbar::-webkit-scrollbar {
         display: none;
@@ -26,10 +28,9 @@
 	<div class="container-big">
 
 		<div class="col">
-			<!-- Sidebar  -->
 
 			<!-- Page Content  -->
-			<div id="content">
+			<div id="content" style="background-color: #121212">
 				<!-- top navbar  -->
 				<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #1D1D1D">
 					<div class="container-fluid">
@@ -64,7 +65,16 @@
 						</div>
 					</div>
 				</nav>
-				<!--body-->
+				<style>
+                    .xoverflow{
+                        overflow-x:scroll!important;
+                        white-space: nowrap!important; 
+                    }
+                    .dinline{
+                        display: inline-block !important;
+                        float: none!important;
+                    }
+				</style>
 
 				<div class="row" id="container hide-scrollbar">
 					<div class="col-sm-9 hide-scrollbar">
@@ -76,10 +86,10 @@
 							</div>
 						</div>
 						<div class="textss">
-							<h1 style="text-align: left; color:#FF7597">Among Us</h1>
+							<h1 style="text-align: left; color:#FF7597">set lable</h1>
+							<h8 style="text-align: left; color:#FF7597"><%= name[0] %></h8>
 							<h6 style="text-align: left; color:#FF7597">#hashtag #hashtag #hashtag</h6>
 						</div>
-
 						<div class="likes">
 							<span><i class="fas fa-heart"></i></span>
 							<span><i class="fas fa-heart-broken"></i></span>
@@ -92,7 +102,7 @@
 								<li><a href="/auth/google"><i class="fab fa-google" aria-hidden="true"></i></a></li>
 								<li> <a href="/auth/steam"><i class="fab fa-instagram" aria-hidden="true"></></i></a></li>
 							</ul>
-				
+		
 						</div>
 					</div>
 
@@ -100,10 +110,8 @@
 				</section>
 
 			</div>
-			
 		</div>
-		
-		<div class="container hide-scrollbar">
+		<div class="container">
 			<div class="row">
 
 				<div class="chatbox" style="bottom: 0px; right: 10px; width:400px;display: block;">
@@ -112,24 +120,24 @@
 							<div class="card-header msg_head">
 								<div class="d-flex bd-highlight">
 									<div class="img_cont">
-										<img src="https://images.unsplash.com/photo-1459245330819-1b6d75fbaa35?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80" class="rounded-circle user_img">
+										<img src="<%=user.googleProfilePicture%>" class="rounded-circle user_img">
 										<span class="online_icon"></span>
 										<!--<span> tag is an inline container used to mark up a part of a text, or a part of a document-->
 									</div>
 									<div class="user_info">
-										<span>Kshitij Verma</span>
-										<p>Online</p>
+										<span><%= name[0] %></span>
+										<p id="count">0 live</p>
 									</div>
-									<div class="video_cam">
-										<span><i class="fas fa-video"></i></span>
-										<span><i class="fas fa-phone"></i></span>
+									<div class="video_cam float-sm-right">
+										<span id="toggle"><i class="fas fa-user-friends"></i></span>
 									</div>
 								</div>
 							</div>
 							<!--chats-->
-							<div class="card-body msg_card_body hide-scrollbar">
+							<div class="card-body msg_card_body hide-scrollbar" id="chat">
+								<!--
 								<div class="d-flex justify-content-start mb-4">
-									<!--The justify-content property aligns the flexible container's items when the items do not use all available space on the main-axis (horizontally).-->
+									The justify-content property aligns the flexible container's items when the items do not use all available space on the main-axis (horizontally).
 									<div class="img_cont_msg">
 										<img src="https://images.unsplash.com/photo-1459245330819-1b6d75fbaa35?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80" class="rounded-circle user_img_msg">
 									</div>
@@ -193,7 +201,7 @@
 									</div>
 								</div>
 								<div class="d-flex justify-content-start mb-4">
-									<!--The justify-content property aligns the flexible container's items when the items do not use all available space on the main-axis (horizontally).-->
+									<!--The justify-content property aligns the flexible container's items when the items do not use all available space on the main-axis (horizontally).--
 									<div class="img_cont_msg">
 										<img src="https://images.unsplash.com/photo-1459245330819-1b6d75fbaa35?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80" class="rounded-circle user_img_msg">
 									</div>
@@ -255,33 +263,34 @@
 										yes!
 										<span class="msg_time">15:29 PM, Today</span>
 									</div>
-								</div>
+								</div>-->
 							</div>
-							<div class="card-footer">
+							<div id="liveUsers">
+							</div>
+							<div class="card-footer" id="sendgrp">
 								<div class="input-group">
 									<div class="input-group-append">
 										<span class="input-group-text attach_btn"><i class="fas fa-paperclip"></i></span>
 									</div>
-									<textarea name="" class="form-control type_msg" placeholder="Type your message..."></textarea>
+									<textarea name="" class="form-control type_msg hide-scrollbar" id="Mssg" placeholder="Type your message..."></textarea>
 									<div class="input-group-append">
-										<span class="input-group-text send_btn"><i class="fas fa-location-arrow"></i></span>
+										<span class="input-group-text send_btn" id="sendbtn"><i class="fas fa-location-arrow"></i></span>
 									</div>
 								</div>
 							</div>
-
-
 						</div>
-
-
 				</div>
-
-
 			</div>
 		</div>
 	</div>
 	</div>
 	</div>
-
+<script>
+	const room="<%= room %>"
+	const username="<%= name[0] %>"
+	const uid="<%= user._id %>"
+	const pic="<%= user.googleProfilePicture %>"
+</script>
 	<!-- jQuery CDN - Slim version (=without AJAX) -->
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 	<!-- Popper.JS -->
@@ -295,33 +304,6 @@
 				$('#sidebar').toggleClass('active');
 			});
 		});
-	</script>
-
-
-
-	<script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
-	<script>
-		function addDarkmodeWidget() {
-			new Darkmode().showWidget();
-		}
-		window.addEventListener('load', addDarkmodeWidget);
-	</script>
-	<script type="text/javascript">
-		var options = {
-			// bottom: '64px', // default: '32px'
-			// right: '200px', // default: '32px'
-			// left: '0px', // default: 'unset'
-			time: '0.5s', // default: '0.3s'
-			mixColor: '#fff', // default: '#fff'
-			backgroundColor: '#121212', // default: '#fff'
-			buttonColorDark: '#fff', // default: '#100f2c'
-			buttonColorLight: '#121212', // default: '#fff'
-			saveInCookies: false, // default: true,
-			label: '🌓' // default: ''
-		}
-
-		const darkmode = new Darkmode(options);
-		darkmode.showWidget();
 	</script>
 </body>
 
