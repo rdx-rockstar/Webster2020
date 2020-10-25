@@ -6,13 +6,15 @@ require('dotenv').config()
 const createError   = require('http-errors'),
       express       = require('express'),
       path          = require('path'),
+      fs            = require('fs'),
       cookieParser  = require('cookie-parser'),
       bodyParser    = require('body-parser'),
       mongoose      = require('mongoose'),
       session       = require('express-session'),
       passport      = require('passport'),
       logger        = require('morgan'),
-      multer        = require('multer'),
+      upload        = require('./multer'),
+      cloudinary    = require('./strategies/cloudinary'),
       Post          = require('./models/postSchema'),
       LocalStrategy = require('passport-local').Strategy;
 
@@ -28,49 +30,36 @@ const indexRouter = require('./routes/index'),
 // Initializing app
 const app = express();
 
-// Setting up storage
-const storage = multer.diskStorage({
-  // destination: './public/videos/',
-  filename: function(req, file, cb){
-    cb(null, file.originalname.split(".")[0] + '-' + Date.now() + path.extname(file.originalname));
-  }
-});
 
-const upload = multer({
-  storage: storage,
-  limits: {
-    fieldSize: 300*1024*1024
-  },
-  fileFilter: function(req,file,cb){
-    checkFileTypes(file,cb);
-  }
-});
 
-// Check File Type
-function checkFileTypes(file,cb){
-  // Allowed extensions
-  // const fileTypes = /mp4|mpeg|m4v|avi|mpg|webm/;
-  const fileTypes = /jpeg|jpg|png|gif/;
-  
-  // Check extensions
-  const extname = fileTypes.test(path.extname(file.originalname).toLowerCase());
-  // Check mimetypes
-  const mimetype = fileTypes.test(file.mimetype);
+// const upload = multer({
+//   storage: storage,
+//   limits: {
+//     fieldSize: 300*1024*1024
+//   },
+//   fileFilter: function(req,file,cb){
+//     checkFileTypes(file,cb);
+//   }
+// }).fields([
+//   {name: 'file',maxCount: 2}
+// ]);
 
-  if(mimetype && extname){
-    cb(null,true);
-  } else {
-    cb(new Error('Error: Videos Only!!'),false);
-  }
-}
+// const upload = multer({
+//   storage: storage,
+//   limits: {
+//     fieldSize: 300*1024*1024
+//   },
+//   fileFilter: function(req,file,cb){
+//     checkFileTypes(file,cb);
+//   }
+// }).fields([
+//   {name: 'thumbnail', maxCount: 1},
+//   {name:'video', maxCount: 1}
+// ]);
 
-// Configure Cloudinary
-const cloudinary = require('cloudinary').v2;
-cloudinary.config({ 
-  cloud_name: 'holaholahola', 
-  api_key: process.env.CLOUDINARY_API_KEY, 
-  api_secret: process.env.CLOUDINARY_API_SECRET
-});
+
+
+
 
 
 // Setting up our view engine
@@ -81,6 +70,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({extended: true}));
@@ -132,16 +122,29 @@ app.get('/posts/new',isLoggedIn,function(req,res){
   res.render('new.ejs');
 });
 
-app.post('/posts',upload.single('file'),(req,res) => {
-  cloudinary.uploader.upload(req.file.path, function(error, result) {
-    console.log(result);
+app.post('/posts',upload.array('file'),async (req,res) => {
+  console.log(req.files);
+  console.log("--------------------------");
+  const uploader = async (path) => await cloudinary.uploads(path,'Posts');
+  try{
+    const urls = [];
+    const files = req.files;
+    for(const file of files){
+      const {path} = file;
+      const newPath = await uploader(path);
+      console.log(newPath)
+      urls.push(newPath);
+      fs.unlinkSync(path);
+    }
+    console.log(urls);
     var post = new Post({
-      image: result.secure_url,
+      videoURL: urls[0].url,
+      thumbnail: urls[1].url,
       caption: req.body.caption,
       createdBy:{
         id: req.user._id,
         email: req.user.email
-      }
+      } 
     });
     User.findById(req.user._id,(er,currentUser) => {
       if(er){
@@ -149,6 +152,7 @@ app.post('/posts',upload.single('file'),(req,res) => {
         return res.redirect('/register');
       }
       Post.create(post, function(err, post) {
+        console.log("PoSt");
         console.log(post);
         if (err) {
           console.log(err);
@@ -160,11 +164,30 @@ app.post('/posts',upload.single('file'),(req,res) => {
           res.redirect('/users/' + currentUser._id);
       });
     })
-  });
+  }catch(e){
+    console.log(e);
+    res.status(405).json({
+      err: "not uploaded",
+    })
+  }
+  // cloudinary.uploader.upload(req.files, function(error, result) {
+    
+    
+    
+  // });
 });
 
-app.get('/showpost',(req,res) =>{
-  res.render('onepostShow.ejs');
+app.get('/posts/:id',(req,res) =>{
+  Post.findById(req.params.id,function(err,post){
+    console.log(post);
+    if(err){
+      console.log(err);
+      return res.status(404).json({
+        message: "Something went wrong"
+      });
+    }
+    res.render('onepostShow.ejs',{post:post});
+  })
 });
 
 function isLoggedIn(req,res,next){

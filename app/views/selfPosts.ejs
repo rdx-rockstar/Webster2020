@@ -115,9 +115,9 @@
 							<% user.posts.forEach(function(post){ %>
 								<div class="col-sm">
 									<div class="card" style="width: 18rem;">
-										<img src="<%= post.image %>" class="card-img-top" alt="...">
+										<img src="<%= post.thumbnail %>" class="card-img-top" alt="...">
 										<div class="card-body">
-											<a href="#" class="btn">Show More</a>
+											<a href="/posts/<%= post._id %>" class="btn">Show More</a>
 										</div>
 									</div>
 									<br>
