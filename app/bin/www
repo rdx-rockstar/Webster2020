@@ -7,6 +7,7 @@
 var app = require('../app');
 var debug = require('debug')('app:server');
 var http = require('http');
+var broadcaster = new Map();
 
 /**
  * Get port from environment and store in Express.
@@ -39,6 +40,7 @@ io.on('connection', socket => {
     console.log(username+" joined room");
     const user = userJoin(socket.id, username, room);
     socket.join(user.room);
+   // socket.join(socket.id);
     // Welcome current user
     socket.emit('message', formatMessage(botName, 'Welcome to '+room+"'s room!","","/icons/gaming.svg"));
     // Broadcast when a user connects
@@ -78,6 +80,35 @@ io.on('connection', socket => {
         users: getRoomUsers(user.room)
       });
     }
+  });
+  //////video
+  socket.on("broadcaster", (room) => {
+    console.log("bradcaster came to server at "+room);
+    broadcaster.set(room,socket.id);
+    console.log(broadcaster.get(room)+" "+socket.id)
+    socket.broadcast.to(room).emit("broadcaster");//set broacster for every room in utils users
+  });
+  socket.on("watcher", (room) => {
+    console.log(broadcaster.get(room)+" bro.. id");
+    var i=socket.id;
+    console.log(i);
+    io.to(broadcaster.get(room)).emit("watcher",i);
+    console.log("watcher came to server at "+room);
+  });
+  socket.on("offer", (id, message) => {
+    console.log("offer came");
+    socket.to(id).emit("offer", socket.id, message);
+  });
+  socket.on("answer", (id, message) => {
+    console.log("answer");
+    socket.to(id).emit("answer", socket.id, message);
+  });
+  socket.on("candidate", (id, message) => {
+    console.log("candidate");
+    socket.to(id).emit("candidate", socket.id, message);
+  });
+  socket.on("disconnect", () => {
+//    socket.to(broadcaster).emit("disconnectPeer", socket.id);
   });
 });
 /////////

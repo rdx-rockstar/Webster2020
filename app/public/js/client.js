@@ -117,4 +117,76 @@ function outputUsers(users) {
   });
   Counter.innerHTML=count+" Live";
  }
+ ////////video
+let peerConnection;
+const config = { 
+  iceServers: [
+      { 
+        "urls": "stun:stun.l.google.com:19302",
+      },
+      // { 
+      //   "urls": "turn:TURN_IP?transport=tcp",
+      //   "username": "TURN_USERNAME",
+      //   "credential": "TURN_CREDENTIALS"
+      // }
+  ]
+};
+
+const video = document.getElementById("v&a");
+const videoElem = document.getElementById("screen");
+///
+socket.emit("watcher",room);
+console.log("watcher came on "+room);
+//
+socket.on("offer", (id, description) => {
+  peerConnection = new RTCPeerConnection(config);
+  peerConnection
+    .setRemoteDescription(description)
+    .then(() => peerConnection.createAnswer())
+    .then(sdp => peerConnection.setLocalDescription(sdp))
+    .then(() => {
+      socket.emit("answer", id, peerConnection.localDescription);
+    });
+    let cnt=1;
+  peerConnection.ontrack = event => {
+    console.log(".");
+      console.log(event);
+      
+    if(cnt<3){
+      cnt+=1;
+      console.log("1");
+    video.srcObject = event.streams[0];}
+    else{
+      console.log("2");
+      cnt=1;
+    videoElem.srcObject=event.streams[0];}
+  };
+  peerConnection.onicecandidate = event => {
+    if (event.candidate) {
+      socket.emit("candidate", id, event.candidate);
+    }
+  };
+  console.log("offer came and answer sent");
+});
+video.muted = false;
+
+socket.on("candidate", (id, candidate) => {
+  peerConnection
+    .addIceCandidate(new RTCIceCandidate(candidate))
+    .catch(e => console.error(e));
+});
+
+socket.on("broadcaster", () => {
+  console.log("broadcaster came");
+  socket.emit("watcher",room);
+});
+
+socket.on("disconnectPeer", () => {
+  peerConnection.close();
+});
+
+window.onunload = window.onbeforeunload = () => {
+  socket.close();
+};
+
 }

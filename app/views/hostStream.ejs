@@ -13,7 +13,7 @@
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="/socket.io/socket.io.js"></script>
-	<script src="/js/client.js"></script>
+	<script src="/js/host.js"></script>
 	<style>
         .hide-scrollbar::-webkit-scrollbar {
         display: none;
@@ -49,10 +49,10 @@
 								<li class="nav-item">
 									<a class="nav-liink" href="/home">Home</a>
 								</li>
-								<li class="nav-item active">
+								<li class="nav-item ">
 									<a class="nav-liink" href="/users/<%= user._id %>">Games</a>
 								</li>
-								<li class="nav-item">
+								<li class="nav-item active">
 									<a class="nav-liink" href="/users/livestreams/<%= user._id %>">Stream</a>
 								</li>
 								<li class="nav-item">
@@ -80,15 +80,25 @@
 					<div class="col-sm-9 hide-scrollbar">
 						<div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
 							<div class="carousel-inner">
-								<div class="carousel-item active">
-									<img src="https://staticg.sportskeeda.com/editor/2020/09/2e881-16000838182781-800.jpg" class="d-block w-100" alt="..." style="height: 500px;">
-								</div>
+								<video controls autoplay width="400" id="v&a"></video>
+								<video controls autoplay width="400" id="screen"></video>
 							</div>
 						</div>
 						<div class="textss">
 							<h1 style="text-align: left; color:#FF7597">set lable</h1>
 							<h8 style="text-align: left; color:#FF7597"><%= name[0] %></h8>
 							<h6 style="text-align: left; color:#FF7597">#hashtag #hashtag #hashtag</h6>
+							<button type="button" class="btn btn-primary" id="start">Start</button>
+							<button type="button" class="btn btn-primary" id="stop">Stop</button>
+							<section class="select">
+								<label for="audioSource" style="text-align: left; color:#FF7597">Audio source: </label>
+								<select id="audioSource" ></select>
+							  </section>
+						  
+							  <section class="select">
+								<label for="videoSource" style="text-align: left; color:#FF7597">Video source: </label>
+								<select id="videoSource"></select>
+							  </section>
 						</div>
 						<div class="likes">
 							<span><i class="fas fa-heart"></i></span>
