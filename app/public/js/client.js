@@ -8,6 +8,7 @@ const toggle= document.getElementById('toggle');
 const msend= document.getElementById('sendgrp');
 const send=document.getElementById('sendbtn');
 userList.style.display = "none";
+
 toggle.onclick=function(){
   if(flag==0){
     flag=1;
