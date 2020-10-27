@@ -376,12 +376,14 @@ background-color: rgba(0,0,0,0.3) !important;
     .video_cam{
       margin-left: 50px;
       margin-top: 5px;
+      float: right!important;
     }
     .video_cam span{
       color: white;
       font-size: 20px;
       cursor: pointer;
       margin-right: 20px;
+      float: left!important;
     }
     /*---------------------
             msg box (another person)

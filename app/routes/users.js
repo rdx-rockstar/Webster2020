@@ -29,12 +29,14 @@ router.get('/games/:id',isLoggedIn,(req,res) => {
   })
 });
 router.get('/users/hoststream/:id',(req,res) => {
+  //liveUser.remove({},function(err,currentUser){});
   User.findById(req.params.id,function(err,foundUser){
     if(err){
       console.log(err);
       return res.render('error');
     } else {
           var name = foundUser.username.split(" ");
+          var pic=foundUser.googleProfilePicture;
           var email = foundUser.email;
           var l=email.length;
       liveUser.findOne({"username":email.substring(0,l-10)},function(err,currentUser){
@@ -46,6 +48,7 @@ router.get('/users/hoststream/:id',(req,res) => {
           currentUser = new liveUser({
             username : email.substring(0,l-10),
             lable:"testing",
+            pic:pic,
             thumbnail:"lol",
             uid:foundUser._id,
             name:name[0],
@@ -59,7 +62,8 @@ router.get('/users/hoststream/:id',(req,res) => {
           console.log("already there");
         }
         console.log(currentUser);
-        return res.render('hostStream',{name:name,user:foundUser});
+        var room=email.substring(0,l-10);
+        return res.render('hostStream',{name:name,room:room,user:foundUser});
     })
       /*window.onbeforeunload = function(){
       liveUser.findById(currentUser._id,function(err,foundUser){
