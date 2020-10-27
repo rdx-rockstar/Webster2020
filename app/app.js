@@ -6,16 +6,12 @@ require('dotenv').config()
 const createError   = require('http-errors'),
       express       = require('express'),
       path          = require('path'),
-      fs            = require('fs'),
       cookieParser  = require('cookie-parser'),
       bodyParser    = require('body-parser'),
       mongoose      = require('mongoose'),
       session       = require('express-session'),
       passport      = require('passport'),
-      logger        = require('morgan'),
-      upload        = require('./multer'),
-      cloudinary    = require('./strategies/cloudinary'),
-      Post          = require('./models/postSchema'),
+      logger        = require('morgan'), 
       LocalStrategy = require('passport-local').Strategy;
 
 //Requiring Routes.
@@ -25,42 +21,11 @@ const indexRouter = require('./routes/index'),
       localAuthRouter = require('./routes/local-auth'),
       googleAuthRouter = require('./routes/google-auth'),
       facebookAuthRouter = require('./routes/facebook-auth'),
-      otherRoutes = require('./routes/others');
+      otherRoutes = require('./routes/others'),
+      postRouter = require('./routes/posts');
 
 // Initializing app
 const app = express();
-
-
-
-// const upload = multer({
-//   storage: storage,
-//   limits: {
-//     fieldSize: 300*1024*1024
-//   },
-//   fileFilter: function(req,file,cb){
-//     checkFileTypes(file,cb);
-//   }
-// }).fields([
-//   {name: 'file',maxCount: 2}
-// ]);
-
-// const upload = multer({
-//   storage: storage,
-//   limits: {
-//     fieldSize: 300*1024*1024
-//   },
-//   fileFilter: function(req,file,cb){
-//     checkFileTypes(file,cb);
-//   }
-// }).fields([
-//   {name: 'thumbnail', maxCount: 1},
-//   {name:'video', maxCount: 1}
-// ]);
-
-
-
-
-
 
 // Setting up our view engine
 app.set('view engine', 'ejs');
@@ -110,85 +75,14 @@ passport.deserializeUser(function(id, done) {
 });
 
 // Telling express to use Routes
-app.use('/', indexRouter);
+app.use('/',indexRouter);
 app.use('/',homeRouter);
 app.use('/',localAuthRouter);
 app.use('/',googleAuthRouter);
 app.use('/',facebookAuthRouter);
-app.use('/', usersRouter);
+app.use('/',usersRouter);
 app.use('/',otherRoutes);
-
-app.get('/posts/new',isLoggedIn,function(req,res){
-  res.render('new.ejs');
-});
-
-app.post('/posts',upload.array('file'),async (req,res) => {
-  console.log(req.files);
-  console.log("--------------------------");
-  const uploader = async (path) => await cloudinary.uploads(path,'Posts');
-  try{
-    const urls = [];
-    const files = req.files;
-    for(const file of files){
-      const {path} = file;
-      const newPath = await uploader(path);
-      console.log(newPath)
-      urls.push(newPath);
-      fs.unlinkSync(path);
-    }
-    console.log(urls);
-    var post = new Post({
-      videoURL: urls[0].url,
-      thumbnail: urls[1].url,
-      caption: req.body.caption,
-      createdBy:{
-        id: req.user._id,
-        email: req.user.email
-      } 
-    });
-    User.findById(req.user._id,(er,currentUser) => {
-      if(er){
-        console.log(er);
-        return res.redirect('/register');
-      }
-      Post.create(post, function(err, post) {
-        console.log("PoSt");
-        console.log(post);
-        if (err) {
-          console.log(err);
-          return res.send("Error Occured");
-        }
-        console.log(currentUser);
-          currentUser.posts.unshift(post);
-          currentUser.save();
-          res.redirect('/users/' + currentUser._id);
-      });
-    })
-  }catch(e){
-    console.log(e);
-    res.status(405).json({
-      err: "not uploaded",
-    })
-  }
-  // cloudinary.uploader.upload(req.files, function(error, result) {
-    
-    
-    
-  // });
-});
-
-app.get('/posts/:id',(req,res) =>{
-  Post.findById(req.params.id,function(err,post){
-    console.log(post);
-    if(err){
-      console.log(err);
-      return res.status(404).json({
-        message: "Something went wrong"
-      });
-    }
-    res.render('onepostShow.ejs',{post:post});
-  })
-});
+app.use('/',postRouter);
 
 function isLoggedIn(req,res,next){
   if(req.isAuthenticated()){
@@ -196,7 +90,6 @@ function isLoggedIn(req,res,next){
   }
   return res.redirect('/home');
 }
-
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

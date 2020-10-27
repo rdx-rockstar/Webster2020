@@ -86,10 +86,10 @@
 						<!-- right side things on navbar  -->
 						<div class="collapse navbar-collapse" id="navbarSupportedContent">
 							<ul class="nav navbar-nav ml-auto">
-								<form class="form-inline">
-									<input class="form-control" type="search" style="background: #121212; color:#BB86FC; border-color:#FF7597; width: 60%" placeholder="Search" aria-label="Search">
+								<form class="form-inline" action="/search" method="GET">
+									<input name="search" class="form-control" type="search" style="background: #121212; color:#BB86FC; border-color:#FF7597; width: 70%" placeholder="Search" aria-label="Search">
 									<div class="notfound">
-										<button style="margin-left:6px; border-color:#FF7597; color:#FF7597;" type="submit" name="button"><i class="fas fa-search"></i>Search</button>
+										<button style="margin-left:6px; border-color:#FF7597; color:#FF7597;" type="submit">Search</button>
 									</div>
 								</form>
                                 <% if(user) { %>
@@ -144,8 +144,8 @@
 											<img style="width: 720px; height: 500px;" src="<%= post.thumbnail %>" class="card-img" alt="...">
 											<div class="card-body d-flex m-2">
 												<div class="likes">
-													<span><i class="fas fa-heart"></i></span>
-													<span><i class="fas fa-heart-broken"></i></span>
+													<span><i class="fas fa-heart"></i><%= post.likes %></span>
+													<!-- <span><i class="fas fa-heart-broken"></i></span> -->
 												</div>
 												<div class="notfound">
 													 <a style="margin-left:200px;" href="/posts/<%= post._id %>">Show More!</a>
