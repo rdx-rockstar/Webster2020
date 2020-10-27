@@ -27,10 +27,9 @@
 <body>
 	<div class="container-big">
 
-		<div class="col">
 
 			<!-- Page Content  -->
-			<div id="content" style="background-color: #121212">
+			<div id="content">
 				<!-- top navbar  -->
 				<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #1D1D1D">
 					<div class="container-fluid">
@@ -44,22 +43,22 @@
 							<ul class="nav navbar-nav ml-auto">
 								<form class="form-inline">
 									<input class="form-control" type="search" style="background: #121212; color:#BB86FC; border-color:#FF7597; width: 60%" placeholder="Search" aria-label="Search">
-									<button class="btn btn-outline my-2 my-sm-0" style="background: #121212; color:#BB86FC; " type="submit">Search</button>
+									<button class="btn btn-outline my-2 my-sm-0" style="background: #121212; color:#BB86FC; " type="submit"><i class="fas fa-search"></i>Search</button>
 								</form>
 								<li class="nav-item">
-									<a class="nav-liink" href="/home">Home</a>
+									<a class="nav-liink" href="/home"> <i class="fas fa-home"></i> Home</a>
 								</li>
 								<li class="nav-item active">
-									<a class="nav-liink" href="/users/<%= user._id %>">Games</a>
+									<a class="nav-liink" href="/users/<%= user._id %>"> <i class="fas fa-gamepad"></i> Games</a>
 								</li>
 								<li class="nav-item">
-									<a class="nav-liink" href="/users/livestreams/<%= user._id %>">Stream</a>
+									<a class="nav-liink" href="/users/livestreams/<%= user._id %>"> <i class="fas fa-video"></i> Stream</a>
 								</li>
 								<li class="nav-item">
-									<a class="nav-liink" href="/users/<%= user._id %>/chat">Message</a>
+									<a class="nav-liink" href="/users/<%= user._id %>/chat"> <i class="fas fa-comments"></i> Message</a>
 								</li>
 								<li class="nav-item">
-									<a class="nav-liink" href="/logout">Log Out</a>
+									<a class="nav-liink" href="/logout"> <i class="fas fa-sign-out-alt"></i> Log Out</a>
 								</li>
 							</ul>
 						</div>
@@ -97,12 +96,11 @@
 						<div class="footer">
 							<p>© 2020 Flick, LLC. All rights reserved | </p>
 							<p>Follow us on</p>
-							<ul>
-								<li><a href="/auth/facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a></li>
-								<li><a href="/auth/google"><i class="fab fa-google" aria-hidden="true"></i></a></li>
-								<li> <a href="/auth/steam"><i class="fab fa-instagram" aria-hidden="true"></></i></a></li>
+							<ul class="d-flex">
+								<li><a href="https://www.facebook.com/FLICKgamingWebsite"><i class="fab fa-facebook-f" aria-hidden="true"></i></a></li>
+								<li><a href=""><i class="fab fa-google" aria-hidden="true"></i></a></li>
+								<li> <a href="https://www.instagram.com/flick_india/"><i class="fab fa-instagram" aria-hidden="true"></></i></a></li>
 							</ul>
-		
 						</div>
 					</div>
 
@@ -110,8 +108,11 @@
 				</section>
 
 			</div>
-		</div>
-		<div class="container">
+
+
+	
+
+		<div class="container hide-scrollbar">
 			<div class="row">
 
 				<div class="chatbox" style="bottom: 0px; right: 10px; width:400px;display: block;">
@@ -285,6 +286,7 @@
 	</div>
 	</div>
 	</div>
+
 <script>
 	const room="<%= room %>"
 	const username="<%= name[0] %>"
@@ -305,6 +307,7 @@
 			});
 		});
 	</script>
+
 </body>
 
 </html>

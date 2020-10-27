@@ -548,6 +548,27 @@ background-color: rgba(0,0,0,0.3) !important;
 
 
 
+
+.box a{
+  margin-left: 15px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: .1s;
+  text-align: center;
+}
+
+.box a{
+  color: #fff!important;
+}
+
+.box a:hover{
+  color: #FF0266;
+  text-shadow: 6px 0px 15px #FF0266;
+}
+
+
+
+
 /*1b262c */
 
 
@@ -558,11 +579,11 @@ background-color: rgba(0,0,0,0.3) !important;
 .box a{
    padding: 7%;
    color: #fff;
-}
+}*/
 .box{
  align-self: center;
  border-radius: 10px;
  background: rgba(0, 0, 0, 0.6);
  width: 340px;
  box-shadow: 6px 8px 5px #b83b5e;
-} */
+}
