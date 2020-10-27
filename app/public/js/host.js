@@ -48,9 +48,9 @@ socket.on('message', message => {
   // Get message text
   console.log("send clicked");
   let msg = e.target.elements.msg.value;
-  
+
   msg = msg.trim();
-  
+
   if (!msg){
     return false;
   }

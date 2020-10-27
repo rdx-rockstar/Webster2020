@@ -130,10 +130,9 @@
 										<span><%= name[0] %></span>
 										<p id="count">0 live</p>
 									</div>
-									<div class="video_cam float-sm-right">
-										<span id="toggle"><i class="fas fa-user-friends"></i></span>
-									</div>
+									<span style="margin-left:160px; margin-top:20px;" id="toggle"><i class="fas fa-user-friends"></i></span>
 								</div>
+
 							</div>
 							<!--chats-->
 							<div class="card-body msg_card_body hide-scrollbar" id="chat">
@@ -288,12 +287,7 @@
 	</div>
 	</div>
 
-<script>
-	const room="<%= room %>"
-	const username="<%= name[0] %>"
-	const uid="<%= user._id %>"
-	const pic="<%= user.googleProfilePicture %>"
-</script>
+
 	<!-- jQuery CDN - Slim version (=without AJAX) -->
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 	<!-- Popper.JS -->
@@ -301,13 +295,27 @@
 	<!-- Bootstrap JS -->
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
 
-	<script type="text/javascript">
+	<!-- <script type="text/javascript">
+		$(document).ready(function() {
+			$('#action_menu_btn').click(function() {
+				$('.action_menu').toggle();
+			});
+		});
+	</script> -->
+	<script>
+		const room="<%= room %>"
+		const username="<%= name[0] %>"
+		const uid="<%= user._id %>"
+		const pic="<%= user.googleProfilePicture %>"
+	</script>
+	<!-- <script type="text/javascript">
 		$(document).ready(function() {
 			$('#sidebarCollapse').on('click', function() {
 				$('#sidebar').toggleClass('active');
 			});
 		});
-	</script>
+	</script> -->
+
 
 </body>
 
