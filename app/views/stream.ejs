@@ -93,8 +93,30 @@
 							<span><i class="fas fa-heart"></i></span>
 							<span><i class="fas fa-heart-broken"></i></span>
 						</div>
-						<p style="font-weight: bolder;color: #BB86FC;font-size:x-large;">LIVE STREAMS</p>
+						<p style="font-weight: bolder;color: #BB86FC;font-size:x-large;">OTHER LIVE STREAMS</p>
 						<div class="xoverflow hide-scrollbar " id=followers2>
+							<% if (live.length==1) { %>
+								<div class="dinline m-2">
+									<div class="card" style="width: 0rem;height: 18rem;">
+									</div>
+								</div>
+								<% } %>
+							<% for (var i = 0; i < live.length; i++) { 
+								if(streamer.username!=live[i][0]){%>
+
+								<div class="dinline m-2">
+									<div class="card" style="width: 18rem;height: 18rem;">
+										<img src="https://filmdaily.co/wp-content/uploads/2020/05/games-01.jpg" class="card-img-top" alt="...">
+										<div class="card-body">
+											<a href="/users/stream/<%=live[i][0]%>/<%= user._id %>" class="btn"><%=live[i][1]%></a>
+											<p style="color: #BB86FC;font-size: smaller;"><%=live[i][2]%> <%=live[i][4]%></p>
+										</div>
+									</div>
+									<br>
+								</div>
+								<%}%>
+							<% } %>
+							<!--
 							<div class="dinline m-2">
 								<div class="card" style="width: 18rem;height: 18rem;">
 									<img src="https://filmdaily.co/wp-content/uploads/2020/05/games-01.jpg" class="card-img-top" alt="...">
@@ -140,6 +162,7 @@
 								</div>
 								<br>
 							</div>
+							-->
 						</div>
 						<div class="footer">
 							<p>© 2020 Flick, LLC. All rights reserved | </p>

@@ -107,7 +107,18 @@ router.get('/users/stream/:streamer/:id',(req,res) => {
       }
       else{
         var name = foundUser.username.split(" ");
-        return res.render('stream',{name:name,streamer:foundstreamer,user:foundUser});
+        var liveU=[];
+        liveUser.find({},function(err,users){
+          var i;
+          console.log("live users :"+users.length);
+          for (i = 0; i < users.length; i++) {
+            console.log(users[i].name);
+            liveU.push([users[i].username,users[i].lable,users[i].name,users[i].thumbnail,users[i].hashtags]);
+          }
+          console.log("in list  "+liveU.length);
+          return res.render('stream',{name:name,streamer:foundstreamer,user:foundUser,live:liveU});        
+  });
+        
       }
     });
   }

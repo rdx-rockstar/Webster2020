@@ -304,13 +304,12 @@ function stopCapture() {
     thumbnailElem.disabled=false;
     hashtagElem.disabled=false;
   $.ajax({
-  type : "POST",
-  contentType : "json",
+    type : "POST",
+    contentType : "application/json",
   url : "/users/deluser",
   data : JSON.stringify(formData),
   dataType : 'json',
   success : function(customer) {
-
   },
   error : function(e) {
     alert("Error!")
@@ -382,8 +381,8 @@ window.onbeforeunload = function(){
     username : room,
   }
   $.ajax({
-  type : "POST",
-  contentType : "json",
+    type : "POST",
+    contentType : "application/json",
   url : "/users/deluser",
   data : JSON.stringify(formData),
   dataType : 'json',
