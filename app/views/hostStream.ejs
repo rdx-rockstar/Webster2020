@@ -12,8 +12,9 @@
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="/socket.io/socket.io.js"></script>
-	<script src="/js/client.js"></script>
+	<script src="/js/host.js"></script>
 	<style>
         .hide-scrollbar::-webkit-scrollbar {
         display: none;
@@ -50,10 +51,10 @@
 								<li class="nav-item">
 									<a class="nav-liink" href="/home"> <i class="fas fa-home"></i> Home</a>
 								</li>
-								<li class="nav-item active">
+								<li class="nav-item ">
 									<a class="nav-liink" href="/users/<%= user._id %>"> <i class="fas fa-gamepad"></i> Games</a>
 								</li>
-								<li class="nav-item">
+								<li class="nav-item active">
 									<a class="nav-liink" href="/users/livestreams/<%= user._id %>"> <i class="fas fa-video"></i> Stream</a>
 								</li>
 								<li class="nav-item">
@@ -81,15 +82,29 @@
 					<div class="col-sm-9 hide-scrollbar">
 						<div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
 							<div class="carousel-inner">
-								<div class="carousel-item active">
-									<img src="https://staticg.sportskeeda.com/editor/2020/09/2e881-16000838182781-800.jpg" class="d-block w-100" alt="..." style="height: 500px;">
-								</div>
+								<h6 style="text-align: left; color:#FF7597">preview of video and audio</h6>
+								<button type="button" class="btn btn-primary" id="preview">Get Preview</button>
+								<button type="button" class="btn btn-primary" id="closepreview">close Preview</button>
+								<video controls autoplay width="400" id="v&a"></video>
+								<video controls autoplay width="400" id="screen"></video>
 							</div>
 						</div>
 						<div class="textss">
-							<h1 style="text-align: left; color:#FF7597">set lable</h1>
-							<h8 style="text-align: left; color:#FF7597"><%= name[0] %></h8>
-							<h6 style="text-align: left; color:#FF7597">#hashtag #hashtag #hashtag</h6>
+							<textarea name="" class="form-control type_msg hide-scrollbar" id="lable" placeholder="Type lable of stream"></textarea>
+							<textarea name="" class="form-control type_msg hide-scrollbar" id="hashtag" placeholder="Type hashtags of stream"></textarea>
+							<input type="file" name="file" class="form-control-file" id="thumbnail" accept="image/*">
+							<button type="button" class="btn btn-primary" id="start">Start</button>
+							<button type="button" class="btn btn-primary" id="stop">Stop</button>
+							<button type="button" class="btn btn-primary" id="audio">Audio</button>
+							<button type="button" class="btn btn-primary" id="video">video</button>
+							<section class="select">
+								<label for="audioSource" style="text-align: left; color:#FF7597">Audio source: </label>
+								<select id="audioSource" ></select>
+							  </section>
+							  <section class="select">
+								<label for="videoSource" style="text-align: left; color:#FF7597">Video source: </label>
+								<select id="videoSource"></select>
+							  </section>
 						</div>
 						<div class="likes">
 							<span><i class="fas fa-heart"></i></span>
@@ -289,8 +304,9 @@
 
 
 	<!-- jQuery CDN - Slim version (=without AJAX) -->
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-	<!-- Popper.JS -->
+	<script
+	src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+		<!-- Popper.JS -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
 	<!-- Bootstrap JS -->
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>

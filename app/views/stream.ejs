@@ -49,10 +49,10 @@
 								<li class="nav-item">
 									<a class="nav-liink" href="/home"> <i class="fas fa-home"></i> Home</a>
 								</li>
-								<li class="nav-item active">
+								<li class="nav-item ">
 									<a class="nav-liink" href="/users/<%= user._id %>"> <i class="fas fa-gamepad"></i> Games</a>
 								</li>
-								<li class="nav-item">
+								<li class="nav-item active">
 									<a class="nav-liink" href="/users/livestreams/<%= user._id %>"> <i class="fas fa-video"></i> Stream</a>
 								</li>
 								<li class="nav-item">
@@ -80,22 +80,43 @@
 					<div class="col-sm-9 hide-scrollbar">
 						<div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
 							<div class="carousel-inner">
-								<div class="carousel-item active">
-									<img src="https://staticg.sportskeeda.com/editor/2020/09/2e881-16000838182781-800.jpg" class="d-block w-100" alt="..." style="height: 500px;">
-								</div>
+								<video controls autoplay width="400" id="v&a"></video>
+								<video controls autoplay width="400" id="screen"></video>
 							</div>
 						</div>
 						<div class="textss">
 							<h1 style="text-align: left; color:#FF7597"><%=streamer.lable%></h1>
 							<h8 style="text-align: left; color:#FF7597"><%=streamer.name%></h8>
-							<h6 style="text-align: left; color:#FF7597">#hashtag #hashtag #hashtag</h6>
+							<h6 style="text-align: left; color:#FF7597">"<%= streamer.hashtags %>"</h6>
 						</div>
 						<div class="likes">
 							<span><i class="fas fa-heart"></i></span>
 							<span><i class="fas fa-heart-broken"></i></span>
 						</div>
-						<p style="font-weight: bolder;color: #BB86FC;font-size:x-large;">LIVE STREAMS</p>
+						<p style="font-weight: bolder;color: #BB86FC;font-size:x-large;">OTHER LIVE STREAMS</p>
 						<div class="xoverflow hide-scrollbar " id=followers2>
+							<% if (live.length==1) { %>
+								<div class="dinline m-2">
+									<div class="card" style="width: 0rem;height: 18rem;">
+									</div>
+								</div>
+								<% } %>
+							<% for (var i = 0; i < live.length; i++) { 
+								if(streamer.username!=live[i][0]){%>
+
+								<div class="dinline m-2">
+									<div class="card" style="width: 18rem;height: 18rem;">
+										<img src="https://filmdaily.co/wp-content/uploads/2020/05/games-01.jpg" class="card-img-top" alt="...">
+										<div class="card-body">
+											<a href="/users/stream/<%=live[i][0]%>/<%= user._id %>" class="btn"><%=live[i][1]%></a>
+											<p style="color: #BB86FC;font-size: smaller;"><%=live[i][2]%> <%=live[i][4]%></p>
+										</div>
+									</div>
+									<br>
+								</div>
+								<%}%>
+							<% } %>
+							<!--
 							<div class="dinline m-2">
 								<div class="card" style="width: 18rem;height: 18rem;">
 									<img src="https://filmdaily.co/wp-content/uploads/2020/05/games-01.jpg" class="card-img-top" alt="...">
@@ -141,6 +162,7 @@
 								</div>
 								<br>
 							</div>
+							-->
 						</div>
 						<div class="footer">
 							<p>© 2020 Flick, LLC. All rights reserved | </p>

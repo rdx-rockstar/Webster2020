@@ -7,6 +7,7 @@ var liveUserSchema = new mongoose.Schema({
     },
     name:String,
     lable:String,
+    hashtags:String,
     pic:String,
     thumbnail: String,
     uid:String,
