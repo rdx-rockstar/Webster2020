@@ -1,4 +1,5 @@
 var flag=0;
+var ison=0;
 const socket = io();
 window.onload = function(){
 const chatMessages = document.getElementById('chat');
@@ -26,8 +27,8 @@ else{
 };
 
 // Join chatroom
+console.log("--"+room+"--");
 socket.emit('joinRoom', { username, room });
-
 // Get room and users
 socket.on('roomUsers', ({ room, users }) => {
   outputUsers(users);
@@ -162,8 +163,10 @@ socket.on("candidate", (id, candidate) => {
 });
 
 socket.on("disconnectPeer", id => {
+  if(peerConnections[id]){
   peerConnections[id].close();
   delete peerConnections[id];
+  }
 });
 
 window.onunload = window.onbeforeunload = () => {
@@ -235,6 +238,16 @@ function gotStream(stream) {
 const videoElem = document.getElementById("screen");
 const startElem = document.getElementById("start");
 const stopElem = document.getElementById("stop");
+const preview = document.getElementById("preview");
+const cpreview = document.getElementById("closepreview");
+const lableElem=document.getElementById("lable");
+const hashtagElem=document.getElementById("hashtag");
+const thumbnailElem=document.getElementById("thumbnail");
+const audioElem=document.getElementById("audio");
+const videoelem=document.getElementById("video");
+
+stopElem.disabled=true;
+
 
 // Options for getDisplayMedia()
 
@@ -244,7 +257,26 @@ var displayMediaOptions = {
   },
   audio: false
 };
-
+audioElem.addEventListener("click", function(evt) {
+  if(videoElement.srcObject){
+    videoElement.srcObject.getAudioTracks()[0].enabled = !(myStream.getAudioTracks()[0].enabled);
+  }
+}, false);
+videoElem.addEventListener("click", function(evt) {
+  if(videoElement.srcObject){
+    videoElement.srcObject.getVideoTracks()[0].enabled = !(myStream.getVideoTracks()[0].enabled);
+  }
+}, false);
+preview.addEventListener("click", function(evt) {
+  getpreview();
+}, false);
+cpreview.addEventListener("click", function(evt) {
+  if(videoElement.srcObject){
+  let tracks = videoElement.srcObject.getTracks();
+  tracks.forEach(track => track.stop());
+  videoElement.srcObject = null;
+}
+}, false);
 // Set event listeners for the start and stop buttons
 startElem.addEventListener("click", function(evt) {
   startCapture();
@@ -253,21 +285,77 @@ startElem.addEventListener("click", function(evt) {
 stopElem.addEventListener("click", function(evt) {
   stopCapture();
 }, false);
-async function startCapture() {
-
-
-  try {
-    videoElem.srcObject = await navigator.mediaDevices.getDisplayMedia(displayMediaOptions);
-    dumpOptionsInfo();
-  } catch(err) {
-    console.error("Error: " + err);
+function stopCapture() {
+  let tracks = videoElem.srcObject.getTracks();
+  tracks.forEach(track => track.stop());
+  videoElem.srcObject = null;
+  tracks = videoElement.srcObject.getTracks();
+  tracks.forEach(track => track.stop());
+  videoElement.srcObject = null;
+  var formData = {
+    username : room,
   }
+  ison=0;
+    stopElem.disabled=true;
+    startElem.disabled=false;
+    preview.disabled=false;
+    cpreview.disabled=false;
+    lableElem.disabled=false;
+    thumbnailElem.disabled=false;
+    hashtagElem.disabled=false;
+  $.ajax({
+  type : "POST",
+  contentType : "json",
+  url : "/users/deluser",
+  data : JSON.stringify(formData),
+  dataType : 'json',
+  success : function(customer) {
+
+  },
+  error : function(e) {
+    alert("Error!")
+    console.log("ERROR: ", e);
+  }
+});
+}
+async function getpreview(){
+  getStream();
 }
 async function startCapture() {
-
   try {
     videoElem.srcObject = await navigator.mediaDevices.getDisplayMedia(displayMediaOptions);
+    getStream()
     dumpOptionsInfo();
+    var formData = {
+      username : room,
+      name:name[0],
+      lable : $("#lable").val(),
+      hashtags : $("#hashtag").val(),
+      pic: pic,
+      thumbnail: $("#thumbnail").val(),
+      uid:uid,
+    }
+    ison=1;
+    stopElem.disabled=false;
+  startElem.disabled=true;
+  preview.disabled=true;
+  cpreview.disabled=true;
+  thumbnailElem.disabled=true;
+  lableElem.disabled=true;
+  hashtagElem.disabled=true;
+  $.ajax({
+    type : "POST",
+    contentType : "application/json",
+    url :"/users/adduser",
+    data : JSON.stringify(formData),
+    dataType : 'json',
+    success : function(done) {
+    },
+    error : function(e) {
+      alert("Error!")
+      console.log("ERROR: ", e);
+    }
+  });
   } catch(err) {
     console.error("Error: " + err);
   }
@@ -284,4 +372,28 @@ function dumpOptionsInfo() {
 function handleError(error) {
   console.error("Error: ", error);
 }
+}
+window.onbeforeunload = function(){
+  if(ison){
+    let tracks = videoElem.srcObject.getTracks();
+  tracks.forEach(track => track.stop());
+  videoElem.srcObject = null;
+  var formData = {
+    username : room,
+  }
+  $.ajax({
+  type : "POST",
+  contentType : "json",
+  url : "/users/deluser",
+  data : JSON.stringify(formData),
+  dataType : 'json',
+  success : function(customer) {
+    ison=0;
+  },
+  error : function(e) {
+    alert("Error!")
+    console.log("ERROR: ", e);
+  }
+});
+  }
 }
