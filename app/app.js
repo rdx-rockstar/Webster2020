@@ -1,6 +1,7 @@
 // dotenv for securing important keys.
 require('dotenv').config()
 
+
 // Requiring dependencies and Strategies.
 const createError   = require('http-errors'),
       express       = require('express'),
@@ -213,5 +214,7 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+///////////////////////////////////////Socket io
+
 
 module.exports = app;
