@@ -9,9 +9,16 @@ h1{
 }
 h2{
  color: #fff;
+  text-align: center!important;
+}
+.box h2{
+ color: #fff;
+  text-align: center!important;
+  margin: auto auto;
+  margin-top: 50px!important;
 }
 img{
- border-radius: 100%;
+ /* border-radius: 100%; */
  width: 130px;
  height: 130px;
  border-color:5px solid #FF7597;
