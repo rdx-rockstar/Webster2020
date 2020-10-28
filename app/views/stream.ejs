@@ -42,25 +42,36 @@
 						<!-- right side things on navbar  -->
 						<div class="collapse navbar-collapse" id="navbarSupportedContent">
 							<ul class="nav navbar-nav ml-auto">
-								<form class="form-inline">
-									<input class="form-control" type="search" style="background: #121212; color:#BB86FC; border-color:#FF7597; width: 60%" placeholder="Search" aria-label="Search">
-									<button class="btn btn-outline my-2 my-sm-0" style="background: #121212; color:#BB86FC; " type="submit"> <i class="fas fa-search"></i> Search</button>
+								<form class="form-inline" action="/search" method="GET">
+									<input name="search" class="form-control" type="search" style="background: #121212; color:#BB86FC; border-color:#FF7597; width: 70%" placeholder="Search" aria-label="Search">
+									<div class="notfound">
+										<button style="margin-left:6px; border-color:#FF7597; color:#FF7597;" type="submit">Search</button>
+									</div>
 								</form>
-								<li class="nav-item">
-									<a class="nav-liink" href="/home"> <i class="fas fa-home"></i> Home</a>
-								</li>
-								<li class="nav-item ">
-									<a class="nav-liink" href="/users/<%= user._id %>"> <i class="fas fa-gamepad"></i> Games</a>
-								</li>
-								<li class="nav-item active">
-									<a class="nav-liink" href="/users/livestreams/<%= user._id %>"> <i class="fas fa-video"></i> Stream</a>
-								</li>
-								<li class="nav-item">
-									<a class="nav-liink" href="/users/<%= user._id %>/chat"> <i class="fas fa-comments"></i> Message</a>
-								</li>
-								<li class="nav-item">
-									<a class="nav-liink" href="/logout"> <i class="fas fa-sign-out-alt"></i> Log Out</a>
-								</li>
+								<% if(user) { %>
+									<li class="nav-item">
+										<a class="nav-liink" href="/home"><i class="fas fa-home"></i> Home</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-liink" href="/users/<%= user._id %>"> <i class="fas fa-gamepad"></i> Profile</a>
+									</li>
+									<li class="nav-item active">
+										<a class="nav-liink" href="/users/livestreams/<%= user._id %>"> <i class="fas fa-video"></i> Stream</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-liink" href="/users/<%= user._id %>/chat"> <i class="fas fa-comments"></i> Message</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-liink" href="/logout"> <i class="fas fa-sign-out-alt"></i> LogOut</a>
+									</li>
+								<% } else { %>
+									<li class="nav-item">
+										<a class="nav-liink" href="/login"><i class="fas fa-sign-in-alt"></i> Login</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-liink" href="/register"> <i class="fas fa-sign-in-alt"></i> Register</a>
+									</li>
+								<% } %>
 							</ul>
 						</div>
 					</div>

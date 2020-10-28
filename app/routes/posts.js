@@ -8,7 +8,7 @@ const Post = require('../models/postSchema'),
       User = require('../models/userSchema');      
 
 router.get('/posts/new',isLoggedIn,function(req,res){
-    res.render('new.ejs');
+    res.render('new.ejs',{user: req.user});
 });
   
 router.post('/posts',upload.array('file'),async (req,res) => {
