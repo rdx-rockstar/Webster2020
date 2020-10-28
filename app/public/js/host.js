@@ -49,9 +49,9 @@ socket.on('message', message => {
   // Get message text
   console.log("send clicked");
   let msg = e.target.elements.msg.value;
-  
+
   msg = msg.trim();
-  
+
   if (!msg){
     return false;
   }
@@ -122,7 +122,7 @@ function outputUsers(users) {
  const peerConnections = {};
 const config = {
   iceServers: [
-    { 
+    {
       "urls": "stun:stun.l.google.com:19302",
     },
   ]
@@ -361,7 +361,7 @@ async function startCapture() {
 }
 function dumpOptionsInfo() {
   const videoTrack = videoElem.srcObject.getVideoTracks()[0];
- 
+
   console.info("Track settings:");
   console.info(JSON.stringify(videoTrack.getSettings(), null, 2));
   console.info("Track constraints:");

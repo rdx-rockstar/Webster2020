@@ -4,7 +4,6 @@
 html{
   background-color: #121212;
 padding-left: 10px;
-padding-top: 20px;
 padding-right: 10px;
 background-size: cover!important;
 
@@ -429,4 +428,57 @@ background-color: rgba(0,0,0,0.3) !important;
 	width: 380px!important;
 	display:none;
 	z-index:99;
+}
+
+
+
+
+.notfound button{
+  font-family: 'Montserrat', sans-serif;
+  /* display: inline-block; */
+  text-transform: uppercase;
+  color: #ff005a;
+  text-decoration: none;
+  border: 2px solid;
+  background: transparent;
+  padding: 10px 10px;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 5px;
+}
+
+.notfound button:hover {
+  color: #8400ff;
+}
+
+
+.move{
+  position: relative;
+  left: 89%;
+  transform: translate(-50%, -344%);
+  z-index: 2;
+
+}
+.move:focus{
+  left:97px;
+  /* visibility: hidden; */
+}
+.textss{
+ align-self: center;
+ border-radius: 10px;
+ background: rgba(0, 0, 0, 0.6);
+ /* width: 340px; */
+ box-shadow: 6px 8px 5px #b83b5e;
+ margin-top: 0px;
+}
+.form-group input,select{
+  border: 4px solid #b83b5e;
+}
+.form-group input:focus select:focus{
+  border: 2px solid  #8400ff;
+  box-shadow: inset 0 0 15px #b83b5e;
+}
+
+.form-group {
+  width: 350px;
 }

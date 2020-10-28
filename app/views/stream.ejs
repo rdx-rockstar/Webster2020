@@ -2,7 +2,7 @@
 <html>
 
 <head>
-	<title>Games-Fllick</title>
+	<title>View-Flick</title>
 	<link rel="icon" href="/icons/gaming.svg">
 	<link rel="stylesheet" href="/css/stream.css">
 	<script src="https://kit.fontawesome.com/a076d05399.js"></script>
@@ -35,7 +35,7 @@
 				<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #1D1D1D">
 					<div class="container-fluid">
 						<!-- button  -->
-						<h3 class="brand">FLICK</h3>
+						<h3 class="brand"><i class="fas fa-ghost">FLICK</h3>
 						<button class="bttn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 							<i class="fas fa-align-justify"></i>
 						</button>
@@ -91,11 +91,11 @@
 					<div class="col-sm-9 hide-scrollbar">
 						<div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
 							<div class="carousel-inner">
-								<video controls autoplay width="400" id="v&a"></video>
-								<video controls autoplay width="400" id="screen"></video>
+								<video controls autoplay width="1020" id="screen"></video>
+								<video class="move" controls autoplay width="200" id="v&a"></video>
 							</div>
 						</div>
-						<div class="textss">
+						<div class="">
 							<h1 style="text-align: left; color:#FF7597"><%=streamer.lable%></h1>
 							<h8 style="text-align: left; color:#FF7597"><%=streamer.name%></h8>
 							<h6 style="text-align: left; color:#FF7597">"<%= streamer.hashtags %>"</h6>
@@ -112,7 +112,7 @@
 									</div>
 								</div>
 								<% } %>
-							<% for (var i = 0; i < live.length; i++) { 
+							<% for (var i = 0; i < live.length; i++) {
 								if(streamer.username!=live[i][0]){%>
 
 								<div class="dinline m-2">
@@ -175,20 +175,20 @@
 							</div>
 							-->
 						</div>
-						<div class="footer">
-							<p>© 2020 Flick, LLC. All rights reserved | </p>
-							<p>Follow us on</p>
-							<ul>
-								<li ><a href="/auth/facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a></li>
-								<li><a href="/auth/google"><i class="fab fa-google" aria-hidden="true"></i></a></li>
-								<li> <a href="/auth/steam"><i class="fab fa-instagram" aria-hidden="true"></></i></a></li>
-							</ul>
-
-						</div>
 					</div>
 
 				</div>
 				</section>
+
+			</div>
+			<div class="footer">
+				<p>© 2020 Flick, LLC. All rights reserved | </p>
+				<p>Follow us on</p>
+				<ul class="d-flex">
+					<li ><a href="/auth/facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a></li>
+					<li><a href="/auth/google"><i class="fab fa-google" aria-hidden="true"></i></a></li>
+					<li> <a href="/auth/steam"><i class="fab fa-instagram" aria-hidden="true"></></i></a></li>
+				</ul>
 
 			</div>
 		</div>
