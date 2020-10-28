@@ -9,7 +9,10 @@ var userSchema = new mongoose.Schema({
     email: String,
     password: String,
     googleId: String,
-    googleProfilePicture: String,
+    profilePicture: {
+        type: String,
+        default: '/images/default.png'
+    },
     facebookId: String,
     provider: String,
     posts:[
@@ -18,6 +21,18 @@ var userSchema = new mongoose.Schema({
             ref: "Post"
         }
     ],
+    subscriptions:[
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "User"
+        }
+    ],
+    followers:[
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "User"
+        }
+    ]
 });
 
 userSchema.plugin(passportLocalMongoose,{usernameField: 'username'});

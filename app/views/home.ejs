@@ -29,29 +29,19 @@
 				<ul class="list-unstyled components">
 					<div class="menu">
 						<% if(user) { %>
-					<a href="/users/<%= user._id %>">
-						<% if(user.provider == "google"){ %>
-						<img src="<%= user.googleProfilePicture %>" alt="profile">
-						<p><%= name[0] %></p>
-					</a>
-						<% } else if(user.provider == "facebook"){ %>
-						<img src="/images/default.png" alt="profile">
-						<p><%= name[0] %></p>
-						<% } else{ %>
-						<img src="/images/default.png" alt="profile">
-						<p><%= name[0] %></p>
-						<% } %>
+							<img src="<%= user.profilePicture %>" alt="profile">
+							<p><%= name[0] %></p>
 						<% } else { %>
-						<img src="/images/default.png" alt="profile">
-						<p>Welcome!</p>
+							<img src="/images/default.png" alt="profile">
+							<p>Welcome!</p>
 						<% } %>
 					</div>
 					<div class="linee"></div>
 					<% if(user) {%>
-					<li class="nav-item">
-						<a href="homepage.html">Followers</a>
-					</li>
-					<li><a href="homepage.html">Following</a></li>
+						<li class="nav-item">
+							<a href="/followers">Followers</a>
+						</li>
+						<li><a href="/following">Following</a></li>
 					<% } %>
 					<div class="linee"></div>
 					<div class="menu">
@@ -97,7 +87,7 @@
                                         <a class="nav-liink" href="/home"><i class="fas fa-home"></i> Home</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-liink" href="/games/<%= user._id %>"> <i class="fas fa-gamepad"></i> Games</a>
+                                        <a class="nav-liink" href="/users/<%= user._id %>"> <i class="fas fa-gamepad"></i> Profile</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-liink" href="/users/livestreams/<%= user._id %>"> <i class="fas fa-video"></i> Stream</a>
@@ -262,7 +252,7 @@
 					<ul>
 						<li><a href="https://www.facebook.com/FLICKgamingWebsite"><i class="fab fa-facebook-f" aria-hidden="true"></i></a></li>
 						<li><a href=""><i class="fab fa-google" aria-hidden="true"></i></a></li>
-						<li> <a href="https://www.instagram.com/flick_india/"><i class="fab fa-instagram" aria-hidden="true"></></i></a></li>
+						<li> <a href="https://www.instagram.com/flick_india/"><i class="fab fa-instagram" aria-hidden="true"></i></a></li>
 					</ul>
 
 				</div>
