@@ -1,3 +1,5 @@
+<img src="https://media.sandhills.com/img.axd?id=4206255449&wid=&p=&ext=&w=0&h=0&t=&lp=&c=True&wt=False&sz=Max&rt=0&checksum=bg2KnWe3eNRDk7R0oE2FtdZNDo72zgJH" align="right" />
+
 # Webster2020
 ## Avishkar 2020 MNNIT
 
@@ -7,6 +9,8 @@
 3. Member 3: KARIMULLAH (20198060)
 
 ### App Name: FLICK (AN ONLINE GAMING PLATFORM)
+
+<img src="logo.png" align="center" />
 
 ### Description: 
 Hello stout-hearted people! This application is responsible for covering gaming, and almost every single thing associated to the game category. Its Home menu option consists of news updates on the latest and trendy games and You will get expert reviews, previews, game trailers, cheat codes, discussion forums & video game news here. and the best this is that even you can post gaming related things or reviews of video games and several videos for the game lovers,which will be visible to all. You can even connect with your frieds and family by following them or by using our Message menu option, in this you can have a safe chat, audio calls and even video conferencing. The practice of livestreaming video games became popular in the mid-2010s onwards, Video game live streaming is an activity where people record themselves playing games to a live audience online. And guess what! we are providing you this facility with online live chat with your friends. An advantage of streaming games is that the game can be picked up on another device and continued at the place the gamer stopped. You can use this application volunteerly by posting frequently asked questions, discussions, reviews, and much more related to video games, in the comment section. Your Feedbacks always means alot. So feel free to write a honest feedback about FLICK. Because we will always try to make sure that our users will face ZERO problems using our app. and we also encourage initiative ideas. You can mention that too... We will look through it.
