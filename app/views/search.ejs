@@ -76,7 +76,7 @@
               </div>
             </div>
             <div class="form-inner">
-              <form action="#" class="login">
+              <section  class="login">
                 <!-- Accounts -->
                 <% if(foundUsers.length == 0){ %>
                 <p>No Matches Found <i class="fas fa-exclamation-circle"></i></p>
@@ -117,8 +117,8 @@
                 <% } %>
                 <!-- Accounts -->
                 <!-- Accounts -->
-              </form>
-              <form action="#" class="signup">
+              </section>
+              <section class="signup">
                 <!-- posts -->
                 <!-- posts -->
 
@@ -129,7 +129,7 @@
 
                 <!-- posts -->
                 <!-- posts -->
-              </form>
+              </section>
             </div>
           </div>
         </div>
@@ -223,10 +223,10 @@
 
   <script>
     const loginText = document.querySelector(".title-text .login");
-    const loginForm = document.querySelector("form.login");
+    const loginForm = document.querySelector("section.login");
     const loginBtn = document.querySelector("label.login");
     const signupBtn = document.querySelector("label.signup");
-    const signupLink = document.querySelector("form .signup-link a");
+    const signupLink = document.querySelector("section.signup-link a");
     signupBtn.onclick = (() => {
       loginForm.style.marginLeft = "-50%";
       loginText.style.marginLeft = "-50%";
