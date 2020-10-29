@@ -17,6 +17,9 @@ h2{
   margin: auto auto;
   margin-top: 50px!important;
 }
+h5{
+  color: #fff;
+}
 img{
  /* border-radius: 100%; */
  width: 130px;
@@ -29,6 +32,7 @@ img{
     border-bottom: 1px dashed #ddd;
     margin: 0px 0;
 }
+
 /*------------------------------------------------
       logo design of our project (FLICK)
 ------------------------------------------------*/
@@ -66,6 +70,13 @@ body {
    margin-top: 10px;
    width: 810px;
   height: 560px;
+  overflow: scroll;
+}
+.containerr{
+  align-items: center;
+   margin-top: 10px;
+   width: 1110px;
+  height: 460px;
   overflow: scroll;
 }
 .row{
