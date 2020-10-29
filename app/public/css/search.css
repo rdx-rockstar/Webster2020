@@ -224,11 +224,11 @@ input[type="radio"]{
   width: 200%;
 
 }
-.form-container .form-inner form{
+.form-container .form-inner section{
   width: 50%;
   transition: all 0.8s cubic-bezier(0.68,-0.55,0.265,1.55);
 }
-.form-inner form{
+.form-inner section{
   width: 810px;
  height: 460px;
   overflow: scroll;
