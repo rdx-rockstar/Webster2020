@@ -30,8 +30,8 @@
 				<div class="linee"></div>
 				<ul class="list-unstyled components">
 					<div class="menu">
-						<% if(user){ %>
-							<img src="<%= user.profilePicture %>" alt="profile">
+						<% if(currentUser){ %>
+							<img src="<%= currentUser.profilePicture %>" alt="profile">
 							<p><%= name[0] %></p>
 						<% } else{ %>
 							<img src="/images/default.png" alt="profile">
@@ -44,9 +44,11 @@
 							<a href="/followers">Followers</a>
 						</li>
 						<li><a href="/following">Following</a></li>
-						<li>
-							<a href="/posts/new">Add Post</a>
-						</li>
+						<% if(currentUser.email == user.email){ %>
+							<li>
+								<a href="/posts/new">Add Post</a>
+							</li>
+						<% } %>
 					<% } %>
 					<div class="linee"></div>
 					<div class="menu">
@@ -87,9 +89,15 @@
                                     <li class="nav-item">
                                         <a class="nav-liink" href="/home"><i class="fas fa-home"></i> Home</a>
                                     </li>
-                                    <li class="nav-item active">
-                                        <a class="nav-liink" href="/users/<%= user._id %>"> <i class="fas fa-gamepad"></i> Profile</a>
-                                    </li>
+									<% if(currentUser.email == user.email){ %>
+										<li class="nav-item active">
+											<a class="nav-liink" href="/users/<%= currentUser._id %>"> <i class="fas fa-gamepad"></i> Profile</a>
+										</li>
+									<% }else{ %>
+										<li class="nav-item">
+											<a class="nav-liink" href="/users/<%= currentUser._id %>"> <i class="fas fa-gamepad"></i> Profile</a>
+										</li>
+									<% } %>
                                     <li class="nav-item">
                                         <a class="nav-liink" href="/users/livestreams/<%= user._id %>"> <i class="fas fa-video"></i> Stream</a>
                                     </li>

@@ -85,29 +85,29 @@
 									</div>
 								</form>
 								<% if(user) { %>
-								<li class="nav-item active">
-									<a class="nav-liink" href="/home"><i class="fas fa-home"></i> Home</a>
-								</li>
-								<li class="nav-item">
-									<a class="nav-liink" href="/users/<%= user._id %>"> <i class="fas fa-gamepad"></i> Profile</a>
-								</li>
-								<li class="nav-item">
-									<a class="nav-liink" href="/users/livestreams/<%= user._id %>"> <i class="fas fa-video"></i> Stream</a>
-								</li>
-								<li class="nav-item">
-									<a class="nav-liink" href="/users/<%= user._id %>/chat"> <i class="fas fa-comments"></i> Message</a>
-								</li>
-								<li class="nav-item">
-									<a class="nav-liink" href="/logout"> <i class="fas fa-sign-out-alt"></i> LogOut</a>
-								</li>
-								<% } else { %>
-								<li class="nav-item">
-									<a class="nav-liink" href="/login"><i class="fas fa-sign-in-alt"></i> Login</a>
-								</li>
-								<li class="nav-item">
-									<a class="nav-liink" href="/register"> <i class="fas fa-sign-in-alt"></i> Register</a>
-								</li>
-								<% } %>
+                                    <li class="nav-item">
+                                        <a class="nav-liink" href="/home"><i class="fas fa-home"></i> Home</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-liink" href="/users/<%= user._id %>"> <i class="fas fa-gamepad"></i> Profile</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-liink" href="/users/livestreams/<%= user._id %>"> <i class="fas fa-video"></i> Stream</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-liink" href="/users/<%= user._id %>/chat"> <i class="fas fa-comments"></i> Message</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-liink" href="/logout"> <i class="fas fa-sign-out-alt"></i> LogOut</a>
+                                    </li>
+                                <% } else { %>
+                                    <li class="nav-item">
+                                        <a class="nav-liink" href="/login"><i class="fas fa-sign-in-alt"></i> Login</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-liink" href="/register"> <i class="fas fa-sign-in-alt"></i> Register</a>
+                                    </li>
+                                <% } %>
 							</ul>
 						</div>
 					</div>

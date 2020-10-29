@@ -72,31 +72,72 @@ router.get('/posts/:id',(req,res) =>{
 });
   
 router.post('/posts/:id/newComment',(req,res) => {
-    console.log(req.body);
-    Post.findById(req.params.id,(err,post) => {
+    if(!req.user){
+        return res.send({
+            msg: false
+            });
+    }
+        Post.findById(req.params.id,(err,post) => {
+            if(err){
+                console.log(err);
+                return res.redirect('/posts/'+post._id);
+            }
+            var newComment = {
+                author: {
+                id: req.user._id,
+                email: req.user.email
+                },
+                message: req.body.message
+            };
+            Comment.create(newComment,(error,comment) => {
+                if(error){
+                console.log(error);
+                return res.redirect('/posts/' + post._id);
+                }
+                post.comments.push(comment);
+                post.save();
+                return res.send({
+                msg: true
+                });
+            })
+        }) 
+})
+
+router.post("/posts/like",(req,res) => {
+    if(!req.user){
+        return res.send({
+            msg: false
+        })
+    }
+    User.findById(req.user._id,function(err,user){
         if(err){
             console.log(err);
-            return res.redirect('/posts/'+post._id);
+        }else{
+            Post.findById(req.body.id,function(error,post){
+                if(error){
+                    console.log(error);
+                }else{
+                    var index = post.likedBy.indexOf(user._id);
+                    if(index > -1){
+                        post.likes--;
+                        post.likedBy.splice(index,1);
+                        post.save();
+                        return res.send({
+                        msg: 'disliked'
+                        })
+                    }else{
+                        post.likes++;
+                        post.likedBy.push(user);
+                        post.save();
+                        return res.send({
+                        msg: 'liked'
+                        })
+                    }
+                }
+            })
         }
-        var newComment = {
-            author: {
-            id: req.user._id,
-            email: req.user.email
-            },
-            message: req.body.message
-        };
-        Comment.create(newComment,(error,comment) => {
-            if(error){
-            console.log(error);
-            return res.redirect('/posts/' + post._id);
-            }
-            post.comments.unshift(comment);
-            post.save();
-            return res.send({
-            msg: 'hello'
-            });
-        })
     })
+    
 })
 
 function isLoggedIn(req,res,next){

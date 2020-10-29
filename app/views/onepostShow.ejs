@@ -96,7 +96,7 @@
 									<% } %>
 									<div class="card-body">
 										<div class="likes">
-											<span><i class="fas fa-heart"></i><%= post.likes %></span><br>
+											<span onclick="ajaxLike('<%= post._id %>')"><i class="fas fa-heart"></i></span><span id="like-this-post"><%= post.likes %></span><br>
 											<span><%= post.caption %></span>
 										</div>
 										<h3 style="color:#BB86FC">Comments</h3>
@@ -167,6 +167,7 @@
 				event.preventDefault();
 				ajaxPost();
 			});
+
 			function ajaxPost(){
 				var message = $("#comment").val();
 				// PREPARE FORM DATA
@@ -183,7 +184,8 @@
 				data : JSON.stringify(formData),
 				dataType : 'json',
 				success : function(customer) {
-					const div = document.createElement("div");
+					if(customer.msg){
+						const div = document.createElement("div");
 					div.innerHTML = `<div class="d-flex justify-content-start mb-4">
 							<div class="msg_cotainer">
 								`+message+`
@@ -191,6 +193,11 @@
 							</div>
 						</div>`;
 					comnt.appendChild(div);
+					}else{
+						if(confirm("Register yourself to be able to post comments.")){
+							window.location.href = "/register";
+						}
+					}	
 				},
 				error : function(e) {
 					alert("Error!")
@@ -207,6 +214,34 @@
 				$("#comment").val("");
 				}
 		});
+		function ajaxLike(id){
+				var liked = {
+					id: id
+				};
+				$.ajax({
+					type: "POST",
+					contentType: "application/json",
+					url: "/posts/like",
+					data: JSON.stringify(liked),
+					dataType: "json",
+					success: function(result){
+						if(result.msg === 'liked'){
+							document.getElementById("like-this-post").innerHTML = parseInt(document.getElementById("like-this-post").innerHTML)+1;
+						}else if(result.msg === 'disliked'){
+							document.getElementById("like-this-post").innerHTML = parseInt(document.getElementById("like-this-post").innerHTML)-1;
+						}else{
+							if(confirm("Register yourself before liking any posts!!")){
+								window.location.href = "/register";
+							}
+						}
+						
+					},
+					error: function(e) {
+					alert("Error!")
+					console.log("ERROR: ", e);
+					}
+				})
+			}
 	</script>
 </body>
 
