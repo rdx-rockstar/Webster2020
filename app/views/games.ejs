@@ -30,30 +30,29 @@
 				<div class="linee"></div>
 				<ul class="list-unstyled components">
 					<div class="menu">
-						<% if(user.provider == "google"){ %>
-							<img src="<%= user.googleProfilePicture %>" alt="profile">
+						<% if(user) { %>
+							<img src="<%= user.profilePicture %>" alt="profile">
 							<p><%= name[0] %></p>
-						<% } else if(user.provider == "facebook"){ %>
+						<% } else { %>
 							<img src="/images/default.png" alt="profile">
-							<p><%= name[0] %></p>
-						<% } else{ %>
-							<img src="/images/default.png" alt="profile">
-							<p><%= name[0] %></p>
+							<p>Welcome!</p>
 						<% } %>
 					</div>
 					<div class="linee"></div>
-					<li class="nav-item active">
-						<a href="homepage.html">Followers</a>
-					</li>
-					<li><a href="homepage.html">Following</a></li>
+					<% if(user) {%>
+						<li class="nav-item">
+							<a href="/followers">Followers</a>
+						</li>
+						<li><a href="/following">Following</a></li>
+					<% } %>
 					<div class="linee"></div>
 					<div class="menu">
 						<p>FLick things</p>
 					</div>
-					<li><a href="about.html">About Us</a>
+					<li><a href="/about_us">About Us</a>
 					</li>
 					<li>
-						<a href="contact.html">Contact</a>
+						<a href="/contacts">Contact</a>
 					</li>
 
 					<li>
@@ -79,25 +78,36 @@
 						<!-- right side things on navbar  -->
 						<div class="collapse navbar-collapse" id="navbarSupportedContent">
 							<ul class="nav navbar-nav ml-auto">
-								<form class="form-inline">
-									<input class="form-control" type="search" style="background: #121212; color:#BB86FC; border-color:#FF7597; width: 60%" placeholder="Search" aria-label="Search">
-									<button class="btn btn-outline my-2 my-sm-0" style="background: #121212; color:#BB86FC; " type="submit"><i class="fas fa-search"></i>Search</button>
+								<form class="form-inline" action="/search" method="GET">
+									<input name="search" class="form-control" type="search" style="background: #121212; color:#BB86FC; border-color:#FF7597; width: 70%" placeholder="Search" aria-label="Search">
+									<div class="notfound">
+										<button style="margin-left:6px; border-color:#FF7597; color:#FF7597;" type="submit">Search</button>
+									</div>
 								</form>
-								<li class="nav-item">
-									<a class="nav-liink" href="#"> <i class="fas fa-home"></i> Home</a>
-								</li>
-								<li class="nav-item active">
-									<a class="nav-liink" href="games.html"> <i class="fas fa-gamepad"></i> Games</a>
-								</li>
-								<li class="nav-item">
-									<a class="nav-liink" href="stream.html"> <i class="fas fa-video"></i> Stream</a>
-								</li>
-								<li class="nav-item">
-									<a class="nav-liink" href="chatbox.html"> <i class="fas fa-comments"></i> Message</a>
-								</li>
-								<li class="nav-item">
-									<a class="nav-liink" href="signup.html"> <i class="fas fa-sign-out-alt"></i> Log Out</a>
-								</li>
+								<% if(user) { %>
+                                    <li class="nav-item active">
+                                        <a class="nav-liink" href="/home"><i class="fas fa-home"></i> Home</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-liink" href="/users/<%= user._id %>"> <i class="fas fa-gamepad"></i> Profile</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-liink" href="/users/livestreams/<%= user._id %>"> <i class="fas fa-video"></i> Stream</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-liink" href="/users/<%= user._id %>/chat"> <i class="fas fa-comments"></i> Message</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-liink" href="/logout"> <i class="fas fa-sign-out-alt"></i> LogOut</a>
+                                    </li>
+                                <% } else { %>
+                                    <li class="nav-item">
+                                        <a class="nav-liink" href="/login"><i class="fas fa-sign-in-alt"></i> Login</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-liink" href="/register"> <i class="fas fa-sign-in-alt"></i> Register</a>
+                                    </li>
+                                <% } %>
 							</ul>
 						</div>
 					</div>
@@ -223,7 +233,7 @@
 					<ul>
 						<li><a href="https://www.facebook.com/FLICKgamingWebsite"><i class="fab fa-facebook-f" aria-hidden="true"></i></a></li>
 						<li><a href=""><i class="fab fa-google" aria-hidden="true"></i></a></li>
-						<li> <a href="https://www.instagram.com/flick_india/"><i class="fab fa-instagram" aria-hidden="true"></></i></a></li>
+						<li> <a href="https://www.instagram.com/flick_india/"><i class="fab fa-instagram" aria-hidden="true"></i></a></li>
 					</ul>
 
 				</div>
@@ -244,31 +254,6 @@
 				$('#sidebar').toggleClass('active');
 			});
 		});
-	</script>
-	<!--
-	<script src="https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js"></script>
-	<script>
-		function addDarkmodeWidget() {
-			new Darkmode().showWidget();
-		}
-		window.addEventListener('load', addDarkmodeWidget);
-	</script>-->
-	<script type="text/javascript">
-		var options = {
-			bottom: '64px', // default: '32px'
-			right: 'unset', // default: '32px'
-			left: '32px', // default: 'unset'
-			time: '0.5s', // default: '0.3s'
-			mixColor: '#121212', // default: '#fff'
-			backgroundColor: '#121212', // default: '#fff'
-			buttonColorDark: '#121212', // default: '#100f2c'
-			buttonColorLight: '#fff', // default: '#fff'
-			saveInCookies: false, // default: true,
-			label: '🌓' // default: ''
-		}
-
-		const darkmode = new Darkmode(options);
-		darkmode.showWidget();
 	</script>
 </body>
 

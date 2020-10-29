@@ -156,6 +156,58 @@ router.get('/users/:id/chat',isLoggedIn,function(req,res){
     }
   })
 });
+
+router.post("/users/:id/subscribe",(req,res) => {
+  User.findById(req.params.id,(err,user) => {
+    if(err){
+      console.log(err);
+    }else{
+      User.findById(req.body.id,(error,subscribedUser) => {
+        if(error){
+          console.log(error);
+        }else{
+          user.subscriptions.push(subscribedUser);
+          subscribedUser.followers.push(user);
+          user.save();
+          subscribedUser.save();
+          res.send({
+            msg: "done"
+          })
+        }
+      })
+    }
+
+  })
+})
+router.post("/users/:id/unsubscribe",(req,res) => {
+  User.findById(req.params.id,(err,user) => {
+    if(err){
+      console.log(err);
+    }else{
+      User.findById(req.body.id,(error,unsubscribedUser) => {
+        if(error){
+          console.log(error);
+        }else{
+          var index1 = user.subscriptions.indexOf(unsubscribedUser._id);
+          if(index1 > -1){
+            user.subscriptions.splice(index1,1);
+          }
+          var index2 = unsubscribedUser.followers.indexOf(user._id);
+          if(index2 > -1){
+            unsubscribedUser.followers.splice(index2,1);
+          }
+          user.save();
+          unsubscribedUser.save();
+          res.send({
+            msg: "done"
+          })
+        }
+      })
+    }
+
+  })
+})
+
 function isLoggedIn(req,res,next){
   if(req.isAuthenticated()){
     return next();

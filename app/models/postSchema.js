@@ -21,12 +21,17 @@ const postSchema = new mongoose.Schema({
             ref: "Comment"
         }
     ],
+    likes: {
+        type: Number,
+        default: 0
+    },
     likedBy:[
         {
             type: mongoose.Schema.Types.ObjectId,
             ref: "User"
         }
-    ]
+    ],
+    tags: String,
 });
 
 module.exports = mongoose.model('Post',postSchema);
