@@ -118,7 +118,7 @@
 					<!--heading-->
 					<h1 style="color: #BB86FC">Following</h1>
 					<!--contact box-->
-					<div class="containerr "> <br>  <br>
+					<div class="container "> <br>  <br>
 						<div class="">
 							<% if(user){ %>
 							<% user.subscriptions.forEach(function (subscription) { %>
@@ -127,18 +127,19 @@
 									<a href="/users/<%=subscription._id %>">
 										<h2 style="color: #FF7597; margin-left: 30px; margin-top: 50px;"><%= subscription.username.split(" ")[0] %></h2>
 									</a>
+									<div class="found ml-auto">
+                    <button id="<%= user._id %>" onclick="ajaxUnsubscribe('<%= user._id %>')"><i class="fas fa-times-circle"></i> Unsubscribe</button>
+                  </div>
 									<br>
 								</div>
 								<div class="linee"></div>
 							<% }) %>
 							<% } %>
 						</div>
-
-
 					</div>
 
 				<!-- Footer  -->
-				<div class="footer">
+				<div class="footer" style="margin-top:2px;">
 					<p>© 2020 Flick, LLC. All rights reserved | </p>
 					<p>Follow us on</p>
 					<ul>
