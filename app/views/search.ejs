@@ -19,7 +19,7 @@
                         <div>
                             <h3><%= user.username.split(" ")[0] %></h3>
                         </div>
-                        <button id="<%= user._id %>" onclick="ajaxSubscribe('<%= user._id %>')">Subscribe</button>
+                        <button id="<%= user._id %>" onclick="ajaxDetermine('<%= user._id %>')">Subscribe</button>
                     </div>
                 <% }else if(currentUser.subscriptions.indexOf(user._id) !== -1){ %>
                     <div>
@@ -29,7 +29,7 @@
                         <div>
                             <h3><%= user.username.split(" ")[0] %></h3>
                         </div>
-                        <button id="<%= user._id %>" onclick="ajaxUnsubscribe('<%= user._id %>')">Unsubscribe</button>
+                        <button id="<%= user._id %>" onclick="ajaxDetermine('<%= user._id %>')">Unsubscribe</button>
                     </div>
                 <% } %>
             <% } %>
@@ -50,6 +50,15 @@
         $(document).ready(function(){
             
 		});
+
+		function ajaxDetermine(id){
+			let buttonText = $("#"+id).text();
+			if(buttonText === "Subscribe"){
+				ajaxSubscribe(id);
+			} else if(buttonText === "Unsubscribe"){
+				ajaxUnsubscribe(id);
+			}
+		}
 			function ajaxSubscribe(id){
 				// PREPARE FORM DATA
 				var selectedUser = {

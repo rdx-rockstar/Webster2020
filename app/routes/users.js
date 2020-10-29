@@ -5,14 +5,15 @@ const liveUser = require('../models/liveUserSchema');
 
 
 router.get('/users/:id',isLoggedIn,(req,res) => {
+  console.log(req.user);
   User.findById(req.params.id).populate("posts").exec(function(err,foundUser){
     if(err){
       console.log(err);
       return res.render('error');
     }
     else{
-      var name = foundUser.username.split(" ");
-      return res.render('selfPosts',{name:name,user:foundUser});
+      var name = req.user.username.split(" ");
+      return res.render('selfPosts',{name:name,currentUser: req.user,user:foundUser});
     }
   })
 });
