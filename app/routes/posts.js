@@ -6,12 +6,12 @@ const router = require('express').Router(),
 const { runInNewContext } = require('vm');
 const Post = require('../models/postSchema'),
       Comment = require('../models/commentSchema'),
-      User = require('../models/userSchema');      
+      User = require('../models/userSchema');
 
 router.get('/posts/new',isLoggedIn,function(req,res){
     res.render('new.ejs',{user: req.user});
 });
-  
+
 router.post('/posts',upload.array('file'),async (req,res) => {
     const uploader = async (path) => await cloudinary.uploads(path,'Posts');
     try{
@@ -33,7 +33,7 @@ router.post('/posts',upload.array('file'),async (req,res) => {
             id: req.user._id,
             email: req.user.email
             },
-            tags: req.body.tags 
+            tags: req.body.tags
         });
         User.findById(req.user._id,(er,currentUser) => {
             if(er){
@@ -57,7 +57,7 @@ router.post('/posts',upload.array('file'),async (req,res) => {
         })
     }
 });
-  
+
 router.get('/posts/:id',(req,res) =>{
     Post.findById(req.params.id).populate("comments").exec(function(err,post){
         if(err){
@@ -69,7 +69,7 @@ router.get('/posts/:id',(req,res) =>{
         res.render('onepostShow.ejs',{user:req.user,post:post});
     })
 });
-  
+
 router.post('/posts/:id/newComment',(req,res) => {
     if(!req.user){
         return res.send({
@@ -99,7 +99,7 @@ router.post('/posts/:id/newComment',(req,res) => {
                 msg: true
                 });
             })
-        }) 
+        })
 })
 
 router.post("/posts/like",(req,res) => {
@@ -136,7 +136,7 @@ router.post("/posts/like",(req,res) => {
             })
         }
     })
-    
+
 })
 
 function isLoggedIn(req,res,next){
