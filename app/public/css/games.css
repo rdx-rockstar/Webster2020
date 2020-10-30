@@ -460,7 +460,7 @@ background-color: rgba(0,0,0,0.3) !important;
   font-size: 30px;
   height: 60px;
   width: 60px;
-  color: #fff;
+  color: #fff!important;
   background: #1D1D1D;
   line-height: 60px;
   border-radius: 50%;
@@ -543,9 +543,27 @@ background-color: rgba(0,0,0,0.3) !important;
   margin-right: 50px!important;
   margin-top: 50px;
 }
+.found a{
+  font-family: 'Montserrat', sans-serif;
+  /* display: inline-block; */
+  text-transform: uppercase;
+  color: #ff005a;
+  text-decoration: none;
+  border: 2px solid;
+  background: transparent;
+  padding: 20px 40px;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 5px;
 
-.notfound .found button:hover {
+}
+
+.notfound button:hover {
   color: #8400ff;
+}
+.found a:hover {
+  color: #8400ff;
+  text-decoration:none;
 }
 .notfound a{
   font-family: 'Montserrat', sans-serif;
@@ -561,10 +579,15 @@ background-color: rgba(0,0,0,0.3) !important;
   border-radius: 5px;
 }
 
-.notfound a:hover {
+.notfound .found a:hover {
   color: #8400ff;
+  text-decoration: none;
 }
-
+.username h3{
+  color: #fff;
+  margin-left: 20px;
+  margin-top: 50px!important;
+}
 
 .form-group input{
   border: 4px solid #b83b5e;
@@ -620,4 +643,12 @@ background-color: rgba(0,0,0,0.3) !important;
  background: rgba(0, 0, 0, 0.6);
  width: 340px;
  box-shadow: 6px 8px 5px #b83b5e;
+}
+#postedComment{
+  height: 370px;
+  overflow-y: scroll;
+  background-color: rgba(0, 0, 0, 0.6);
+  margin-top: 15px;
+  padding-top: 10px;
+  padding-right: 10px;
 }

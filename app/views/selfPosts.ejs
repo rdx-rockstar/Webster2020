@@ -5,6 +5,8 @@
 	<title>Games-Flick</title>
 	<link rel="stylesheet" href="/css/games.css">
 	<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+	
 	<link rel="icon" href="/icons/gaming.svg">
 	<style>
 		.hide-scrollbar::-webkit-scrollbar {
@@ -44,13 +46,7 @@
 							<a href="/followers">Followers</a>
 						</li>
 						<li><a href="/following">Following</a></li>
-						<% if(currentUser.email == user.email){ %>
-							<li>
-								<a href="/posts/new">Add Post</a>
-							</li>
-						<% } %>
-					<% } %>
-					<div class="linee"></div>
+
 					<div class="menu">
 						<p>FLick things</p>
 					</div>
@@ -120,8 +116,20 @@
 					</div>
 				</nav>
 				<!--body-->
-
-				<div class="container hide-scrollbar">
+			<div class="d-flex" style="margin-bottom:20px;">
+				<img style="border-radius:100%" src="https://www.decentfashion.in/wp-content/uploads/2018/02/Cool-cool-profile-pictures-300x244.jpg" alt="profilePicture">
+				<div class="username">
+					<h3>username</h3>
+				</div>
+				<!-- <% if(currentUser.email == user.email){ %> -->
+				<div class="found ml-auto" style="margin-right: 50px!important; margin-top: 50px!important;">
+					<a href="/posts/new">Add Post</a>
+				</div>
+				<!-- <% } %>
+			<% } %> -->
+			</div>
+			<div class="linee"></div>
+				<div class="container hide-scrollbar" style="margin-top:50px; height:360px!important;">
 					<div class="row">
 						<% if(user) { %>
 							<% user.posts.forEach(function(post){ %>
@@ -137,8 +145,6 @@
 							<% }) %>
 
 						<% } %>
-
-
 					</div>
 				</div>
 				<div class="footer">
@@ -147,9 +153,8 @@
 					<ul>
 						<li><a href="https://www.facebook.com/FLICKgamingWebsite"><i class="fab fa-facebook-f" aria-hidden="true"></i></a></li>
 						<li><a href=""><i class="fab fa-google" aria-hidden="true"></i></a></li>
-						<li> <a href="https://www.instagram.com/flick_india/"><i class="fab fa-instagram" aria-hidden="true"></i></a></li>
+						<li><a href="https://www.instagram.com/flick_india/"><i class="fab fa-instagram" aria-hidden="true"></i></a></li>
 					</ul>
-
 				</div>
 			</div>
 		</div>
