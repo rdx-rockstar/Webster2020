@@ -42,7 +42,7 @@
 									</div>
 								</form>
 								<% if(user) { %>
-								<li class="nav-item active">
+								<li class="nav-item">
 									<a class="nav-liink" href="/home"><i class="fas fa-home"></i> Home</a>
 								</li>
 								<li class="nav-item">
@@ -70,72 +70,92 @@
 					</div>
 				</nav>
 				<!--body-->
-<!-- hide-scrollbar -->
+				<!-- hide-scrollbar -->
 
 
-								<div class="row">
-									<div class="col-md" style="width: 740px;height: 600px;background: #000;">
-										<div class="card-header msg_head" style="background: #1B1B1B; width: 750px;">
-											<div class="d-flex bd-highlight">
-												<div class="img_cont">
-													<img src="https://images.unsplash.com/photo-1459245330819-1b6d75fbaa35?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80" class="rounded-circle user_img">
-													<!-- <span class="online_icon"></span> -->
-													<!--<span> tag is an inline container used to mark up a part of a text, or a part of a document-->
-												</div>
-												<div class="user_info">
-													<span><%= post.createdBy.email %></span>
-												</div>
-											</div>
+				<div class="row">
+					<div class="col-md" style="width: 740px;height: 600px;background: #000;">
+						<div class="card-header msg_head" style="background: #1B1B1B; width: 750px;">
+							<div class="d-flex bd-highlight">
+								<div class="img_cont">
+									<img src="https://images.unsplash.com/photo-1459245330819-1b6d75fbaa35?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80" class="rounded-circle user_img">
+									<!-- <span class="online_icon"></span> -->
+									<!--<span> tag is an inline container used to mark up a part of a text, or a part of a document-->
+								</div>
+								<div class="user_info">
+									<span><%= post.createdBy.email %></span>
+								</div>
+							</div>
+						</div>
+						<% if(!post.videoURL){ %>
+						<img style="width: 700px; height: 600px;" src="<%= post.thumbnail %>" class="card-img" alt="...">
+						<% }else{ %>
+						<video style="width:740px; height:520px" controls>
+							<source src="<%= post.videoURL %>" type="video/mp4">
+							<!-- <source src="movie.ogg" type="video/ogg"> -->
+							Your browser does not support the video tag.
+						</video>
+						<% } %>
+					</div>
+					<div class="col-md" style="height: 600px;background: #1B1B1B;">
+						<div class="card-body" style="padding-bottom:0px;">
+							<div class="likes">
+								<!-- like posts -->
+								<span onclick="ajaxLike('<%= post._id %>')"><i class="fas fa-heart"></i></span><span id="like-this-post"><%= post.likes %></span><br>
+								<!-- delete/report post -->
+								<span style="margin-right:38px; margin-top:40px;" id="action_menu_btn"><i class="fas fa-ellipsis-v"></i></span>
+								<div style="margin-right:38px; margin-top:40px; background-color:#222;" class="action_menu">
+									<ul>
+										<li><i class="fas fa-user-circle"></i> View profile</li>
+										<li><i class="fas fa-trash-alt"></i>Delete Post</li>
+										<li><i class="fas fa-exclamation"></i></i>Report Post</li>
+										<li><i class="fas fa-ban"></i> Block</li>
+									</ul>
+								</div>
+
+								<!-- caption post -->
+								<span><%= post.caption %></span>
+							</div>
+							<div class="linee"></div>
+
+							<h3 style="color:#BB86FC; margin-top:10px;">Comments</h3>
+							<div class="justify-content-start mb-3" id="postedComment">
+								<!-- profile pic -->
+
+								<% post.comments.forEach(comment => { %>
+								<div class="d-flex img_cont" style="margin-left:10px;">
+									<img src="https://images.unsplash.com/photo-1459245330819-1b6d75fbaa35?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80" class="rounded-circle user_img">
+									<div class=" justify-content-start mb-5" style="margin-top:0px; padding-top:0px;">
+										<div class="msg_cotainer">
+											<%= comment.message %>
+											<span  class="msg_time">15:23PM,Today</span>
 										</div>
-										<% if(!post.videoURL){ %>
-										<img style="width: 700px; height: 600px;" src="<%= post.thumbnail %>" class="card-img" alt="...">
-										<% }else{ %>
-										<video style="width:740px; height:520px" controls>
-											<source src="<%= post.videoURL %>" type="video/mp4">
-											<!-- <source src="movie.ogg" type="video/ogg"> -->
-											Your browser does not support the video tag.
-										</video>
-										<% } %>
 									</div>
-									<div class="col-md" style="height: 600px;background: #1B1B1B;">
-										<div class="card-body" style="padding-bottom:0px;">
-											<div class="likes">
-												<span onclick="ajaxLike('<%= post._id %>')"><i class="fas fa-heart"></i></span><span id="like-this-post"><%= post.likes %></span><br>
-												<span><%= post.caption %></span>
-											</div>
-											<div class="linee"></div>
+								</div>
+								<% }); %>
 
-											<h3 style="color:#BB86FC; margin-top:10px;">Comments</h3>
-											<div id="postedComment">
-												<% post.comments.forEach(comment => { %>
-												<div class="d-flex justify-content-start mb-4">
-													<div class="msg_cotainer">
-														<%= comment.message %>
-														<span style="margin-top:0px; padding-top:0px;" class="msg_time">15:23 PM, Today</span>
-													</div>
-												</div>
-												<% }); %>
-											</div>
 
-											<!-- <div class="d-flex justify-content-start mb-4">
+							</div>
+
+							<!-- <div class="d-flex justify-content-start mb-4">
 														<div class="msg_cotainer">
 															Hi Noora,wanna join us for Amoung Us?
 															<span class="msg_time">15:23 PM, Today</span>
 														</div>
 													</div> -->
-											<div class="card-footer" style="margin-top:0px;">
-												<form id="post-comment" data-postId="<%= post._id %>">
-													<div class="input-group">
-														<textarea id="comment" name="comment" class="form-control type_msg" placeholder="Type your message..."></textarea>
-														<div class="input-group-append">
-															<button id="enter" class="input-group-text send_btn d-inline-block">Post</button>
-														</div>
-													</div>
-												</form>
-											</div>
+							<div class="card-footer" style="margin-top:0px; margin-bottom: 5px;padding:0px;">
+								<form id="post-comment" data-postId="<%= post._id %>">
+									<div class="input-group">
+										<textarea id="comment" name="comment" class="form-control type_msg" placeholder="Type your message..."></textarea>
+										<div class="input-group-append">
+											<button id="enter" class="input-group-text send_btn d-inline-block">Post</button>
 										</div>
 									</div>
-									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
 
 
 				<!-- Footer  -->
@@ -160,7 +180,20 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
 	<!-- Bootstrap JS -->
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
-
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('#sidebarCollapse').on('click', function() {
+				$('#sidebar').toggleClass('active');
+			});
+		});
+	</script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('#action_menu_btn').click(function() {
+				$('.action_menu').toggle();
+			});
+		});
+	</script>
 	<script>
 		$(document).ready(function() {
 			const comnt = document.getElementById("postedComment");
@@ -199,7 +232,7 @@
 							</div>
 						</div>`;
 							comnt.appendChild(div);
-						} else {
+						} else{
 							if (confirm("Register yourself to be able to post comments.")) {
 								window.location.href = "/register";
 							}
