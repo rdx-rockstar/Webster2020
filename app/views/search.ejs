@@ -133,7 +133,25 @@
                 <!-- posts -->
                 <!-- posts -->
 
-
+                <% if(foundPosts.length == 0){ %>
+                  <p>No Matches Found <i class="fas fa-exclamation-circle"></i></p>
+                  <% }else{ %>
+                  <% foundPosts.forEach(function(post){ %>
+                    <div class="d-flex accounts">
+                      <div>
+                        <img src="<%= post.thumbnail %>">
+                      </div>
+                      <div class="username">
+                        <h3><%= post.caption %></h3>
+                      </div>
+                      <div class="notfound ml-auto">
+                        <button id="<%= post._id %>" onclick="postRedirect('<%= post._id %>')">View Post</button>
+                      </div>
+    
+                    </div>
+  
+                  <% }) %>
+                  <% } %>
 
 
 
@@ -175,6 +193,10 @@
         $('#sidebar').toggleClass('active');
       });
     });
+
+    function postRedirect(id){
+      window.location.href = "/posts/"+id;
+    }
     
     function ajaxDetermine(id){
       let buttonText = $("#"+id).text();

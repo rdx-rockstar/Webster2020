@@ -1,5 +1,7 @@
 const router = require('express').Router();
+const { post } = require('jquery');
 const User = require('../models/userSchema');
+const Post = require('../models/postSchema');
 
 router.get('/about_us',(req,res) => {
     res.render('about.ejs',{user:req.user});
@@ -37,7 +39,13 @@ router.get('/search',(req,res) => {
             console.log(err);
             return res.redirect("/home");
             }
-            res.render('search',{currentUser: req.user,foundUsers: foundUsers});
+            Post.find({tags: regex},function(error1,foundPosts){
+                if(error1){
+                    console.log(error1);
+                }else{
+                    res.render('search',{currentUser: req.user,foundUsers: foundUsers,foundPosts: foundPosts});
+                }
+            })
         })
     }
     else{
