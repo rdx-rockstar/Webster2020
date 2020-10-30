@@ -262,6 +262,27 @@ input[type="radio"]{
 }
 
 
+
+.form-inline button{
+  font-family: 'Montserrat', sans-serif;
+  display: inline-block;
+  /* text-transform: uppercase; */
+  color: #ff005a;
+  text-decoration: none;
+  border: 2px solid;
+  background: transparent;
+  padding: 5px 20px;
+  font-size: 14px;
+  font-weight: 700;
+  /* margin-right: 50px!important;
+  margin-top: 50px; */
+}
+
+.form-inline button:hover {
+  color: #8400ff;
+}
+
+
 /*---------------------
      Footer
 ---------------------------*/
