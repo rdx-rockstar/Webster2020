@@ -3,6 +3,7 @@ const router = require('express').Router(),
       upload = require('../multer'),
       cloudinary = require('../strategies/cloudinary');
 
+const { runInNewContext } = require('vm');
 const Post = require('../models/postSchema'),
       Comment = require('../models/commentSchema'),
       User = require('../models/userSchema');      
@@ -31,7 +32,8 @@ router.post('/posts',upload.array('file'),async (req,res) => {
             createdBy:{
             id: req.user._id,
             email: req.user.email
-            } 
+            },
+            tags: req.body.tags 
         });
         User.findById(req.user._id,(er,currentUser) => {
             if(er){
@@ -39,13 +41,10 @@ router.post('/posts',upload.array('file'),async (req,res) => {
             return res.redirect('/register');
             }
             Post.create(post, function(err, post) {
-            console.log("PoSt");
-            console.log(post);
             if (err) {
                 console.log(err);
                 return res.send("Error Occured");
             }
-            console.log(currentUser);
                 currentUser.posts.unshift(post);
                 currentUser.save();
                 res.redirect('/users/' + currentUser._id);
