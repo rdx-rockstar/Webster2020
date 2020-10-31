@@ -132,15 +132,29 @@ User.findById(req.params.id,function(err,foundUser){
   } else {
     var name = foundUser.username.split(" ");
     var liveU=[];
+    var liveF=[];
+    var fllwers=[];
+    fllwers=foundUser.followers;
     liveUser.find({},function(err,users){
     var i;
     console.log("live users :"+users.length);
     for (i = 0; i < users.length; i++) {
       console.log(users[i].name);
-      liveU.push([users[i].username,users[i].lable,users[i].name,users[i].thumbnail,users[i].hashtags]);
+      var flag=0;
+      for(var j=0;j<fllwers.length;j++){
+        if(user[i].uid==fllwers[j]){
+          flag=1;
+        }
+      }
+      if(flag){
+      liveF.push([users[i].username,users[i].lable,users[i].name,users[i].thumbnail,users[i].hashtags]);
+      }
+      else{
+        liveU.push([users[i].username,users[i].lable,users[i].name,users[i].thumbnail,users[i].hashtags]);
+      }
     }
     console.log("in list  "+liveU.length);
-    return res.render('liveStreams',{name:name,user:foundUser,live:liveU});
+    return res.render('liveStreams',{name:name,user:foundUser,live:liveU,livef:liveF});
     });
   }
 })

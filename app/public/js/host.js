@@ -335,11 +335,13 @@ async function startCapture() {
       var res = str.split(" ");
       str="";
       for(var i=0;i<res.length;i++){
+        if(String(res[i]).trim()){
         if(String(res[i]).charAt(0)!='#'){
           str+="#";
         }
         str+=(res[i]+"  ");
       }
+    }
       $("#hashtag").val(str);
     var formData = {
       username : room,
