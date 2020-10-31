@@ -31,7 +31,8 @@ router.post('/posts',upload.array('file'),async (req,res) => {
             caption: req.body.caption,
             createdBy:{
             id: req.user._id,
-            email: req.user.email
+            email: req.user.email,
+            dp: req.user.profilePicture
             },
             tags: req.body.tags
         });
@@ -70,6 +71,16 @@ router.get('/posts/:id',(req,res) =>{
     })
 });
 
+router.delete('/posts/:id',(req,res) => {
+    Post.findByIdAndRemove(req.params.id,(err) => {
+        if(err){
+            console.log(err);
+        }else{
+            res.redirect("/home");
+        }
+    })
+})
+
 router.post('/posts/:id/newComment',(req,res) => {
     if(!req.user){
         return res.send({
@@ -81,12 +92,16 @@ router.post('/posts/:id/newComment',(req,res) => {
                 console.log(err);
                 return res.redirect('/posts/'+post._id);
             }
+            var currentDate = new Date();
+            var dateTime = currentDate.getDate()+"/"+(currentDate.getMonth()+1)+"/"+currentDate.getFullYear()+"@"+currentDate.getHours()+":"+currentDate.getMinutes();
             var newComment = {
                 author: {
                 id: req.user._id,
-                email: req.user.email
+                email: req.user.email,
+                dp: req.user.profilePicture
                 },
-                message: req.body.message
+                message: req.body.message,
+                time: dateTime
             };
             Comment.create(newComment,(error,comment) => {
                 if(error){
@@ -95,8 +110,10 @@ router.post('/posts/:id/newComment',(req,res) => {
                 }
                 post.comments.push(comment);
                 post.save();
+                // console.log(comment);
                 return res.send({
-                msg: true
+                msg: true,
+                comment: comment
                 });
             })
         })

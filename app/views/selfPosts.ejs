@@ -117,10 +117,14 @@
 				</nav>
 				<!--body-->
 				<div class="d-flex" style="margin-bottom:20px;">
-					<img style="border-radius:100%" src="https://www.decentfashion.in/wp-content/uploads/2018/02/Cool-cool-profile-pictures-300x244.jpg" alt="profilePicture">
-					<div class="username">
-						<h3>username</h3>
-					</div>
+					<% if(currentUser.email != user.email){ %>
+						<img style="border-radius:100%" src="<%= user.profilePicture %>" alt="profilePicture">
+						<div class="username">
+							<h3><%= user.username.split(" ")[0] %></h3>
+						</div>
+					<% }else{ %>
+						<img style="border-radius:100%; width: 90px!important; height: 90px!important; margin-left: 40px;" src="<%= currentUser.profilePicture %>">
+					<% } %>
 					<!-- <% if(currentUser.email == user.email){ %> -->
 
 					<div class="notification ml-auto">

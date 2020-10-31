@@ -78,7 +78,7 @@
 						<div class="card-header msg_head" style="background: #1B1B1B; width: 750px;">
 							<div class="d-flex bd-highlight">
 								<div class="img_cont">
-									<img src="https://images.unsplash.com/photo-1459245330819-1b6d75fbaa35?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80" class="rounded-circle user_img">
+									<img src="<%= post.createdBy.dp %>" class="rounded-circle user_img">
 									<!-- <span class="online_icon"></span> -->
 									<!--<span> tag is an inline container used to mark up a part of a text, or a part of a document-->
 								</div>
@@ -106,8 +106,14 @@
 								<span style="margin-right:38px; margin-top:40px;" id="action_menu_btn"><i class="fas fa-ellipsis-v"></i></span>
 								<div style="margin-right:38px; margin-top:40px; background-color:#222;" class="action_menu">
 									<ul>
-										<li><i class="fas fa-user-circle"></i> View profile</li>
-										<li><i class="fas fa-trash-alt"></i>Delete Post</li>
+										<li><a href="/users/<%= post.createdBy.id %>"><i class="fas fa-user-circle"></i> View profile</a></li>
+										<% if(user){ %>
+											<% if(user.email == post.createdBy.email){ %>
+												<form id="delete-post" action="/posts/<%= post._id %>?_method=DELETE" method="POST">
+													<li><button><i class="fas fa-trash-alt"></i>Delete Post</button></li>
+												</form>
+											<% } %>
+										<% } %>
 										<li><i class="fas fa-exclamation"></i></i>Report Post</li>
 										<li><i class="fas fa-ban"></i> Block</li>
 									</ul>
@@ -124,11 +130,11 @@
 
 								<% post.comments.forEach(comment => { %>
 								<div class="d-flex img_cont" style="margin-left:10px;">
-									<img src="https://images.unsplash.com/photo-1459245330819-1b6d75fbaa35?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80" class="rounded-circle user_img">
+									<img src="<%= comment.author.dp %>" class="rounded-circle user_img">
 									<div class=" justify-content-start mb-5" style="margin-top:0px; padding-top:0px;">
 										<div class="msg_cotainer">
 											<%= comment.message %>
-											<span  class="msg_time">15:23PM,Today</span>
+											<span  class="msg_time"><%= comment.time %></span>
 										</div>
 									</div>
 								</div>
@@ -222,15 +228,19 @@
 					url: "/posts/" + postId + "/newComment",
 					data: JSON.stringify(formData),
 					dataType: 'json',
-					success: function(customer) {
-						if (customer.msg) {
+					success: function(result) {
+						// console.log(result.comment.time.toDateString());
+						if (result.msg) {
 							const div = document.createElement("div");
-							div.innerHTML = `<div class="d-flex justify-content-start mb-4">
-							<div class="msg_cotainer">
-								` + message + `
-								<span class="msg_time">15:23 PM, Today</span>
-							</div>
-						</div>`;
+							div.innerHTML = `<div class="d-flex img_cont" style="margin-left:10px;">
+									<img src="`+result.comment.author.dp+`" class="rounded-circle user_img">
+									<div class=" justify-content-start mb-5" style="margin-top:0px; padding-top:0px;">
+										<div class="msg_cotainer">
+											`+result.comment.message+`
+											<span  class="msg_time">`+result.comment.time.split("T")[0]+`</span>
+										</div>
+									</div>
+								</div>`;
 							comnt.appendChild(div);
 						} else{
 							if (confirm("Register yourself to be able to post comments.")) {
