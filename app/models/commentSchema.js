@@ -6,9 +6,11 @@ const commentSchema = new mongoose.Schema({
             type: mongoose.Schema.Types.ObjectId,
             ref: "User"
         },
-        email: String
+        email: String,
+        dp: String
     },
-    message: String
+    message: String,
+    time: String,
 });
 
 module.exports = mongoose.model("Comment",commentSchema);

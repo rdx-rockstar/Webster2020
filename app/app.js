@@ -3,16 +3,17 @@ require('dotenv').config()
 
 
 // Requiring dependencies and Strategies.
-const createError   = require('http-errors'),
-      express       = require('express'),
-      path          = require('path'),
-      cookieParser  = require('cookie-parser'),
-      bodyParser    = require('body-parser'),
-      mongoose      = require('mongoose'),
-      session       = require('express-session'),
-      passport      = require('passport'),
-      logger        = require('morgan'), 
-      LocalStrategy = require('passport-local').Strategy;
+const createError    = require('http-errors'),
+      express        = require('express'),
+      path           = require('path'),
+      cookieParser   = require('cookie-parser'),
+      bodyParser     = require('body-parser'),
+      mongoose       = require('mongoose'),
+      session        = require('express-session'),
+      passport       = require('passport'),
+      logger         = require('morgan'), 
+      LocalStrategy  = require('passport-local').Strategy,
+      methodOverride = require("method-override");
 
 //Requiring Routes.
 const indexRouter = require('./routes/index'),
@@ -39,6 +40,7 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(methodOverride("_method"));
 
 app.use(session({
 	secret: process.env.SESSION_SECRET,
