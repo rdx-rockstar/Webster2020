@@ -6,7 +6,7 @@
 ### Team name: TEAM NO.1 
 1. Member 1: KASHISH SINGH(20195082) 
 2. Member 2: KSHITIJ VERMA(20198062) 
-3. Member 3: KARIMULLAH (20198060)
+3. Member 3: KARIMULLA MOHAMMAD (20198060)
 
 <!-- Horizontal Rule -->
 ---
@@ -60,6 +60,7 @@ ENJOY PEEPS ❤️
 * Socket.IO
 * AJAX
 * Bootstrap
+* Web RTC
  <!-- Horizontal Rule -->
 ---
 
