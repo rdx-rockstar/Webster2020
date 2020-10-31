@@ -110,14 +110,14 @@
 									<label for="videoSource" style="text-align: left; color:#FF7597">Video source: </label> <br>
 									<select id="videoSource"></select>
 								</section>
-								<div class="likes">
+								<!-- <div class="likes">
 									<span><i class="fas fa-heart"></i></span>
 									<span><i class="fas fa-heart-broken"></i></span>
-								</div>
+								</div> -->
 							</div>
 
 						</div>
-						<div class="textss">
+						<!-- <div class="textss">
 							<textarea name="" class="form-control type_msg hide-scrollbar" id="lable" placeholder="Type lable of stream"></textarea>
 							<textarea name="" class="form-control type_msg hide-scrollbar" id="hashtag" placeholder="Type hashtags of stream"></textarea>
 							<input type="file" name="file" class="form-control-file" id="thumbnail" accept="image/*">
@@ -133,11 +133,7 @@
 								<label for="videoSource" style="text-align: left; color:#FF7597">Video source: </label>
 								<select id="videoSource"></select>
 							  </section>
-						</div>
-						<div class="likes">
-							<span><i class="fas fa-heart"></i></span>
-							<span><i class="fas fa-heart-broken"></i></span>
-						</div>
+						</div> -->
 						<div class="footer">
 							<p>© 2020 Flick, LLC. All rights reserved | </p>
 							<p>Follow us on</p>
@@ -152,15 +148,15 @@
 				</div>
 			</div>
 			</section>
-			<div class="footer">
+			<!-- <div class="footer">
 				<p>© 2020 Flick, LLC. All rights reserved | </p>
 				<p>Follow us on</p>
-				<ul class="d-flex">
+				<!-- <ul class="d-flex">
 					<li><a href="https://www.facebook.com/FLICKgamingWebsite"><i class="fab fa-facebook-f" aria-hidden="true"></i></a></li>
 					<li><a href=""><i class="fab fa-google" aria-hidden="true"></i></a></li>
 					<li> <a href="https://www.instagram.com/flick_india/"><i class="fab fa-instagram" aria-hidden="true"></></i></a></li>
-				</ul>
-			</div>
+				</ul> -->
+			</div> -->
 		</div>
 
 
@@ -174,7 +170,7 @@
 							<div class="card-header msg_head">
 								<div class="d-flex bd-highlight">
 									<div class="img_cont">
-										<img src="<%=user.googleProfilePicture%>" class="rounded-circle user_img">
+										<img src="<%=user.profilePicture%>" class="rounded-circle user_img">
 										<span class="online_icon"></span>
 										<!--<span> tag is an inline container used to mark up a part of a text, or a part of a document-->
 									</div>
@@ -358,7 +354,7 @@
 		const room = "<%= room %>"
 		const username = "<%= name[0] %>"
 		const uid = "<%= user._id %>"
-		const pic = "<%= user.googleProfilePicture %>"
+		const pic = "<%= user.profilePicture %>"
 	</script>
 	<!-- <script type="text/javascript">
 		$(document).ready(function() {

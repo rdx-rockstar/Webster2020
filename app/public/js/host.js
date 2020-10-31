@@ -137,11 +137,10 @@ socket.on("watcher", id => {
   console.log("watcher came to broadcaster and offer sent 00");
   const peerConnection = new RTCPeerConnection(config);
   peerConnections[id] = peerConnection;
-
-  let stream = videoElement.srcObject;
-  stream.getTracks().forEach(track => peerConnection.addTrack(track, stream));
   let sstream=videoElem.srcObject;
   sstream.getTracks().forEach(track => peerConnection.addTrack(track, sstream));
+  let stream = videoElement.srcObject;
+  stream.getTracks().forEach(track => peerConnection.addTrack(track, stream));
 
   peerConnection.onicecandidate = event => {
     if (event.candidate) {
@@ -306,10 +305,10 @@ function stopCapture() {
   $.ajax({
     type : "POST",
     contentType : "application/json",
-  url : "/users/deluser",
-  data : JSON.stringify(formData),
-  dataType : 'json',
-  success : function(customer) {
+    url : "/users/deluser",
+    data : JSON.stringify(formData),
+    dataType : 'json',
+    success : function(customer) {
   },
   error : function(e) {
     alert("Error!")
@@ -322,20 +321,37 @@ async function getpreview(){
 }
 async function startCapture() {
   try {
+    if($("#lable").val()==""){
+      alert("Enter a lable");
+    }
+    else if($("#hashtag").val()==''){
+      alert("Enter Hashtags");
+    }
+    else{
     videoElem.srcObject = await navigator.mediaDevices.getDisplayMedia(displayMediaOptions);
     getStream()
     dumpOptionsInfo();
+      var str=String($("#hashtag").val());
+      var res = str.split(" ");
+      str="";
+      for(var i=0;i<res.length;i++){
+        if(String(res[i]).charAt(0)!='#'){
+          str+="#";
+        }
+        str+=(res[i]+"  ");
+      }
+      $("#hashtag").val(str);
     var formData = {
       username : room,
-      name:name[0],
       lable : $("#lable").val(),
       hashtags : $("#hashtag").val(),
       pic: pic,
       thumbnail: $("#thumbnail").val(),
       uid:uid,
+      name:username,
     }
     ison=1;
-    stopElem.disabled=false;
+  stopElem.disabled=false;
   startElem.disabled=true;
   preview.disabled=true;
   cpreview.disabled=true;
@@ -355,6 +371,7 @@ async function startCapture() {
       console.log("ERROR: ", e);
     }
   });
+  }
   } catch(err) {
     console.error("Error: " + err);
   }
@@ -372,27 +389,21 @@ function handleError(error) {
   console.error("Error: ", error);
 }
 }
-window.onbeforeunload = function(){
+$(window).on('unload', function() {
   if(ison){
-    let tracks = videoElem.srcObject.getTracks();
-  tracks.forEach(track => track.stop());
-  videoElem.srcObject = null;
-  var formData = {
-    username : room,
-  }
-  $.ajax({
-    type : "POST",
-    contentType : "application/json",
-  url : "/users/deluser",
-  data : JSON.stringify(formData),
-  dataType : 'json',
-  success : function(customer) {
-    ison=0;
-  },
-  error : function(e) {
-    alert("Error!")
-    console.log("ERROR: ", e);
-  }
-});
-  }
+    var formData = {
+      username : room,
+    }
+    $.ajax({
+      type : "POST",
+      contentType : "application/json",
+      url : "/users/deluser",
+      data : JSON.stringify(formData),
+      dataType : 'json',
+      async:false,
+      success : function(customer) {
+        },
+  });
 }
+});
+

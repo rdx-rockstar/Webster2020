@@ -153,14 +153,14 @@ socket.on("offer", (id, description) => {
     console.log(".");
       console.log(event);
       
-    if(cnt<3){
+    if(cnt<2){
       cnt+=1;
       console.log("1");
-    video.srcObject = event.streams[0];}
+    videoElem.srcObject=event.streams[0];}
     else{
       console.log("2");
-      cnt=1;
-    videoElem.srcObject=event.streams[0];}
+      cnt+=1;
+      video.srcObject = event.streams[0];}
   };
   peerConnection.onicecandidate = event => {
     if (event.candidate) {
