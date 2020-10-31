@@ -5,11 +5,13 @@
 	<title>Games-Flick</title>
 	<link rel="stylesheet" href="/css/games.css">
 	<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
 	<link rel="icon" href="/icons/gaming.svg">
 	<style>
 		.hide-scrollbar::-webkit-scrollbar {
-		display: none;
-	  }
+			display: none;
+		}
 	</style>
 	<!-- CSS only -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
@@ -30,25 +32,21 @@
 				<div class="linee"></div>
 				<ul class="list-unstyled components">
 					<div class="menu">
-						<% if(user){ %>
-							<img src="<%= user.profilePicture %>" alt="profile">
-							<p><%= name[0] %></p>
+						<% if(currentUser){ %>
+						<img src="<%= currentUser.profilePicture %>" alt="profile">
+						<p><%= name[0] %></p>
 						<% } else{ %>
-							<img src="/images/default.png" alt="profile">
-							<p><%= name[0] %></p>
+						<img src="/images/default.png" alt="profile">
+						<p><%= name[0] %></p>
 						<% } %>
 					</div>
 					<div class="linee"></div>
 					<% if(user) { %>
-						<li class="nav-item">
-							<a href="/followers">Followers</a>
-						</li>
-						<li><a href="/following">Following</a></li>
-						<li>
-							<a href="/posts/new">Add Post</a>
-						</li>
-					<% } %>
-					<div class="linee"></div>
+					<li class="nav-item">
+						<a href="/followers">Followers</a>
+					</li>
+					<li><a href="/following">Following</a></li>
+
 					<div class="menu">
 						<p>FLick things</p>
 					</div>
@@ -84,53 +82,95 @@
 									</div>
 								</form>
 								<% if(user) { %>
-                                    <li class="nav-item">
-                                        <a class="nav-liink" href="/home"><i class="fas fa-home"></i> Home</a>
-                                    </li>
-                                    <li class="nav-item active">
-                                        <a class="nav-liink" href="/users/<%= user._id %>"> <i class="fas fa-gamepad"></i> Profile</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-liink" href="/users/livestreams/<%= user._id %>"> <i class="fas fa-video"></i> Stream</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-liink" href="/users/<%= user._id %>/chat"> <i class="fas fa-comments"></i> Message</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-liink" href="/logout"> <i class="fas fa-sign-out-alt"></i> LogOut</a>
-                                    </li>
-                                <% } else { %>
-                                    <li class="nav-item">
-                                        <a class="nav-liink" href="/login"><i class="fas fa-sign-in-alt"></i> Login</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-liink" href="/register"> <i class="fas fa-sign-in-alt"></i> Register</a>
-                                    </li>
-                                <% } %>
+								<li class="nav-item">
+									<a class="nav-liink" href="/home"><i class="fas fa-home"></i> Home</a>
+								</li>
+								<% if(currentUser.email == user.email){ %>
+								<li class="nav-item active">
+									<a class="nav-liink" href="/users/<%= currentUser._id %>"> <i class="fas fa-gamepad"></i> Profile</a>
+								</li>
+								<% }else{ %>
+								<li class="nav-item">
+									<a class="nav-liink" href="/users/<%= currentUser._id %>"> <i class="fas fa-gamepad"></i> Profile</a>
+								</li>
+								<% } %>
+								<li class="nav-item">
+									<a class="nav-liink" href="/users/livestreams/<%= user._id %>"> <i class="fas fa-video"></i> Stream</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-liink" href="/users/<%= user._id %>/chat"> <i class="fas fa-comments"></i> Message</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-liink" href="/logout"> <i class="fas fa-sign-out-alt"></i> LogOut</a>
+								</li>
+								<% } else { %>
+								<li class="nav-item">
+									<a class="nav-liink" href="/login"><i class="fas fa-sign-in-alt"></i> Login</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-liink" href="/register"> <i class="fas fa-sign-in-alt"></i> Register</a>
+								</li>
+								<% } %>
 							</ul>
 						</div>
 					</div>
 				</nav>
 				<!--body-->
+				<div class="d-flex" style="margin-bottom:20px;">
+					<img style="border-radius:100%" src="https://www.decentfashion.in/wp-content/uploads/2018/02/Cool-cool-profile-pictures-300x244.jpg" alt="profilePicture">
+					<div class="username">
+						<h3>username</h3>
+					</div>
+					<!-- <% if(currentUser.email == user.email){ %> -->
 
-				<div class="container hide-scrollbar">
+					<div class="notification ml-auto">
+						<a href="#">
+							<div class="notBtn" href="#">
+								<!--Number supports double digets and automaticly hides itself when there is nothing between divs -->
+								<div class="number">2</div>
+								<i class="bell fas fa-bell"></i>
+								<div class="box">
+									<!-- <div class="display"> -->
+										<!-- notification(scroll) -->
+										<!-- <div class="cont"> -->
+											<!-- Fold this div and try deleting evrything inbetween -->
+											<div class="sec">
+													<div class="profCont">
+														<img class="profile" src="/images/kashish.jpeg">
+													</div>
+													<div class="txt">kashish liked your post</div>
+													<div class="txt sub">11:22PM,Today</div>
+												</a>
+											</div>
+										<!-- </div> -->
+									<!-- </div> -->
+								</div>
+							</div>
+						</a>
+					</div>
+					<div class="found ml-auto" style="margin-right: 50px!important; margin-top: 50px!important; margin-left:0px!important;">
+						<a href="/posts/new">Add Post</a>
+					</div>
+					<!-- <% } %>
+			<% } %> -->
+				</div>
+				<div class="linee"></div>
+				<div class="container hide-scrollbar" style="margin-top:50px; height:360px!important;">
 					<div class="row">
 						<% if(user) { %>
-							<% user.posts.forEach(function(post){ %>
-								<div class="col-sm">
-									<div class="card" style="width: 18rem;">
-										<img src="<%= post.thumbnail %>" class="card-img-top" alt="...">
-										<div class="card-body">
-											<a href="/posts/<%= post._id %>" class="btn">Show More</a>
-										</div>
-									</div>
-									<br>
+						<% user.posts.forEach(function(post){ %>
+						<div class="col-sm">
+							<div class="card" style="width: 18rem;">
+								<img src="<%= post.thumbnail %>" class="card-img-top" alt="...">
+								<div class="card-body">
+									<a href="/posts/<%= post._id %>" class="btn">Show More</a>
 								</div>
-							<% }) %>
+							</div>
+							<br>
+						</div>
+						<% }) %>
 
 						<% } %>
-
-						 
 					</div>
 				</div>
 				<div class="footer">
@@ -139,9 +179,8 @@
 					<ul>
 						<li><a href="https://www.facebook.com/FLICKgamingWebsite"><i class="fab fa-facebook-f" aria-hidden="true"></i></a></li>
 						<li><a href=""><i class="fab fa-google" aria-hidden="true"></i></a></li>
-						<li> <a href="https://www.instagram.com/flick_india/"><i class="fab fa-instagram" aria-hidden="true"></i></a></li>
+						<li><a href="https://www.instagram.com/flick_india/"><i class="fab fa-instagram" aria-hidden="true"></i></a></li>
 					</ul>
-
 				</div>
 			</div>
 		</div>

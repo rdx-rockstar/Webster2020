@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add post</title>
     	<link rel="stylesheet" href="/css/games.css">
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+      
       <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 
     <style>
@@ -39,7 +41,7 @@
 								</form>
 
 								<% if(user) { %>
-                                    <li class="nav-item active">
+                                    <li class="nav-item">
                                         <a class="nav-liink" href="/home"><i class="fas fa-home"></i> Home</a>
                                     </li>
                                     <li class="nav-item">
@@ -83,6 +85,10 @@
                               <div class="form-group">
                                   <label style="color:#fff;" for="exampleInputEmail1">Caption</label>
                                   <input type="textarea" class="form-control form-group" id="exampleInputEmail1" name="caption">
+                                </div>
+                              <div class="form-group">
+                                  <label style="color:#fff;" for="exampleInputEmail2">Tags</label>
+                                  <input placeholder="Example: #tag#tag#tag....so on" type="textarea" class="form-control form-group" id="exampleInputEmail2" name="tags">
                                 </div>
                               <div class="notfound">
                                   <button style="padding: 10px 40px; font-size: 16px;" type="post" name="button">Submit</button>

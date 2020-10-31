@@ -5,11 +5,13 @@
 	<title>Games-Flick</title>
 	<link rel="stylesheet" href="css/games.css">
 	<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+	
 	<link rel="icon" href="/icons/gaming.svg">
 	<style>
 		.hide-scrollbar::-webkit-scrollbar {
-		display: none;
-	  }
+			display: none;
+		}
 	</style>
 	<!-- CSS only -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
@@ -31,11 +33,11 @@
 				<ul class="list-unstyled components">
 					<div class="menu">
 						<% if(user) { %>
-							<img src="<%= user.profilePicture %>" alt="profile">
-							<p><%= user.username.split(" ")[0] %></p>
+						<img src="<%= user.profilePicture %>" alt="profile">
+						<p><%= user.username.split(" ")[0] %></p>
 						<% } else { %>
-							<img src="/images/default.png" alt="profile">
-							<p>Welcome!</p>
+						<img src="/images/default.png" alt="profile">
+						<p>Welcome!</p>
 						<% } %>
 					</div>
 					<div class="linee"></div>
@@ -43,15 +45,15 @@
 						<a href="/followers">Followers</a>
 					</li>
 					<li class="nav-item active">
-            <a href="/following">Following</a></li>
+						<a href="/following">Following</a></li>
 					<div class="linee"></div>
 					<div class="menu">
 						<p>FLick things</p>
 					</div>
 					<li>
-            <a href="/about_us">About Us</a>
+						<a href="/about_us">About Us</a>
 					</li>
-					<li >
+					<li>
 						<a href="/contacts">Contact</a>
 					</li>
 
@@ -85,7 +87,7 @@
 									</div>
 								</form>
 								<% if(user) { %>
-                                    <li class="nav-item active">
+                                    <li class="nav-item">
                                         <a class="nav-liink" href="/home"><i class="fas fa-home"></i> Home</a>
                                     </li>
                                     <li class="nav-item">
@@ -114,28 +116,32 @@
 				</nav>
 				<!--body-->
 
-				<div class="container">
-          <!--heading-->
-  <h1 style="color: #BB86FC">Following</h1>
-  <!--contact box-->
-  <div class="container"> <br> <br> <br>
-<div class="row">
-  <% if(user){ %>
-	<% user.subscriptions.forEach(function (subscription) { %>
-		<div class="col-sm">
-			<div class="box">
-					<img  src="<%= subscription.profilePicture %>">
-			<a href="/users/<%=subscription._id %>"><h5 style="color: #FF7597"><%= subscription.username.split(" ")[0] %></h5></a>
-			  <br>
-			</div>
-		  </div>
-	<% }) %>
-  <% } %>
-</div>
-</div>
-				</div>
+
+					<!--heading-->
+					<h1 style="color: #BB86FC">Following</h1>
+					<!--contact box-->
+					<div class="container "> <br>  <br>
+						<div class="">
+							<% if(user){ %>
+							<% user.subscriptions.forEach(function (subscription) { %>
+								<div class="d-flex" style="margin-top: 20px; margin-bottom: 20px">
+									<img style="margin-left: 30px; border-radius: 100%;" src="<%= subscription.profilePicture %>">
+									<a href="/users/<%=subscription._id %>">
+										<h2 style="color: #FF7597; margin-left: 30px; margin-top: 50px;"><%= subscription.username.split(" ")[0] %></h2>
+									</a>
+									<div class="found ml-auto">
+                    <button id="<%= user._id %>" onclick="ajaxUnsubscribe('<%= user._id %>')"><i class="fas fa-times-circle"></i> Unsubscribe</button>
+                  </div>
+									<br>
+								</div>
+								<div class="linee"></div>
+							<% }) %>
+							<% } %>
+						</div>
+					</div>
+
 				<!-- Footer  -->
-				<div class="footer">
+				<div class="footer" style="margin-top:2px;">
 					<p>© 2020 Flick, LLC. All rights reserved | </p>
 					<p>Follow us on</p>
 					<ul>

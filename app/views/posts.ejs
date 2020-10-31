@@ -5,80 +5,84 @@
 	<title>Games-Flick</title>
 	<link rel="stylesheet" href="/css/games.css">
 	<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+	
 	<link rel="icon" href="/icons/gaming.svg">
 	<!-- CSS only -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 </head>
 
-  <body>
-    <div class="container-big">
+<body>
+	<div class="container-big">
 
-  		<div class="wrapper">
-  			<!-- Page Content  -->
-  			<div id="content">
-  				<!-- top navbar  -->
-  				<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #1D1D1D">
-  					<div class="container-fluid">
-              <h2 class="brand">FLICK</h2>
-  						<button class="bttn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-  							<i class="fas fa-align-justify"></i>
-  						</button>
-              <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ml-auto">
-                  <% if(!user){ %>
-                    <li class="nav-item ">
-                      <a class="nav-link" href="/login"><i class="fas fa-sign-in-alt"></i> Login<span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item ">
-                      <a class="nav-link" href="/register"> <i class="fas fa-sign-in-alt"></i> Register<span class="sr-only">(current)</span></a>
-                    </li>
-                  <% } else { %>
-                    <li class="nav-item ">
-                      <a class="nav-link" href="/users/<%= user._id %>"><div class="d-flex menu">
-            						<% if(user.provider == "google"){ %>
-            							<img  style="width: 40px; height:40px;" src="<%= user.googleProfilePicture %>" alt="profile">
+		<div class="wrapper">
+			<!-- Page Content  -->
+			<div id="content">
+				<!-- top navbar  -->
+				<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #1D1D1D">
+					<div class="container-fluid">
+						<h2 class="brand">FLICK</h2>
+						<button class="bttn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+							<i class="fas fa-align-justify"></i>
+						</button>
+						<div class="collapse navbar-collapse" id="navbarSupportedContent">
+							<ul class="navbar-nav ml-auto">
+								<% if(!user){ %>
+								<li class="nav-item ">
+									<a class="nav-link" href="/login"><i class="fas fa-sign-in-alt"></i> Login<span class="sr-only">(current)</span></a>
+								</li>
+								<li class="nav-item ">
+									<a class="nav-link" href="/register"> <i class="fas fa-sign-in-alt"></i> Register<span class="sr-only">(current)</span></a>
+								</li>
+								<% } else { %>
+								<li class="nav-item ">
+									<a class="nav-link" href="/users/<%= user._id %>">
+										<div class="d-flex menu">
+											<% if(user.provider == "google"){ %>
+											<img style="width: 40px; height:40px;" src="<%= user.googleProfilePicture %>" alt="profile">
 
-            						<% } else if(user.provider == "facebook"){ %>
-            							<img  style="width: 40px; height:40px;" src="/images/default.png" alt="profile">
+											<% } else if(user.provider == "facebook"){ %>
+											<img style="width: 40px; height:40px;" src="/images/default.png" alt="profile">
 
-            						<% } else{ %>
-            							<img  style="width: 40px; height:40px;" src="/images/default.png" alt="profile">
+											<% } else{ %>
+											<img style="width: 40px; height:40px;" src="/images/default.png" alt="profile">
 
-            						<% } %>
-            					</div>
-											<span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="/logout"> <i class="fas fa-sign-out-alt"></i> Logout</a>
-                    </li>
-                  <% } %>
-                </ul>
-              </div>
-  					</div>
-  				</nav>
-  				<!--body-->
+											<% } %>
+										</div>
+										<span class="sr-only">(current)</span>
+									</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="/logout"> <i class="fas fa-sign-out-alt"></i> Logout</a>
+								</li>
+								<% } %>
+							</ul>
+						</div>
+					</div>
+				</nav>
+				<!--body-->
 
 
 
-              <div class="container">
-                <div class="row">
-                  <div class="col-md-8">
-                          <div class="row ">
-                            <div class="col-sm-3">
-                              <div class="menu">
-                    						<% if(user){ %>
-																	<% if(user.provider == "google"){ %>
-	                    							<img src="<%= user.googleProfilePicture %>" alt="profile">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-8">
+							<div class="row ">
+								<div class="col-sm-3">
+									<div class="menu">
+										<% if(user){ %>
+										<% if(user.provider == "google"){ %>
+										<img src="<%= user.googleProfilePicture %>" alt="profile">
 
-	                    						<% } else if(user.provider == "facebook"){ %>
-	                    							<img src="/images/default.png" alt="profile">
+										<% } else if(user.provider == "facebook"){ %>
+										<img src="/images/default.png" alt="profile">
 
-	                    						<% } else{ %>
-	                    							<img src="/images/default.png" alt="profile">
-	                    						<% } %>
-																<%} else{%>
-																	<img src="/images/default.png" alt="profile">
-															<%}%>
+										<% } else{ %>
+										<img src="/images/default.png" alt="profile">
+										<% } %>
+										<%} else{%>
+										<img src="/images/default.png" alt="profile">
+										<%}%>
 
                     					</div>
                             </div>

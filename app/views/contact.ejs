@@ -5,7 +5,10 @@
 	<title>Games-Fllick</title>
 	<link rel="stylesheet" href="/css/games.css">
 	<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
 	<link rel="icon" href="/icons/gaming.svg">
+
 	<!-- CSS only -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 </head>
@@ -26,26 +29,26 @@
 				<ul class="list-unstyled components">
 					<div class="menu">
 						<% if(user) { %>
-							<img src="<%= user.profilePicture %>" alt="profile">
-							<p><%= user.username.split(" ")[0] %></p>
+						<img src="<%= user.profilePicture %>" alt="profile">
+						<p><%= user.username.split(" ")[0] %></p>
 						<% } else { %>
-							<img src="/images/default.png" alt="profile">
-							<p>Welcome!</p>
+						<img src="/images/default.png" alt="profile">
+						<p>Welcome!</p>
 						<% } %>
 					</div>
 					<div class="linee"></div>
 					<% if(user) {%>
-						<li class="nav-item">
-							<a href="/followers">Followers</a>
-						</li>
-						<li><a href="/following">Following</a></li>
+					<li class="nav-item">
+						<a href="/followers">Followers</a>
+					</li>
+					<li><a href="/following">Following</a></li>
 					<% } %>
 					<div class="linee"></div>
 					<div class="menu">
 						<p>FLick things</p>
 					</div>
 					<li>
-            <a href="/about_us">About Us</a>
+						<a href="/about_us">About Us</a>
 					</li>
 					<li class="nav-item active">
 						<a href="/contacts">Contact</a>
@@ -81,29 +84,29 @@
 									</div>
 								</form>
 								<% if(user) { %>
-                                    <li class="nav-item active">
-                                        <a class="nav-liink" href="/home"><i class="fas fa-home"></i> Home</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-liink" href="/users/<%= user._id %>"> <i class="fas fa-gamepad"></i> Profile</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-liink" href="/users/livestreams/<%= user._id %>"> <i class="fas fa-video"></i> Stream</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-liink" href="/users/<%= user._id %>/chat"> <i class="fas fa-comments"></i> Message</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-liink" href="/logout"> <i class="fas fa-sign-out-alt"></i> LogOut</a>
-                                    </li>
-                                <% } else { %>
-                                    <li class="nav-item">
-                                        <a class="nav-liink" href="/login"><i class="fas fa-sign-in-alt"></i> Login</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-liink" href="/register"> <i class="fas fa-sign-in-alt"></i> Register</a>
-                                    </li>
-                                <% } %>
+								<li class="nav-item active">
+									<a class="nav-liink" href="/home"><i class="fas fa-home"></i> Home</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-liink" href="/users/<%= user._id %>"> <i class="fas fa-gamepad"></i> Profile</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-liink" href="/users/livestreams/<%= user._id %>"> <i class="fas fa-video"></i> Stream</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-liink" href="/users/<%= user._id %>/chat"> <i class="fas fa-comments"></i> Message</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-liink" href="/logout"> <i class="fas fa-sign-out-alt"></i> LogOut</a>
+								</li>
+								<% } else { %>
+								<li class="nav-item">
+									<a class="nav-liink" href="/login"><i class="fas fa-sign-in-alt"></i> Login</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-liink" href="/register"> <i class="fas fa-sign-in-alt"></i> Register</a>
+								</li>
+								<% } %>
 							</ul>
 						</div>
 					</div>
@@ -111,61 +114,63 @@
 				<!--body-->
 
 				<div class="container">
-          <!--heading-->
-  <h1 style="color: #BB86FC">CONNECT WITH US</h1>
-  <!--contact box-->
-  <div class="container"> <br> <br> <br>
-<div class="row">
-  <div class="col-sm">
-    <div class="box">
-			<div class="d-flex">
-				<img src="/images/kashish.jpeg" alt="kashish">
-				<h2 style="color: #BB86FC">Kashish Singh </h2>
-			</div>
-			<br>
-			<a style="color: #FF7597; padding-right:60px;" href="mailto:kashishvir@gmail.com"><i class="fas fa-envelope-open-text"></i></a>
-      <a style="color: #FF7597; padding-right:60px;" href="https://github.com/kashishvir"><i class="fab fa-github"></i></a>
-      <a style="color: #FF7597; padding-right:60px;" href="https://www.linkedin.com/in/kashish-singh-701b1b1b6/"><i class="fab fa-linkedin"></i></a>
-      <a style="color: #FF7597;"  href="https://www.instagram.com/_kash62227/"><i class="fab fa-instagram"></i></a>
-      <br>
-    </div>
-    <br>
-  </div>
-  <div class="col-sm">
-    <div class="box">
-			<div class="d-flex">
-				<img src="/images/kshitij1.jpeg" alt="kshitij">
-	      <h2 style="color: #BB86FC">Kshitij Verma    </h2>
-			</div>
+					<!--heading-->
+					<h1 style="color: #BB86FC">CONNECT WITH US</h1>
+					<!--contact box-->
+					<div class="container"> <br> <br> <br>
+						<div class="row">
+							<div class="col-sm">
+								<div class="boxx">
+									<div class="d-flex">
+										<img src="/images/kashish.jpeg" alt="kashish">
+										<h2 style="color: #BB86FC">Kashish Singh </h2>
+									</div>
+									<br>
+									<a style="color: #FF7597; padding-right:60px;" href="mailto:kashishvir@gmail.com"><i class="fas fa-envelope-open-text"></i></a>
+									<a style="color: #FF7597; padding-right:60px;" href="https://github.com/kashishvir"><i class="fab fa-github"></i></a>
+									<a style="color: #FF7597; padding-right:60px;" href="https://www.linkedin.com/in/kashish-singh-701b1b1b6/"><i class="fab fa-linkedin"></i></a>
+									<a style="color: #FF7597;" href="https://www.instagram.com/_kash62227/"><i class="fab fa-instagram"></i></a>
+									<br>
+								</div>
+								<br>
+							</div>
+							<div class="col-sm">
+								<div class="boxx">
+									<div class="d-flex">
+										<img src="/images/kshitij1.jpeg" alt="kshitij">
+										<h2 style="color: #BB86FC">Kshitij Verma </h2>
+									</div>
 
-      <br>
-			<a style="color: #FF7597; padding-right:60px;" href="mailto:kshitijverma816@gmail.com"><i class="fas fa-envelope-open-text"></i></a>
-      <a style="color: #FF7597; padding-right:60px;" href="https://github.com/kshitijver"><i class="fab fa-github"></i></a>
-      <a style="color: #FF7597; padding-right:60px;" href="https://www.linkedin.com/in/kshitij-verma-2a07621b7/"><i class="fab fa-linkedin"></i></a>
-      <a style="color: #FF7597;" href="https://www.instagram.com/kshiteezzz._/"><i class="fab fa-instagram"></i></a>
-      <br>
-    </div>
-    <br>
-  </div>
-  <div class="col-sm">
-    <div class="box">
-			<div class="d-flex">
-				<img src="/images/kareem.jpeg" alt="kareem">
-				<h2 style="color: #BB86FC">Karim Ullah   </h2>
-			</div>
+									<br>
+									<a style="color: #FF7597; padding-right:60px;" href="mailto:kshitijverma816@gmail.com"><i class="fas fa-envelope-open-text"></i></a>
+									<a style="color: #FF7597; padding-right:60px;" href="https://github.com/kshitijver"><i class="fab fa-github"></i></a>
+									<a style="color: #FF7597; padding-right:60px;" href="https://www.linkedin.com/in/kshitij-verma-2a07621b7/"><i class="fab fa-linkedin"></i></a>
+									<a style="color: #FF7597;" href="https://www.instagram.com/kshiteezzz._/"><i class="fab fa-instagram"></i></a>
+									<br>
+								</div>
+								<br>
+							</div>
+							<div class="col-sm">
+								<div class="boxx">
+									<div class="d-flex">
+										<img src="/images/kareem.jpeg" alt="kareem">
+										<h2 style="color: #BB86FC">Karim Ullah </h2>
+									</div>
 
-      <br>
-			<a style="color: #FF7597; padding-right:60px;" href="mailto:karimulla642@gmail.com"><i class="fas fa-envelope-open-text"></i></a>
-      <a style="color: #FF7597; padding-right:60px;" href="https://github.com/rdx-rockstar"><i class="fab fa-github"></i></a>
-      <a style="color: #FF7597; padding-right:60px;" href=""><i class="fab fa-linkedin"></i></a>
-      <a style="color: #FF7597;" href="https://www.instagram.com/karimulla1098/?hl=en"><i class="fab fa-instagram"></i></a>
-      <br>
-    </div>
+									<br>
+									<a style="color: #FF7597; padding-right:60px;" href="mailto:karimulla642@gmail.com"><i class="fas fa-envelope-open-text"></i></a>
+									<a style="color: #FF7597; padding-right:60px;" href="https://github.com/rdx-rockstar"><i class="fab fa-github"></i></a>
+									<a style="color: #FF7597; padding-right:60px;" href="https://www.linkedin.com/in/karimulla-mohammad-3852501ba/"><i class="fab fa-linkedin"></i></a>
+									<a style="color: #FF7597;" href="https://www.instagram.com/karimulla1098/?hl=en"><i class="fab fa-instagram"></i></a>
+									<br>
+								</div>
 
-  </div>
-</div>
-</div>
+							</div>
+						</div>
+					</div>
 				</div>
+
+
 				<!-- Footer  -->
 				<div class="footer">
 					<p>© 2020 Flick, LLC. All rights reserved | </p>
