@@ -1,6 +1,7 @@
 const router = require('express').Router(),
       fs = require('fs'),
-      upload = require('../multer'),
+      upload = require('../multer').upload,
+      uploadImage = require('../multer').uploadImage,
       cloudinary = require('../strategies/cloudinary');
 
 const { runInNewContext } = require('vm');

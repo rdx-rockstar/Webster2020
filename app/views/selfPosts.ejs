@@ -33,7 +33,7 @@
 				<ul class="list-unstyled components">
 					<div class="menu">
 						<% if(currentUser){ %>
-						<img src="<%= currentUser.profilePicture %>" alt="profile">
+							<a href="/update-pic"><img src="<%= currentUser.profilePicture %>" alt="profile"></a>
 						<p><%= name[0] %></p>
 						<% } else{ %>
 						<img src="/images/default.png" alt="profile">

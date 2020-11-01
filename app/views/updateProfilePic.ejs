@@ -72,26 +72,23 @@
 
 				<div class="container hide-scrollbar">
 							<div class="m-3">
-                      <form action="/posts" method="POST" enctype="multipart/form-data">
+                      <form action="/update-pic" method="POST" enctype="multipart/form-data">
                           <div style="color:#fff;  margin-left: 32%" class="form-group">
-                            <h1 style="color:#fff;">ADD POST</h1>
+                            <h1 style="color:#fff;">Update Profile Picture</h1>
                               <br><br>
-                              <label for="video">Select Video</label>
-                              <input type="file" name="file" class="form-control-file" id="video" accept="video/*" required>
+                              <label for="image">Select Pic</label>
+                              <input  type="file" name="dp" class="form-control-file" id="image" accept="image/*">
                               <br>
-                              <label for="image">Select Thumbnail</label>
-                              <input  type="file" name="file" class="form-control-file" id="image" accept="image/*" required>
-                              <br>
-                              <div class="form-group">
+                              <!-- <div class="form-group">
                                   <label style="color:#fff;" for="exampleInputEmail1">Caption</label>
-                                  <input type="textarea" class="form-control form-group" id="exampleInputEmail1" name="caption" required>
-                                </div>
-                              <div class="form-group">
+                                  <input type="textarea" class="form-control form-group" id="exampleInputEmail1" name="caption">
+                                </div> -->
+                              <!-- <div class="form-group">
                                   <label style="color:#fff;" for="exampleInputEmail2">Tags</label>
                                   <input placeholder="Example: #tag#tag#tag....so on" type="textarea" class="form-control form-group" id="exampleInputEmail2" name="tags" required>
-                                </div>
+                                </div> -->
                               <div class="notfound">
-                                  <button style="padding: 10px 40px; font-size: 16px;" type="post" name="button">Submit</button>
+                                  <button style="padding: 10px 40px; font-size: 16px;" type="post" name="button">Update</button>
                               </div>
                           </div>
                         </form>
