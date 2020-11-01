@@ -21,6 +21,28 @@ const upload = multer({
     }
 });
 
+const uploadImage = multer({
+  storage: storage,
+  limits: {
+    fieldSize: 10*1024*1024
+  },
+  fileFilter: function(req,file,cb){
+    checkImageType(file,cb);
+  }
+})
+
+function checkImageType(file,cb){
+  const allowedTypes = /jpeg|jpg|png|gif/;
+  const ext = allowedTypes.test(path.extname(file.originalname).toLowerCase());
+  const mimeType = allowedTypes.test(file.mimetype);
+
+  if(mimeType && ext){
+    cb(null,true);
+  } else {
+    cb(new Error('Error: Only Images!!'),false);
+  }
+}
+
 // Check File Type
 function checkFileTypes(file,cb){
     // Allowed extensions
@@ -39,4 +61,7 @@ function checkFileTypes(file,cb){
     }
   }
 
-module.exports = upload;
+module.exports = {
+  upload: upload,
+  uploadImage: uploadImage,
+};

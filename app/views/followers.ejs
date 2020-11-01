@@ -33,7 +33,9 @@
 				<ul class="list-unstyled components">
 					<div class="menu">
 						<% if(user) { %>
-						<img src="<%= user.profilePicture %>" alt="profile">
+						<a href="/update-pic">
+							<img src="<%= user.profilePicture %>" alt="profile">
+						</a>
 						<p><%= user.username.split(" ")[0] %></p>
 						<% } else { %>
 						<img src="/images/default.png" alt="profile">
@@ -131,8 +133,8 @@
 										<h2 style="color: #FF7597; margin-left: 30px; margin-top: 50px;"><%= follower.username.split(" ")[0] %></h2>
 									</a>
 									<br>
-									<div class="found ml-auto">
-                    <button id="<%= user._id %>" onclick="ajaxUnsubscribe('<%= user._id %>')"><i class="fas fa-id-badge"></i> VIEW PROFILE</button>
+									<div class="found ml-auto" style="margin-top: 55px!important;">
+                    <a href="/users/<%= follower._id %>"><i class="fas fa-id-badge"></i> VIEW PROFILE</a>
                   </div>
 							</div>
 							<div class="linee"></div>
