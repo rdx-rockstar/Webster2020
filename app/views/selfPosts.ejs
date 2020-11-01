@@ -48,7 +48,7 @@
 					<li><a href="/following">Following</a></li>
 
 					<div class="menu">
-						<p>FLick things</p>
+						<p>Flick things</p>
 					</div>
 					<li><a href="/about_us">About Us</a>
 					</li>
@@ -122,6 +122,9 @@
 						<div class="username">
 							<h3><%= user.username.split(" ")[0] %></h3>
 						</div>
+						<div class="found ml-auto" style="margin-right: 100px!important; margin-top: 50px!important;">
+							<a href="#">Subscribe XD</a>
+						</div>
 					<% }else{ %>
 						<img style="border-radius:100%; width: 90px!important; height: 90px!important; margin-left: 40px;" src="<%= currentUser.profilePicture %>">
 					<% } %>
@@ -130,14 +133,9 @@
 					<div class="notification ml-auto">
 						<a href="#">
 							<div class="notBtn" href="#">
-								<!--Number supports double digets and automaticly hides itself when there is nothing between divs -->
 								<div class="number">2</div>
 								<i class="bell fas fa-bell"></i>
 								<div class="box">
-									<!-- <div class="display"> -->
-										<!-- notification(scroll) -->
-										<!-- <div class="cont"> -->
-											<!-- Fold this div and try deleting evrything inbetween -->
 											<div class="sec">
 													<div class="profCont">
 														<img class="profile" src="/images/kashish.jpeg">
@@ -146,8 +144,6 @@
 													<div class="txt sub">11:22PM,Today</div>
 												</a>
 											</div>
-										<!-- </div> -->
-									<!-- </div> -->
 								</div>
 							</div>
 						</a>
