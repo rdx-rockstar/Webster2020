@@ -1,30 +1,47 @@
 var flag=0;
 var ison=0;
+var channels=[];
 const socket = io();
 window.onload = function(){
-const chatMessages = document.getElementById('chat');
+  const schatMessages = document.getElementById('schat');
+  const ichatMessages = document.getElementById('ichat');
 const userList = document.getElementById('liveUsers');
 const Counter= document.getElementById('count');
-const toggle= document.getElementById('toggle');
-const msend= document.getElementById('sendgrp');
+const user_view= document.getElementById('toggle');
+const socket_chat= document.getElementById('socket_chat');
+const ice_chat= document.getElementById('ice_chat');
 const send=document.getElementById('sendbtn');
-userList.style.display = "none";
-toggle.onclick=function(){
-  if(flag==0){
-    flag=1;
+const smsend= document.getElementById('sendgrp');
+const imsend= document.getElementById('ice_sendgrp');
+const ice_send=document.getElementById('ice_sendbtn');
+ice_chat.style.display = "none";
+ichatMessages.style.display="none";
+imsend.style.display = "none";
+userList.style.display="none";
+user_view.onclick=function(){
     console.log("0");
-  userList.style.display="inherit";
-  msend.style.display = "none";
-  chatMessages.style.display = "none";
+  userList.style.display="initial";
+  schatMessages.style.display = "none";
+  smsend.style.display = "none";
+  ichatMessages.style.display = "none";
+  imsend.style.display = "none";
 }
-else{
-  flag=0;
+socket_chat.onclick=function(){
   console.log("1");
-  chatMessages.style.display="inherit";
-  msend.style.display="inherit";
+  schatMessages.style.display="initial";
+  smsend.style.display = "initial";
+  ichatMessages.style.display = "none";
+  imsend.style.display = "none";
   userList.style.display = "none";
 }
-};
+ice_chat.onclick=function(){
+  console.log("1");
+  schatMessages.style.display="none";
+  smsend.style.display = "none";
+  ichatMessages.style.display = "initial";
+  imsend.style.display = "initial";
+  userList.style.display = "none";
+}
 
 // Join chatroom
 console.log("--"+room+"--");
@@ -39,7 +56,7 @@ socket.on('message', message => {
   console.log(message);
   outputMessage(message);
 
-  chatMessages.scrollTop = chatMessages.scrollHeight;
+  schatMessages.scrollTop = schatMessages.scrollHeight;
 });
 
 // Message submit
@@ -76,6 +93,26 @@ send.onclick=function(){
   console.log("done");
   $('#Mssg').val('');
 };
+ice_send.onclick=function(){
+  var msg=$('#ice_Mssg').val();
+  console.log(msg);
+  msg = msg.trim();
+  if(msg){
+    for(var i=0;i<channels.length;i++){
+    channels[i].send(msg);
+    }
+    const div = document.createElement('div');
+  div.innerHTML=`<div class="d-flex justify-content-start mb-4">
+  <div class="msg_cotainer">
+  ${msg}
+  </div>
+</div>`;
+ichatMessages.appendChild(div);
+    console.log("emmited");
+  }
+  console.log("done");
+  $('#Mssg').val('');
+};
 
 // Output message to DOM
 function outputMessage(message) {
@@ -102,7 +139,7 @@ function outputMessage(message) {
   </div>
 </div>`;
   }
-  chatMessages.appendChild(div);
+  schatMessages.appendChild(div);
 }
 
 // Add users to DOM
@@ -136,6 +173,8 @@ socket.on("answer", (id, description) => {
 socket.on("watcher", id => {
   console.log("watcher came to broadcaster and offer sent 00");
   const peerConnection = new RTCPeerConnection(config);
+  var Channel = peerConnection.createDataChannel(id);
+  channels.push(Channel);
   peerConnections[id] = peerConnection;
   let sstream=videoElem.srcObject;
   sstream.getTracks().forEach(track => peerConnection.addTrack(track, sstream));
