@@ -14,7 +14,7 @@ const send=document.getElementById('sendbtn');
 const smsend= document.getElementById('sendgrp');
 const imsend= document.getElementById('ice_sendgrp');
 const ice_send=document.getElementById('ice_sendbtn');
-ice_chat.style.display = "none";
+// ice_chat.style.display = "none";
 ichatMessages.style.display="none";
 imsend.style.display = "none";
 userList.style.display="none";
@@ -95,6 +95,7 @@ send.onclick=function(){
 };
 ice_send.onclick=function(){
   var msg=$('#ice_Mssg').val();
+  $('#ice_Mssg').val("");
   console.log(msg);
   msg = msg.trim();
   if(msg){
@@ -110,6 +111,7 @@ ice_send.onclick=function(){
 ichatMessages.appendChild(div);
     console.log("emmited");
   }
+  ichatMessages.scrollTop = schatMessages.scrollHeight;
   console.log("done");
   $('#Mssg').val('');
 };
