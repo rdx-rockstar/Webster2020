@@ -211,6 +211,21 @@ socket.on("disconnectPeer", id => {
 
 window.onunload = window.onbeforeunload = () => {
   socket.close();
+  if(ison){
+    var formData = {
+      username : room,
+    }
+    $.ajax({
+      type : "POST",
+      contentType : "application/json",
+      url : "/users/deluser",
+      data : JSON.stringify(formData),
+      dataType : 'json',
+      // async:false,
+      success : function(customer) {
+        },
+  });
+}
 };
 
 // Get camera and microphone
@@ -432,21 +447,21 @@ function handleError(error) {
   console.error("Error: ", error);
 }
 }
-$(window).on('unload', function() {
-  if(ison){
-    var formData = {
-      username : room,
-    }
-    $.ajax({
-      type : "POST",
-      contentType : "application/json",
-      url : "/users/deluser",
-      data : JSON.stringify(formData),
-      dataType : 'json',
-      async:false,
-      success : function(customer) {
-        },
-  });
-}
-});
+// $(window).on('unload', function() {
+//   if(ison){
+//     var formData = {
+//       username : room,
+//     }
+//     $.ajax({
+//       type : "POST",
+//       contentType : "application/json",
+//       url : "/users/deluser",
+//       data : JSON.stringify(formData),
+//       dataType : 'json',
+//       // async:false,
+//       // success : function(customer) {
+//       //   },
+//   });
+// }
+// });
 
