@@ -11,6 +11,11 @@ const socket_chat= document.getElementById('socket_chat');
 const ice_chat= document.getElementById('ice_chat');
 const send=document.getElementById('sendbtn');
 const smsend= document.getElementById('sendgrp');
+const btnPlayPause = document.getElementById('btnPlayPause');
+const btnMute      = document.getElementById('btnMute');
+const volumeBar    = document.getElementById('volume-bar');
+const btnFullScreen=document.getElementById('btnFullScreen');
+var isplaying=1;
 // ice_chat.style.display = "none";
 userList.style.display = "none";
 ichatMessages.style.display="none";
@@ -145,6 +150,19 @@ const config = {
 
 const video = document.getElementById("v&a");
 const videoElem = document.getElementById("screen");
+var embed_vid_pos=0;
+video.addEventListener("click", function(evt) {
+  if(embed_vid_pos==0){
+    video.style.left="1%";
+    video.style.top="4%";
+    embed_vid_pos=1;
+  }
+  else{
+    video.style.left="75%";
+    video.style.top="60%";
+    embed_vid_pos=0;
+  }
+});
 ///
 socket.emit("watcher",room);
 console.log("watcher came on "+room);
@@ -223,4 +241,84 @@ window.onunload = window.onbeforeunload = () => {
   socket.close();
 };
 
+function changeButtonType(btn, value) {
+  btn.title     = value;
+  // btn.innerHTML = value;
+  btn.className = value +" b2";
+}
+// Update the video volume
+volumeBar.addEventListener("change", function(evt) {
+  console.log("volume bar clicked");
+  video.volume = evt.target.value;
+});
+btnMute.onclick= function() {
+  console.log("volume clicked");
+  if (video.muted) {
+    // Change the button to a mute button
+    changeButtonType(btnMute, 'mute');
+    video.muted = false;
+  }
+  else {
+    // Change the button to an unmute button
+    changeButtonType(btnMute, 'unmute');
+    video.muted = true;
+  }
+}
+changeButtonType(btnPlayPause, 'pause');
+btnPlayPause.onclick= function() {
+  if (isplaying==0) {
+    changeButtonType(btnPlayPause, 'pause');
+    video.play();
+    videoElem.play();
+    isplaying=1
+  }
+  else {
+    isplaying=0;
+    changeButtonType(btnPlayPause, 'play');
+    video.pause();
+    videoElem.pause();
+  }
+}
+function exitFullScreen() {
+  if (document.exitFullscreen) {
+      document.exitFullscreen();
+  } else if (document.msExitFullscreen) {
+      document.msExitFullscreen();
+  } else if (document.mozCancelFullScreen) {
+      document.mozCancelFullScreen();
+  } else if (document.webkitExitFullscreen) {
+      document.webkitExitFullscreen();
+  }
+}
+
+function toggleFullScreen() {
+  if (videoElem.requestFullscreen)
+      if (document.fullScreenElement) {
+          document.cancelFullScreen();
+      } else {
+          videoElem.requestFullscreen();
+      }
+      else if (videoElem.msRequestFullscreen)
+      if (document.msFullscreenElement) {
+          document.msExitFullscreen();
+      } else {
+        videoElem.msRequestFullscreen();
+      }
+      else if (videoElem.mozRequestFullScreen)
+      if (document.mozFullScreenElement) {
+          document.mozCancelFullScreen();
+      } else {
+        videoElem.mozRequestFullScreen();
+      }
+      else if (video.webkitRequestFullscreen)
+      if (document.webkitFullscreenElement) {
+          document.webkitCancelFullScreen();
+      } else {
+        videoElem.webkitRequestFullscreen();
+      }
+  else {
+      alert("Fullscreen API is not supported");
+      
+  }
+}
 }
