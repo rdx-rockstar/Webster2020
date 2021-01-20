@@ -1,10 +1,14 @@
 var flag=0;
 var ison=0;
+var embed_vid_pos=0;
+var isAudioOn=0;
+var isVideoOn=0;
+var isPreviewOn=0;
 var channels=[];
 const socket = io();
 window.onload = function(){
-  const schatMessages = document.getElementById('schat');
-  const ichatMessages = document.getElementById('ichat');
+const schatMessages = document.getElementById('schat');
+const ichatMessages = document.getElementById('ichat');
 const userList = document.getElementById('liveUsers');
 const Counter= document.getElementById('count');
 const user_view= document.getElementById('toggle');
@@ -169,11 +173,11 @@ const config = {
 
 socket.on("answer", (id, description) => {
   peerConnections[id].setRemoteDescription(description);
-  console.log("ans came");
+  // console.log("ans came");
 });
 
 socket.on("watcher", id => {
-  console.log("watcher came to broadcaster and offer sent 00");
+ console.log("watcher came to broadcaster and offer sent");
   const peerConnection = new RTCPeerConnection(config);
   var Channel = peerConnection.createDataChannel(id);
   channels.push(Channel);
@@ -230,14 +234,25 @@ window.onunload = window.onbeforeunload = () => {
 
 // Get camera and microphone
 const videoElement = document.getElementById("v&a");
+videoElement.muted=true;
+videoElement.style.border="30px green";
 const audioSelect = document.querySelector("select#audioSource");
 const videoSelect = document.querySelector("select#videoSource");
-
+videoElement.addEventListener("click", function(evt) {
+  if(embed_vid_pos==0){
+    videoElement.style.left="1%";
+    videoElement.style.top="2%";
+    embed_vid_pos=1;
+  }
+  else{
+    videoElement.style.left="73%";
+    videoElement.style.top="29%";
+    embed_vid_pos=0;
+  }
+});
 audioSelect.onchange = getStream;
 videoSelect.onchange = getStream;
-
-getStream()
-  .then(getDevices)
+getDevices()
   .then(gotDevices);
 
 function getDevices() {
@@ -246,6 +261,8 @@ function getDevices() {
 
 function gotDevices(deviceInfos) {
   window.deviceInfos = deviceInfos;
+  audioSelect.innerHTML="";
+  videoSelect.innerHTML="";
   for (const deviceInfo of deviceInfos) {
     const option = document.createElement("option");
     option.value = deviceInfo.deviceId;
@@ -302,8 +319,46 @@ const audioElem=document.getElementById("audio");
 const videoelem=document.getElementById("video");
 
 stopElem.disabled=true;
+cpreview.disabled=true;
+audioElem.disabled=true;
+videoelem.disabled=true;
 
-
+audioElem.addEventListener("click", function(evt) {
+  if (window.stream) {
+    if(isAudioOn==1){
+    window.stream.getAudioTracks()[0].enabled=false;
+    audioElem.style.color="#8400ff";
+    isAudioOn=0;}
+    else{
+      isAudioOn=1;
+    audioElem.style.color="red";
+    window.stream.getAudioTracks()[0].enabled=true;
+    }
+  }
+});
+videoelem.addEventListener("click", function(evt) {
+  if (window.stream) {
+    if(isVideoOn==1){
+      videoelem.style.color="#8400ff";
+    window.stream.getVideoTracks()[0].enabled=false;
+    isVideoOn=0;}
+    else{
+      isVideoOn=1;
+      videoelem.style.color="red";
+      window.stream.getVideoTracks()[0].enabled=true;
+    }
+  }
+});
+// audioElem.addEventListener("click", function(evt) {
+//   if(videoElement.srcObject){
+//     videoElement.srcObject.getAudioTracks()[0].enabled = !(videoElement.srcObject.getAudioTracks()[0].enabled);
+//   }
+// }, false);
+// videoelem.addEventListener("click", function(evt) {
+//   if(videoElement.srcObject){
+//     videoElement.srcObject.getVideoTracks()[0].enabled = !(videoElement.srcObject.getVideoTracks()[0].enabled);
+//   }
+// }, false);
 // Options for getDisplayMedia()
 
 var displayMediaOptions = {
@@ -312,16 +367,6 @@ var displayMediaOptions = {
   },
   audio: false
 };
-audioElem.addEventListener("click", function(evt) {
-  if(videoElement.srcObject){
-    videoElement.srcObject.getAudioTracks()[0].enabled = !(myStream.getAudioTracks()[0].enabled);
-  }
-}, false);
-videoElem.addEventListener("click", function(evt) {
-  if(videoElement.srcObject){
-    videoElement.srcObject.getVideoTracks()[0].enabled = !(myStream.getVideoTracks()[0].enabled);
-  }
-}, false);
 preview.addEventListener("click", function(evt) {
   getpreview();
 }, false);
@@ -330,6 +375,9 @@ cpreview.addEventListener("click", function(evt) {
   let tracks = videoElement.srcObject.getTracks();
   tracks.forEach(track => track.stop());
   videoElement.srcObject = null;
+  cpreview.disabled=true;
+  preview.disabled=false;
+  videoElement.controls=true;
 }
 }, false);
 // Set event listeners for the start and stop buttons
@@ -354,10 +402,16 @@ function stopCapture() {
     stopElem.disabled=true;
     startElem.disabled=false;
     preview.disabled=false;
-    cpreview.disabled=false;
+    cpreview.disabled=true;
+    audioElem.disabled=true;
+    videoelem.disabled=true;
     lableElem.disabled=false;
     thumbnailElem.disabled=false;
     hashtagElem.disabled=false;
+    videoelem.style.color="red";
+    audioElem.style.color="red";
+    videoElem.controls=true;
+    videoElement.controls=true;
   $.ajax({
     type : "POST",
     contentType : "application/json",
@@ -373,7 +427,12 @@ function stopCapture() {
 });
 }
 async function getpreview(){
-  getStream();
+  getStream()
+  .then(getDevices)
+  .then(gotDevices);
+  preview.disabled=true;
+  cpreview.disabled=false;
+  videoElement.controls=false;
 }
 async function startCapture() {
   try {
@@ -412,10 +471,18 @@ async function startCapture() {
   stopElem.disabled=false;
   startElem.disabled=true;
   preview.disabled=true;
-  cpreview.disabled=true;
+  cpreview.disabled=true
+  audioElem.disabled=false;
+  videoelem.disabled=false;
   thumbnailElem.disabled=true;
   lableElem.disabled=true;
   hashtagElem.disabled=true;
+  audioElem.style.color="red";
+  videoelem.style.color="red";
+  isVideoOn=1;
+  isAudioOn=1;
+  videoElem.controls=false;
+  videoElement.controls=false;
   $.ajax({
     type : "POST",
     contentType : "application/json",

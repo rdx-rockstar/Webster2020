@@ -453,16 +453,26 @@ background-color: rgba(0,0,0,0.3) !important;
 
 
 .move{
-  position: relative;
-  left: 89%;
-  transform: translate(-50%, -344%);
-  z-index: 2;
+  position: absolute;
+  left: 73%;
+  top: 29%;
+  /* transform: translate(-50%, -344%); */
+  z-index: 1;
 
 }
-.move:focus{
-  left:97px;
-  /* visibility: hidden; */
+.move2{
+  position: absolute;
+  left: 75%;
+  top: 60%;
+  /* transform: translate(-50%, -344%); */
+  z-index: 1;
+
 }
+/* .move:focus{
+  left:1%;
+  top: 7%;
+  /* visibility: hidden; */
+/* } */ 
 .textss{
  align-self: center;
  border-radius: 10px;

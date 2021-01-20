@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
 	<title>Stream-Flick</title>
 	<link rel="icon" href="/icons/gaming.svg">
@@ -85,23 +84,31 @@
 					<div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
 						<div class="carousel-inner">
 							<!-- <h6 style="text-align: left; color:#FF7597">preview of video and audio</h6> -->
+							<video autoplay width="1020" controls id="screen"></video>
+							<video class="move" controls autoplay width="200" id="v&a"></video>
+							
 							<div class="notfound">
-								<button style="margin-left:390px;" type="button" class="btn" id="preview"><i class="fas fa-video"></i> Get Preview</button>
-								<button style="margin-left:50px;" type="button" class="btn" id="closepreview"><i class="fas fa-video-slash"></i> close Preview</button>
+								<button style="margin-left:100px;" type="button" class="btn" id="start"><i class="fas fa-play-circle"></i> Start</button>
+								<button style="margin-left:30px;" type="button" class="btn" id="stop"><i class="fas fa-stop-circle"></i> Stop</button>
+								<button style="margin-left:30px;" type="button" class="btn" id="preview"><i class="fas fa-video"></i> Get Preview</button>
+								<button style="margin-left:30px;" type="button" class="btn" id="closepreview"><i class="fas fa-video-slash"></i> close Preview</button>
+								<button style="margin-left:30px;" type="button" class="btn" id="audio"><i class="fas fa-microphone-alt-slash"></i> Audio</button>
+								<button style="margin-left:30px;" type="button" class="btn" id="video"><i class="fas fa-video-slash"></i> Video</button>
 							</div>
 							<br>
-							<video controls autoplay width="1020" id="screen"></video>
-							<video class="move" controls autoplay width="200" id="v&a"></video>
-							<div class="form-group" style="margin-left: 390px;">
+							<div class="form-group" style="margin-left: 50px;">
+								<label for="Lable for Stream:" style="text-align: left; color:#FF7597">Lable for Stream: </label>
 								<input type="textarea" class="form-control form-group" id="lable" name="caption" placeholder="Type lable of stream">
+								<label for="Related Hashtags:" style="text-align: left; color:#FF7597">Related Hashtags:</label>
 								<input name="" class="form-control form-group" id="hashtag" placeholder="Type hashtags of stream">
+								<label for="Thumblain: " style="text-align: left; color:#FF7597">Thumbnail:  </label>
 								<input type="file" style="color:#FF7597;" name="file" class="form-control-file" id="thumbnail" accept="image/*"> <br>
-								<div class="notfound">
+								<!-- <div class="notfound">
 									<button type="button" class="btn" id="start"><i class="fas fa-play-circle"></i> Start</button>
 									<button type="button" class="btn" id="stop"><i class="fas fa-stop-circle"></i> Stop</button>
 									<button type="button" class="btn" id="audio"><i class="fas fa-microphone-alt-slash"></i> Audio</button>
 									<button type="button" class="btn" id="video"><i class="fas fa-video-slash"></i> Video</button>
-								</div> <br>
+								</div> <br> -->
 								<section class="select form-group">
 									<label for="audioSource" style="text-align: left; color:#FF7597">Audio source: </label>
 									<select id="audioSource"></select>
