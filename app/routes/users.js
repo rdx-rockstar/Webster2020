@@ -143,7 +143,7 @@ User.findById(req.params.id,function(err,foundUser){
       console.log(users[i].name);
       var flag=0;
       for(var j=0;j<fllwers.length;j++){
-        if(user[i].uid==fllwers[j]){
+        if(users[i].uid==fllwers[j]){
           flag=1;
         }
       }
